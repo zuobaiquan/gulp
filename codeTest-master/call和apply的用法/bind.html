@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+
+			//bind和call和apply不同的是，后二者是改变执行环境后立即执行而bind是改变执行环境后返回函数本身而不执行
+			function fun(){
+				console.log(fun.bind(this));
+			}
+			fun();//function fun()
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component :items="items">
+				<template slot="listCon" scope="props">
+					<span style="color: red;">hello: {{props.content}}</span>
+				</template>
+			</my-component>
+			<!--这样的话，组件就完全解耦只关注数据和大致结构，每个li的内容可以自定义样式和内容-->
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		Vue.component('my-component',{//tagName,options
+			props: ['items'],
+			template: '<ul>\
+							<li v-for="item in items">\
+								<slot name="listCon" :content="item.con">这是默认值,没有分发内容时显示</slot>\
+							</li>\
+					   </ul>',
+			data: function(){
+				return {
+					val: '这是组件的val变量的值'
+				}
+			}
+		})
+
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				items: [
+					{con:'CONTENT_ONE'},
+					{con:'CONTENT_TWO'},
+					{con:'CONTENT_THREE'}
+				]
+			}
+		})
+		
+	</script>
+</html>

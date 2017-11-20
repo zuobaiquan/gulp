@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>这是父级：{{result}}</div>
+			<my-component v-model='result'></my-component>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//【父子组件通信_form.html】中的方式不是很人性化，这种方式更好
+		Vue.component('my-component',{//tagName,options
+			props: ['value'],
+			template: '<input type="text" v-bind:value="value" v-on:input="changeVal($event.target.value)"/>',
+			data: function(){
+				return {
+					//val: '',
+				}
+			},
+			methods: {
+				changeVal: function(value){
+					this.$emit('input',value);//触发input事件
+				}
+			}
+		})
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				result: '表单组件中输入会在这里输出'
+			},
+			methods: {
+				getVal: function(value){
+					this.result = value;
+				}
+			}
+		})
+		
+		
+	</script>
+</html>

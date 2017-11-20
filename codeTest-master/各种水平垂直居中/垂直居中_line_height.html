@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h1{
+				margin-top: 60px;
+			}
+		</style>
+	</head>
+	<body style="height:100%;margin: 0;position: relative;">
+		<div style="background: #f5f5f5;padding: 10px;">
+			<h1>结论：</h1>
+			<p>
+				通过行高来垂直居中，只对内联元素或内联块元素有作用。值得注意的是，使用text-align进行水平居中也是只对内联元素或内联块元素起作用
+				<br/><b>参考阅读：</b>
+				<a target="_blank" href="http://www.zhangxinxu.com/wordpress/2009/11/css%E8%A1%8C%E9%AB%98line-height%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8F%8A%E5%BA%94%E7%94%A8/">css行高line-height的一些深入理解及应用</a>
+				<a target="_blank" href="http://www.zhangxinxu.com/wordpress/2009/08/%E5%A4%A7%E5%B0%8F%E4%B8%8D%E5%9B%BA%E5%AE%9A%E7%9A%84%E5%9B%BE%E7%89%87%E3%80%81%E5%A4%9A%E8%A1%8C%E6%96%87%E5%AD%97%E7%9A%84%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/">大小不固定的图片、多行文字的水平垂直居中</a>
+				<a target="_blank" href="http://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/">CSS深入理解vertical-align和line-height的基友关系</a>
+			</p>
+		</div>
+		<h2>文字</h2>
+		<div style=" width: 1000px;height: 100px; border: 1px solid red;line-height: 100px;">
+			我是一段妖娆的文字我是一段妖娆的文字我是一段妖娆的文字
+		</div>
+		<h2>多行文字(使用上下padding来垂直居中)</h2>
+		<div style=" width: 1000px;border: 1px solid red;padding: 50px 0;">
+			我是一段妖娆的文字我是一段妖娆的文字我是一段妖娆的文字<br />
+			我是一段妖娆的文字我是一段妖娆的文字
+		</div>
+		<h2>图片(需要在父级设置行高，本身设置vertical-align)</h2>
+		<div style=" width: 1000px;height: 100px; border: 1px solid red;line-height: 100px;">
+			<img style="border: 1px solid green;vertical-align: middle;" src="img.jpg" width="30px"/>
+			<img style="border: 1px solid green;vertical-align: middle;" src="img.jpg" width="60px"/>
+			<img style="border: 1px solid green;vertical-align: middle;" src="img.jpg" width="40px"/>
+		</div>
+		<h2>内联块(同上),对于ie7需要内部有文字或图片等内联占位元素才能起效</h2>
+		<div style=" width: 1000px;height: 100px; border: 1px solid red;line-height: 100px;">
+			<span style="display: inline-block;width: 100px;height: 40px;background:lightcoral;vertical-align: middle;font-size: 0px;">&nbsp;</span>
+		</div>
+		
+	</body>
+</html>

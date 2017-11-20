@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+
+		<style type="text/css">
+			.mainBox{
+				width: 500px;
+				height: 240px;
+				border: 1px solid #999;
+				margin: 200px auto;
+			}
+			.zong{
+				width: 40px;
+				height: 40px;
+				background: #096775;
+				float: left;
+				margin: 100px 30px 0 60px;
+				cursor: pointer;
+				
+				font: 14px "微软雅黑";
+				color: #fff;
+				font-weight: bold;
+				line-height: 40px;
+				text-align: center;
+				
+			}
+			.sub{
+				width: 40px;
+				height: 40px;
+				-moz-border-radius: 100%;  
+			    -webkit-border-radius: 100%;  
+			    border-radius:100%;
+			    behavior: url(iecss3.htc);
+			    position:relative; 
+				z-index:2; 
+				
+				font: 14px "微软雅黑";
+				color: #fff;
+				font-weight: bold;
+				line-height: 40px;
+				text-align: center;
+				
+				cursor: pointer;
+ 
+				background: #096775;
+				float: left;
+				margin: 100px 10px 0 0;
+			}
+			.jieguo{
+				width: 60px;
+				height: 60px;
+				-moz-border-radius: 4px;  
+			    -webkit-border-radius: 4px;  
+			    border-radius:4px;
+				font: 18px "微软雅黑";
+				color: #fff;
+				font-weight: bold;
+				line-height: 60px;
+				text-align: center;
+				
+				cursor: pointer;
+ 
+				background: #ec5f5f;
+				float: left;
+				margin: 90px 10px 0 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mainBox">
+			<div class="zong">总</div>
+			<div class="sub">1</div>
+			<div class="sub">2</div>
+			<div class="sub">3</div>
+			<div class="sub">4</div>
+			<div class="jieguo"></div>
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$(".jieguo").html("None");
+				
+			   $(".zong").toggle(
+			   	function(){
+			   		$(".zong").css("background","#e56b41");
+			   		$(".sub").css("background","#e56b41");
+			   		$(".jieguo").html("ALL");
+			   	},
+			   	function(){
+			   		$(".zong").css("background","#096775");
+			   		$(".sub").css("background","#096775");
+			   		$(".jieguo").html("None");
+			   	}
+			   	)
+			   
+			   $(".sub").toggle(
+			   	function(){
+			   		$(this).animate({top:"-40px"},200);	
+			   		$(this).animate({top:"00px"},100,
+			   			function(){
+			   				
+			   				$(this).css("background","#e56b41");
+					   		var text = $(this).text();
+					   		$(".jieguo").html(text);           
+//					   		 把这三句写在一个函数里，放在animate事件callback的位置上，可以实现小球下落后才执行这三句话，若放外面则会点击即执行
+			   			}
+			   		);
+			   		
+			   	},
+			   	function(){
+			   		$(this).animate({top:"-40px"},200);
+			   		$(this).animate({top:"00px"},100,
+			   			function(){
+			   				$(this).css("background","#096775");
+			   				$(".jieguo").html("None");
+			   			}
+			   		);
+			   		
+			   	}
+			   	)
+			   
+			   
+			   
+			 })
+		</script>	
+	</body>
+</html>

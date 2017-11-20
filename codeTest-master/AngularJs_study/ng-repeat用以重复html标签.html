@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div ng-app="" ng-init="people=[
+			{name:'dean',age:15},
+			{name:'cindy',age:24},
+			{name:'john',age:28}
+		]">
+			<div ng-repeat='i in people'>{{i.name+";"+i.age}}</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="table2excel.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/*excel中不支持子级选择器添加样式,也不支持th添加样式*/
+			table{
+				border-collapse: collapse;
+			}
+			.title{
+				background: #ccc;
+				font-weight: bold;
+				border:1px solid #333;
+				padding: 10px;
+			}
+			td{
+				border:1px solid #333;
+				padding: 10px;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript">
+			
+			$(function(){
+				
+				$("#btn").click(function(){
+					$("#table").table2excel({
+			            //exclude: ".noExl",//插件原先是给不复制的节点加类名，其实可以再导出的时候直接用jquery的:hidden选择器删除节点就行
+			            name: "这里显示文档标题",
+			            filename: "这里显示文件名",
+			            fileext: ".xls"//,
+			            //exclude_img: true,//现在插件被我改造过，表格直接整个复制而不是逐个节点复制
+			           	//exclude_links: true,
+			            //exclude_inputs: true
+			        });
+				})
+				
+			})
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="导出excel" />
+		<table id="table" border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th class="title">标题1</th>
+					<th class="title">标题2</th>
+					<th class="title">标题3</th>
+					<th class="title">标题4</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>sfs</td>
+					<td>qer</td>
+					<td style="color: red;">sfhw</td>
+					<td>wudf</td>
+				</tr>
+				<tr>
+					<td>qw5</td>
+					<td>jwre</td>
+					<td>qkyu</td>
+					<td>loid</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

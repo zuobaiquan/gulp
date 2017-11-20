@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>wave</title>
+		<script src="wave.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<canvas id="wave" class="wave"></canvas>
+	</body>
+	<script type="text/javascript">
+		
+		var $dom = document.getElementById('wave');
+		var options = {
+			canW: '400',//canvas宽度
+			canH: '400',//canvas高度
+		}
+		
+		var wave = new Wave($dom,options)
+		
+	</script>
+</html>

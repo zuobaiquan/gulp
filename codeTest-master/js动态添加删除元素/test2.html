@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type='text/css'>
+			body,html{
+				height:100%;
+				margin:0;
+				background:#fafafa;
+			}
+			#block{
+				position:relative;
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			#info{
+				position:fixed;
+				z-index:100;
+				top:0;
+				left:0;
+				width: 100%;
+				height: 42px;
+				font:bold 16px/42px '微软雅黑';
+				color:#333;
+				text-align:center;
+				background:#fff;
+				
+				-webkit-box-shadow: 0 2px 4px #999;
+				-moz-box-shadow: 0 2px 4px #999;
+				box-shadow: 0 2px 4px #999;
+			}
+		</style>
+		<script type='text/javascript'>
+			window.onload = function(){
+				var $body = document.body;
+				var $block = document.getElementById('block');
+				var $info = document.getElementById('info');
+				var $windowH = document.documentElement.clientHeight;
+				var $windowW = document.documentElement.clientWidth;
+				var i=0,j=0;
+				var boxObject = [];
+				var arrowObject = [];
+				
+				function leftW(){
+					var suiji = Math.floor(Math.random()*90)
+					return suiji+'%';
+				}
+				function arrowTop(){
+					var suiji = Math.floor(Math.random()*90)
+					return suiji+'%';
+				}
+				
+				function chooseColor(){
+						var colorNum = Math.floor(Math.random()*50)
+						var color_poor = ['#F05E41','#F09541','#F0B841','#F0DB41','#DBE93F','#7CD73A','#37CD7F','#3793CD','#3751CD','#6E37CD','#CD37CD','#DD3B64','#F37E67','#F3AA67','#F3C667','#F3E267','#E2ED65','#96DF61','#5FD799','#5FA9D7','#5F74D7','#8B5FD7','#E46283','#D06A56','#DA9A60','#E0B966','#E6D86C','#D8E26B','#8AC95C','#4C8DB5','#4153A9','#6741AA','#B249B2','#EB89A2','#BB7364','#CB9E74','#D6BA7F','#E0D589','#D6DD89','#93C072','#67B28B','#5B88A5','#475492','#634892','#A056A0','#9C7F79','#B6A393','#C6BBA3','#D6D2B3','#D4D7B5']
+						return color_poor[colorNum];
+				}
+				
+				function judge(id){
+					var object = arrowObject[id];
+					for(var key in boxObject){
+						$info.innerHTML = boxObject[key];
+						var threeWords = (key.toString()).substring(0,3);//使用for(var i in array)的方式会遍历出对象的原型对象，所以要判断输出
+						if(threeWords=='box' && boxObject[key].offsetT[0]<=object.offsetT && object.offsetT<=boxObject[key].offsetT[1] && boxObject[key].offsetL[0]<=object.offsetL && object.offsetL<=boxObject[key].offsetL[1]){
+								//$info.innerHTML = boxObject[key]+"箭头的偏离："+object.offsetT+','+object.offsetL+";"+"BOX的偏离："+boxObject[key].offsetT+","+boxObject[key].offsetL;
+								var this_box = document.getElementById(key);
+								//this_box.parentNode.removeChild(this_box);//删除这个box;
+								change_animate(this_box);
+								//change_animate(document.getElementById(id));
+						}
+					}
+				}
+				
+				function animateBox(obj){
+					var this_id = obj.getAttribute('id');
+					var setAnimate = setInterval(function(){
+						var objOffsetTop = parseFloat(obj.offsetTop);
+						if(parseFloat(objOffsetTop)<parseFloat($windowH)){
+							obj.style.top = objOffsetTop+1+"px";
+							boxObject[this_id].offsetT = [objOffsetTop,objOffsetTop+50];
+							boxObject[this_id].offsetL = [parseFloat(obj.offsetLeft),parseFloat(obj.offsetLeft+50)];
+							//console.log(boxObject)
+						}else{
+							clearInterval(setAnimate);
+							//boxObject.splice(this_id,1);//离开界面删除box池中的记录
+							//obj.parentNode.removeChild(obj);
+							deleteObj(obj);
+						}
+					},5)
+				}
+				
+				function change_animate(obj){
+					if(!obj)return;
+					var this_id = obj.getAttribute('id');
+					var setAnimate = setInterval(function(){
+						var objOffsetLeft = parseFloat(obj.offsetLeft);
+						if(parseFloat(objOffsetLeft)*parseFloat($windowW) > 0){
+							obj.style.left = objOffsetLeft-1+"px";
+						}else{
+							clearInterval(setAnimate);
+							//boxObject.splice(this_id,1);//离开界面删除box池中的记录
+							//obj.parentNode.removeChild(obj);
+							deleteObj(obj);
+						}
+					},8)
+					
+				}
+				
+				function animateArrow(obj){
+					var this_id = obj.getAttribute('id');
+					var setAnimate = setInterval(function(){
+						var objOffsetLeft = parseFloat(obj.offsetLeft);
+						if((parseFloat(objOffsetLeft)+80)*parseFloat($windowW) >= 0){
+							obj.style.left = objOffsetLeft-1+"px";
+							arrowObject[this_id].offsetT = parseFloat(obj.offsetTop);
+							arrowObject[this_id].offsetL = objOffsetLeft;
+							judge(this_id);
+						}else{
+							clearInterval(setAnimate);
+							//arrowObject.splice(this_id,1);//离开界面删除箭池中的记录
+							//obj.parentNode.removeChild(obj);
+							deleteObj(obj);
+						}
+					},2)
+				}
+				
+				function creatBox(){
+					//debugger;
+					var $box = document.createElement("div");
+					var this_color = chooseColor();
+					$box.setAttribute('style','width:50px;height:50px;background:#79bf74;border-radius:4px;position:absolute;left:'+leftW()+';background:'+this_color+";top:0'");
+					$box.setAttribute('id','box' + i);
+					boxObject["box"+i] = {'offsetT':'','offsetL':'',};
+					$block.appendChild($box);
+					animateBox($box);
+					//$info.innerHTML = "<span style=\"border-left:24px solid "+this_color+";padding-left:5px\">"+"< 新建色块 || 当前场景元素数量是 >：" + $block.childNodes.length+ ";||boxObject的长度："+boxObject+ "||arrowObject的长度："+arrowObject+"</span>"
+					var k=0,j=0;
+					for(var key1 in boxObject){
+						k++;
+					};
+					for(var key2 in arrowObject){
+						j++;
+					};
+					//$info.innerHTML = "box数量："+k+","+"arrow数量："+j;
+					i++;
+				}
+				
+				function creatArrow(){
+					var $arrow = document.createElement("div");
+					$arrow.setAttribute('style','width:80px;height:2px;background:#333;border-radius:100%;position:absolute;left:100%;top:'+arrowTop()+';');
+					$arrow.setAttribute('id','arrow' + j);
+					arrowObject["arrow"+j] = {'offsetT':'','offsetL':'',};
+					$block.appendChild($arrow);
+					animateArrow($arrow);
+					j++;
+				}
+				
+				function deleteObj(obj){
+					if(!obj)return;//如果对象不存在跳出deleteObj()函数，不执行接下来的代码
+					var this_id = obj.getAttribute('id');
+					if(arrowObject[this_id]){
+						delete arrowObject[this_id];//删除属性,也可以delete arrowObject.name,但name是字符串我们这里需要变量所以用删除数组的方式更简单
+					}else{
+						delete boxObject[this_id]//离开界面删除box池中的记录
+					}
+					obj.parentNode.removeChild(obj);
+				}
+				
+				setInterval(function(){
+					creatBox();
+				},500)
+				setInterval(function(){
+					creatArrow();
+				},1000)
+				
+			}
+		</script>
+	</head>
+	<body>
+	<div id="info"></div>
+	<div id="block"></div>
+	</body>
+</html>

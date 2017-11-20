@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.fixed{
+				width: 100%;
+				border-collapse: collapse;
+				table-layout: fixed;
+				margin: 20px 0;
+			}
+			.fixed td{
+				border: 1px solid red;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap;
+			}
+			.auto{
+				width: 100%;
+				border-collapse: collapse;
+				table-layout: auto;
+				margin: 20px 0;
+			}
+			.auto td{
+				border: 1px solid green;
+			}
+		</style>
+	</head>
+	<body>
+		<table class="fixed">
+			<tr><!--通过设置table的布局方式为fixed,可以对内容进行溢出则以省略号显示的方式处理-->
+				<td>asfsdasdfasdfaasfsdasdfasdfaasfsdasdfasdfaasfsdasdfasdfaasfsdasdfasdfa</td>
+				<td>asdfa</td>
+				<td>sdfa</td>
+				<td>adsfasdfa</td>
+			</tr>
+			<tr>
+				<td>wrxdzxcv</td>
+				<td>zvasdfa3</td>
+				<td>djsjs</td>
+				<td>rarhjdghjgh</td>
+			</tr>
+		</table>
+		<table class="auto">
+			<tr>
+				<td>asfsdasdfasdfaasfsdasdfasdfaasfsdasdfasdfaasfsdasdfasdfaasfsdasdfasdfa</td>
+				<td>asdfa</td>
+				<td>sdfa</td>
+				<td>adsfasdfa</td>
+			</tr>
+			<tr>
+				<td>wrxdzxcv</td>
+				<td>zvasdfa3</td>
+				<td>djsjs</td>
+				<td>rarhjdghjgh</td>
+			</tr>
+		</table>
+	</body>
+</html>

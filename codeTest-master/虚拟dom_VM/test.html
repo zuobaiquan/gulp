@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		var obj = {
+			tag: 'table',
+			children: [
+				{
+					tag: 'span',
+					children: [
+						{
+							tag: 'b',
+							children: '这是children1的最后一个节点'
+						},
+						"这是children1的兄弟节点"
+					]
+				},
+				{
+					tag: 'ul',
+					children: '这是children2的最后一个节点'
+				},
+				"hello"//这也是一个节点，只是是一个文本节点
+			]
+		}
+		function create(node){//基本节点的创建dom
+			var $dom = document.createElement('span');
+			(function fun(obj,dom){//表示当前操作的虚拟dom对象和父级真实dom
+				var this_dom;//当前真实dom
+				if(typeof obj === 'string'){
+					this_dom = document.createTextNode(obj);
+					dom.appendChild(this_dom);
+				}else{
+					this_dom = document.createElement(obj.tag);
+					dom.appendChild(this_dom);
+					if(obj.children){
+						if(typeof obj.children === 'string'){
+							fun(obj.children,this_dom);
+						}else{
+							for(var i=0;i<obj.children.length;i++){
+								fun(obj.children[i],this_dom);
+							}
+						}
+					}
+				}
+			})(node,$dom);
+			return $dom.childNodes[0];//删除上诉临时父级节点，只保留内部节点
+		}
+		
+		document.body.appendChild(create(obj))
+	</script>
+</html>

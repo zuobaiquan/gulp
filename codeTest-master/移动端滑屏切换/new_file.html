@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			html,body{
+				height: 100%;
+				margin: 0;
+			}
+			.box{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0%;
+				top: 100%;
+				/*transition: all 0.3s;*/
+			}
+			/*.box:first-child{
+				top: 0%;
+			}*/
+			.box1{
+				background: lightcoral;
+			}
+			.box2{
+				background: lightgreen;
+			}
+			.box3{
+				background: lightseagreen;
+			}
+			.box4{
+				background: lightskyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box box1" style="z-index: 4;">111</div>
+		<div class="box box2" style="z-index: 3;">222</div>
+		<div class="box box3" style="z-index: 2;">333</div>
+		<div class="box box4" style="z-index: 1;">444</div>
+	</body>
+	<script type="text/javascript">
+		
+		var window_h = document.documentElement.clientHeight;
+		var start_touchY,start_offsetTop
+		
+		document.querySelectorAll('.box')[0].style.top = '0%';//默认第一个显示
+		document.documentElement.ontouchstart = function(e){
+			e.target.style.transition = 'none';
+			start_touchY = e.targetTouches[0].pageY;
+			start_offsetTop = e.target.offsetTop;
+		}
+		document.documentElement.ontouchmove = function(e){
+			e.preventDefault();//禁止默认滚动
+			if(e.targetTouches.length == 1){
+				var touch = e.targetTouches[0];
+				//e.target.style.left = touch.pageX+'px';
+				e.target.style.top = touch.pageY-start_touchY+start_offsetTop + 'px';
+			}else{
+				alert("请使用单根手指滑动！")
+			}
+			
+		}
+		
+		document.documentElement.ontouchend = function(e){
+			start_offsetTop = e.target.offsetTop;
+			e.target.style.transition = 'all 0.2s';
+			if(start_offsetTop/window_h>=-0.5){
+				e.target.style.top = '0%';
+			}
+			if(start_offsetTop/window_h<-0.5){
+				e.target.style.top = '-100%';
+				//changeSite(e.target);
+				setTimeout(function(){
+					e.target.nextElementSibling.style.top = '0%';	
+					e.target.parentNode.appendChild(e.target.parentNode.firstElementChild.cloneNode(true));
+					e.target.parentNode.removeChild(e.target.parentNode.firstElementChild);
+				},200)
+			}
+		}
+		
+	</script>
+</html>

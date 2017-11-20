@@ -1,0 +1,93 @@
+@charset "utf-8";
+body {
+	margin: 0;
+	font:normal 14px/1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \5b8b\4f53, sans-serif;
+	color: #333;
+	background: #FFF;
+}
+body,
+div,
+ul,
+ol,
+dl,
+dt,
+dd,
+li,
+dl,
+h1,
+h2,
+h3,
+h4 {
+	margin: 0;
+	padding: 0;
+}
+
+ol,
+ul,
+li {
+	list-style: none;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+}
+a,a:link,a:hover,a:visited{
+	cursor: pointer;
+	color: #333;
+	text-decoration: none;
+	outline: none;
+}
+/*a:hover{
+	color: #65baeb;
+}*/
+input{
+	border: none;
+	outline: none;
+}
+*, *:before, *:after{
+	-webkit-box-sizing:initial;
+	/*box-sizing:inherit;*/
+	box-sizing:content-box;
+}
+label{
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+table{
+	border: none;
+	border-collapse: collapse;
+}
+
+
+.mybread{
+	margin-top: 40px;
+}
+.breadcrumb{
+	padding: 16px 15px;
+    list-style: none;
+    background-color: inherit;
+    border: 1px #EBEBEB solid;
+}
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: ">\00a0";
+}
+.breadcrumb>.active {
+    color: #000000;
+    font-weight: bold;
+}
+
+
+input[type='button'],input[type='submit']{
+	position: relative;
+	cursor: pointer;
+}
+input[type='button']:active,input[type='submit']:active{
+	position: relative;
+	top: 1px;
+	cursor: pointer;
+}
+

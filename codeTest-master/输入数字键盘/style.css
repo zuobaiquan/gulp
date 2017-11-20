@@ -1,0 +1,49 @@
+
+body{
+	margin: 0;
+}
+.foot{
+	position: fixed;
+	bottom: -250px;
+	width: 100%;
+}
+table{
+	border: none;
+	border-collapse: collapse;
+	width: 100%;
+}
+table td{
+	text-align: center;
+	padding: 2px;
+	height:60px;
+	font: 18px "微软雅黑";
+	color: #333;
+	cursor: pointer;
+	border: 1px solid #f0f0f0;
+	background: #fafafa;
+}
+table td:hover{
+	color: #fff;
+	background: #666;
+}
+#close{
+	background: lightcoral;
+	color: #fff;
+	border: none;
+	-moz-box-shadow: 1px 1px 10px #444;/*firefox*/ 
+	-webkit-box-shadow:1px 1px 10px #444;/*safari或chrome*/ 
+	box-shadow:1px 1px 10px #444;/*opera或ie9*/ 
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#444,direction=90,strength=8);/*ie*/ 
+	
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+#close:hover{
+	-moz-box-shadow: 1px 1px 4px #444;/*firefox*/ 
+	-webkit-box-shadow:1px 1px 4px #444;/*safari或chrome*/ 
+	box-shadow:1px 1px 4px #444;/*opera或ie9*/ 
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#444,direction=90,strength=4);/*ie*/ 
+
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 30px;
+				background: #FFEBCD;
+			}
+			.info_box{
+				display: flex;
+				display: -webkit-flex;
+				flex-flow: row wrap;
+				justify-content: space-around;
+				align-items: flex-start;
+			}
+			.item{
+				flex: 1,1,auto;
+				width: 300px;
+				height: 100px;
+				background: #FFFFFF;
+				box-shadow: 0 2px 4px #ccc;
+				border-radius: 2px;
+				margin:40px 20px;
+				cursor: pointer;
+				
+				transition: all 0.2s;
+			}
+			.item:hover{
+				/*background: #FF0000;*/
+				transform: scale(1,2)
+			}
+		</style>
+	</head>
+	<body>
+		<div class="info_box">
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+	</body>
+</html>

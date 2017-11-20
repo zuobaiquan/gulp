@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<script src="echarts.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="Chart.bundle.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="casBox" style="width: 800px;height: 800px;">
+			<canvas id="myChart"></canvas><!--canvas本身的大小是相对于父级百分百的，所以想要改动canvas大小需要指定父级大小-->
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//中文文档更新不及时，容易导致代码版本和文档用法不匹配，使用官网说明：http://www.chartjs.org/docs/latest/
+		
+		
+		//Get the context of the canvas element we want to select
+		var ctx = document.getElementById("myChart").getContext("2d");
+		
+		var myChart = new Chart(ctx, {
+		    type: 'radar',
+		    data: {
+	        	labels: ["Red", "Blue", "Yellow", "Green", "Purple"],
+		        datasets: [//一个轴上多个雷达图
+			        {
+			            label: '# of Votes',
+			            data: [12, 19, 8, 5, 15],
+			            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			            borderColor: 'rgba(255,99,132,1)',
+			            borderWidth: 1,
+			            fill: false//是否填充还是只用描边
+			        },
+			        {
+			        	label: 'hello',
+			            data: [18, 3, 12, 5, 8],
+			            backgroundColor: 'rgba(255, 255, 8, 0.2)',
+			            borderColor: 'rgba(200,200,8,1)',
+			            borderWidth: 1
+			        }
+		        ]
+	        },
+		    options: {//不止雷达图，其他图表也是这些设置，细看官方文档
+		    	title: {//图表标题
+		    		display: true,
+		    		text: "这是一个雷达图"
+		    	},
+		    	tooltips: {//hover轴点的时候的弹出信息提示
+		    		callbacks: {
+		                labelColor: function(tooltipItem, chart) {//信息框中的颜色标记
+		                	var _index = tooltipItem.datasetIndex;//datasetIndex表示datasets数组的第n个数据
+		                    switch (_index){//不同图表用他们自己的颜色作为标记颜色
+		                    	case 0:
+		                    		return {
+		                    			backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			            				borderColor: 'rgba(255,99,132,1)',
+		                    		};
+		                    		break;
+		                    	case 1:
+		                    		return {
+		                    			backgroundColor: 'rgba(255, 255, 8, 0.2)',
+			           					borderColor: 'rgba(200,200,8,1)',
+		                    		};
+		                    		break;
+		                    }
+		                },
+		                labelTextColor:function(tooltipItem, chart){
+		                    return '#fff';
+		                }
+		            },
+		    		enabled: true,
+		    		backgroundColor: 'rgba(0,0,255,0.8)',//默认：'rgba(0,0,0,0.8)'
+		    		borderColor: 'rgba(0,0,100,1)',//默认：'rgba(0,0,0,0)'
+		    		borderWidth: 1//默认：0
+		    	},
+				legend: {
+					display: true,//是否显示阐述标记（默认为true）
+					position: 'top',//string,默认‘top’
+					fullWidth: true,
+					onClick: function(){//标记点击回调，也可以用onHover
+						alert("点击了")
+					},
+					reverse: false,//标记排序是否反转（对于一个轴上多个雷达图的情况）
+				    labels: {//标记文字部分属性
+				        // This more specific font property overrides the global property
+				        fontColor: '#111',//标记说明字体颜色
+				        fontSize: 14//默认12
+				    }
+				},
+				hover: {
+		            // Overrides the global setting
+		            //mode: 'index'
+			    },
+			    layout: {
+		            padding: {//偏离父级的距离
+		                left: 00,
+		                right: 0,
+		                top:100,
+		                bottom: 0
+		            }
+		        },
+		        scale: {//轴线设置
+		        	angleLines: {//角线的属性（辐射的轴线），不同图表这块可有不同线型的配置
+		        		color: 'rgba(0,0,255,0.3)'
+		        	},
+		        	gridLines: {//网格线的属性
+		        		color: 'rgba(0,255,0,0.3)'
+		        	},
+		        	pointLabels: {//雷达图最外边轴点标记属性
+		        		fontColor: '#000088',//默认：'#666'
+		        		callback: function(value){//修改标记值，默认是data中labels的那几个值
+		        			return '☀：'+value;
+		        		}
+		        	},
+		            ticks: {//轴数值的属性设置
+		            	backdropColor: 'rgba(255,0,0,0.0)',//轴数值背景色
+		                suggestedMin: 0,//建议最小值（根据实际最小值，如果比他小则按照实际最小值来划分间距），可不设置
+		                suggestedMax: 20,//建议最大值（根据实际最大值，如果比他大则按照实际最小值来划分间距），可不设置
+		                stepSize: 8//数值步数
+		            }
+		        }
+		    }
+		});
+	</script>
+</html>

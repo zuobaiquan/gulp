@@ -1,0 +1,11 @@
+body{
+	background: #660066;
+	font: bold 16px/1.5 san-serif,arial;
+	color: #fff;
+}
+.img{
+	width: 100px;
+	height: 200px;
+	background: url(../assets/img/baozou1.jpg) no-repeat center center;
+	background-size: 100%;
+}

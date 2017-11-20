@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				background: lightcoral;
+			}
+			.box{
+				float: left;
+				width: 50%;
+				height: 200px;
+				background: lightseagreen;
+				margin: 20px 0;
+				padding: 10px;
+				border: 10px solid lightskyblue;
+				word-break: break-all;
+				word-wrap: break-word;
+				
+				box-sizing: border-box;/*border-box定义了若添加border和padding，则向内添加，不改变原盒子大小*/
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;/*这里若改成content-box两个box就无法同行*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+		<div class="box">dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+	</body>
+</html>

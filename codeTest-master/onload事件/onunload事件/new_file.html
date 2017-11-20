@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="http://www.baidu.com">baidu</a>
+	</body>
+	<script type="text/javascript">
+		
+		window.onload = function(){
+			alert("onload was done!")
+		}
+		window.onunload = function(){
+			alert("onunload was done!")
+		}
+		//onunload 其实没有弹窗出现，但确实是执行的，因为关闭窗口的事件阻塞了alert事件
+		//这个事件可以用于用户关闭窗口保存记录等业务需求
+	</script>
+</html>

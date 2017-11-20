@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+		<script type="text/javascript">
+			//添加加载进度
+			var $mask = document.createElement('div');
+			var $process = document.createElement('span');
+			$mask.style.cssText = 'position: fixed;z-index: 100;background: rgba(0,0,0,1);width: 100%;height: 100%;left:0;top:0;text-align: center;'
+			$process.style.cssText = 'font-size:40px;font-weight:bold;color:#fff;margin:100px 0;'
+			$process.innerText = '加载中~';
+			$mask.appendChild($process);
+			document.documentElement.appendChild($mask);
+			window.onload = function(event){
+				$mask.parentNode.removeChild($mask);//加载完成移除"加载中"的显示
+			}
+		</script>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
+		
+		<!--Swiper3.0.4-->
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.blue-slide {
+				background: #4390EE;
+			}
+			
+			.red-slide {
+				background: #CA4040;
+			}
+			
+			.orange-slide {
+				background: #FF8604;
+			}
+			.green-slide {
+				background: #00ff00;
+			}
+			
+			.swiper-slide {
+				line-height: 300px;
+				color: #fff;
+				font-size: 36px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<!--下面的slide和slide的节点不要使用id来作为选择器进行获取dom，因为框架本身有对id的操作会出错,可以使用自定义属性-->
+				<div data-slide="slide1" id="slide1" class="swiper-slide blue-slide" data-hash='slide1'>
+					<img data-el="s1_el1" src="img/baozou1.jpg" class="ani"swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s"/>  
+				</div>
+				<div data-slide="slide2" class="swiper-slide red-slide" data-hash='slide2'>slider2</div>
+				<div data-slide="slide3" class="swiper-slide orange-slide" data-hash='slide3'>slider3</div>
+				<div data-slide="slide4" class="swiper-slide green-slide" data-hash='slide4'>slider4</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/swiper.animate1.0.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+			var pageAniData = {//定义每页每个元素的动画属性
+				slide1: {
+					s1_el1: {//分别为动画属性，动画时长和动画延迟几秒加载（控制先后顺序）
+						swiper_animate_effect: 'fadeInUp',
+						swiper_animate_duration: "0.5s",
+						swiper_animate_delay: '0.3s'
+					}
+				}
+			}
+			function addProps(obj,objProps){//属性添加函数
+				obj.setAttribute('swiper-animate-effect',objProps.swiper_animate_effect);
+				obj.setAttribute('swiper-animate-duration',objProps.swiper_animate_duration);
+				obj.setAttribute('swiper-animate-delay',objProps.swiper_animate_delay);
+			}
+//			function removeProps(obj){//属性清空函数
+//				obj.removeAttribute('swiper-animate-effect');
+//				obj.removeAttribute('swiper-animate-duration');
+//				obj.removeAttribute('swiper-animate-delay');
+//			}
+			//证实：不在当前屏不用清空，再次打开到当前屏时再次运行动画可以再次有效果，清空反而会出错
+			//这些属性本身只是标记作用不会产生效果，具体的动画还是由框架为对象添加css动画样式产生的，所以关键还是
+			//swiperAnimate(swiper);这个执行动画函数的作用（根据标记添加样式）
+				var mySwiper = new Swiper('.swiper-container', {
+					loop: false,
+					speed:800,
+					direction : 'vertical',
+					autoplayStopOnLast : true,
+					hashnav:true,
+					roundLengths : true,
+					//passiveListeners : false,//提升swiper在移动设备的中的scroll表现
+					
+					onInit: function(swiper){//初始化
+						swiperAnimateCache(swiper);//隐藏动画元素
+						swiperAnimate(swiper);//初始化完成开始动画
+					},
+					onSlideChangeEnd: function(swiper){//页面切换完成触发
+						//alert('当前页面索引是:'+swiper.activeIndex)
+						var $allSlide = swiper.slides;//所有slide
+						for(var i=0;i<$allSlide.length;i++){
+							var $thisSlide = $allSlide[i];//当前slide
+							var thisSlideId = $thisSlide.getAttribute('data-slide');//当前slide的data-slide
+							var $thisSlide_els = $thisSlide.querySelectorAll('.ani');
+							if(swiper.activeIndex===i){
+								for(var j=0;j<$thisSlide_els.length;j++){//为当前slide下的动画元素添加动画属性
+									var thisEleId = $thisSlide_els[j].getAttribute('data-el');
+									addProps($thisSlide_els[j],pageAniData[thisSlideId][thisEleId]);
+								}
+								swiperAnimate(swiper);//执行动画（不加将没有效果）
+							}
+//							else{//不用清空非当前屏的slide
+//								for(var k=0;k<$thisSlide_els.length;k++){//为当前slide下的动画元素添加动画属性
+//									var thisEleId = $thisSlide_els[k].id;
+//									removeProps($thisSlide_els[k]);
+//								}
+//							}
+						}
+					}
+				});
+			
+		</script>
+</html>

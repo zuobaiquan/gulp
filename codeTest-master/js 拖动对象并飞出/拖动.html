@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="dragAndFly.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			html,body{
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+				background: #367eb3;
+			}
+			#box{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 60px;
+				height: 60px;
+				background: #fff;
+				font-size: 24px;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+				border-radius: 4px;
+				
+				-moz-user-select: none; /*火狐*/
+				-webkit-user-select: none; /*webkit浏览器*/
+				-ms-user-select: none; /*IE10*/
+				-khtml-user-select: none; /*早期浏览器*/
+				user-select: none;
+			}
+			#box:hover{
+				border: 1px dotted #333;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				makeobj('box');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">-_-</div>
+	</body>
+</html>

@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+html,body{
+	height: 100%;
+	overflow: hidden;
+	moz-user-select: -moz-none; 
+	-moz-user-select: none; 
+	-o-user-select:none; 
+	-khtml-user-select:none; /* you could also put this in a class */ 
+	-webkit-user-select:none;/* and add the CSS class here instead */ 
+	-ms-user-select:none; 
+	user-select:none;/**禁止选中文字*/ 
+}
+.look_layout{
+	width: 100%;
+	height: 100%;
+}
+.look_layout td{
+	height: 100%;
+	vertical-align: top;
+	overflow: hidden;
+}
+.ll_left{
+	position: relative;
+	width: 300px;
+	max-width: 300px;
+	/*min-width: 300px;*/
+	background: #252b33;
+}
+.ll_right{
+	background:#f5f5f5;
+}
+.moveBar{
+	position: absolute;
+	height: 100%;
+	width: 4px;
+	right: -2px;
+	top: 0;
+	z-index: 100;
+	cursor: e-resize;
+}
+.moveBar:hover{
+	border: 1px dotted #5a5e65;
+	background: #373d44;
+}
+.ll_title{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	width: 100%;
+	background: #32373f;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.ll_title span{
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	padding-left: 24px;
+	margin-left: 10px;
+	font-size: 18px;
+	color: #e0e1e2;
+	line-height: 44px;
+	background: url(../img/hamburger.png) no-repeat left center;
+	cursor: pointer;
+}
+.ll_title img{
+	width: 8px;
+	float: right;
+	margin: 16px 10px 0 0;
+	cursor: pointer;
+}
+.look_content{
+	width: 90%;
+	height: 100%;
+	background: #fff;
+	overflow: auto;
+	border: 1px solid #d7d7d7;
+	border-top: none;
+	border-bottom: none;
+	
+	box-shadow: 0px 0 3px #ccc;
+	-webkit-box-shadow: 0px 0 3px #ccc;
+	-moz-box-shadow: 0px 0 3px #ccc;
+}
+.list{
+	height: 100%;
+	overflow: auto;
+	/*margin-top: 54px;*/
+	padding: 54px 0;
+}
+.subList{
+	padding: 0 10px;
+	margin: 5px 0;
+	/*border: 1px solid red;*/
+}
+.subList:first-child{
+	/*border-top: 1px solid #454b4f;*/
+	/*margin-top: 54px;*/
+}
+.zhang{
+	padding:5px 0 5px 14px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #808285;
+	line-height: 32px;
+	background: url(../img/m_sidebardot.png) no-repeat left center;
+	
+	cursor: pointer;
+}
+.zhangCon{
+	margin:0 0 10px 0;
+}
+.jie{
+	padding:10px 10px 10px 14px;
+	background: #373d44;
+	font-size: 16px;
+	color: #bbb;
+	line-height: 22px;
+	cursor: pointer;
+}
+.jieSelect{
+	color: #fff;
+	background-color:#f0b036;
+}
+.jieCon{
+	padding:0 0 8px 0;
+}
+.jieCon_info{
+	display: block;
+	padding:8px 10px 8px 14px;
+	margin: 8px 0 8px 14px;
+	background:#2f353d;
+	border: 1px solid #2f353d;
+	font-size: 14px;
+	color: #bbb !important;
+	line-height: 22px;
+	cursor: pointer;
+}
+.jie,.zhang{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.jieCon_info span{
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.jieCon_info img{
+	float: right;
+	height: 16px;
+	margin-top: 3px;
+}

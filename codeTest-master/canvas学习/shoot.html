@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+</body>
+<script>
+	
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext('2d');
+	
+	function Bg(x,y,w,h){//background
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		this.draw = function(){
+			context.fillStyle = '#222';
+			context.fillRect(this.x,this.y,this.w,this.h);
+		}
+	}
+	function Rect(x,y,w,h){//rect
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		this.draw = function(){
+			context.fillStyle = '#fff';
+			context.fillRect(this.x,this.y,this.w,this.h);
+		}
+	}
+	function Shoot(x,y,w,h){//rect
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+		this.draw = function(){
+			context.fillStyle = '#ff0000';
+			context.fillRect(this.x,this.y,this.w,this.h);
+		}
+	}
+	
+	var bg = new Bg(0,0,500,500);
+	var rect = new Rect(250,500,40,40);
+	
+	canvas.addEventListener('mousemove',function(event){//鼠标移动事件
+		var thisX = event.offsetX;
+		var thisY = event.offsetY;
+		rect.x = thisX-rect.w/2;
+		rect.y = thisY-rect.h/2;
+	})
+	
+	var shootArr = [];
+	
+	setInterval(function(){
+		
+		var shoot = new Shoot(rect.x+rect.w/2-5/2,rect.y,5,5);
+		shootArr.push(shoot);
+		// ;(function shootAni(){
+			// if(shootArr[shootArr.length-1].y<=0)return;
+			// shootArr[shootArr.length-1].y = shootArr[shootArr.length-1].y-1;
+			// shootArr[shootArr.length-1].x = rect.x;
+			// requestAnimationFrame(shootAni.bind(this));	
+		// })();
+		
+	},50)
+
+	;(function fresh(){//绘制层级队列
+		
+		bg.draw();
+		rect.draw();
+		shootArr.map(function(value,key){
+			value.draw();
+			value.y = value.y-6;
+			value.x = rect.x+rect.w/2-value.w/2;
+			if(value.y<=0){
+				
+			}
+		});
+		
+		requestAnimationFrame(fresh.bind(this));
+		
+	})();
+</script>
+</html>

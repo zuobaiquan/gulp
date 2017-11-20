@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			body{
+				margin: 0;
+				border: 1px solid green;
+			}
+			.box{
+				width: 400px;
+				/*height: 150px;*/
+				background: lightseagreen;
+				text-align: justify;
+				padding: 20px;
+				border: 4px solid lightcoral;
+				margin: 40px;
+				color: #fff;
+			}
+			.showdate{
+				font:bold 15px/30px "微软雅黑";
+				color: #333;
+				margin: 10px 40px;
+				padding: 0 10px;
+				border: 1px solid #333;
+			}
+			.action{
+				color: red;
+				margin-left: 60px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var box = document.getElementById('box');
+				box.style.height = 150+'px';
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box" id="box">width: 400px;padding: 20px;border: 4px;margin: 40px;高度150px通过js设定</div>
+		js获取对象高度。和new_file.html中不同的是高度由js设定后。通过同样的方式获取高度，js无法获取到js设定的高度
+		<div class="showdate">js获取通过obj.style.height:<span id="s1"></span><span class="action">这种方式只能获取内联样式，也就是写在标签中的样式，若没写则无法获取</span></div>
+		<div class="showdate">js获取通过obj.offsetHeight:<span id="s2"></span><span class="action"></span></div>
+		<div class="showdate">js获取通过obj.clientHeight:<span id="s3"></span><span class="action"></span></div>
+		js通过获取计算后的高度获取对象高度。
+		<div class="showdate">js获取计算后的高度:<span id="s8"></span><span class="action">这种方式也是只能获得样式中设置的样式，若样式未设置样式，则返回实际作用于对象的样式（比方说例子中因文字撑开的高度），而无法获取js设置的样式</span></div>
+		jquery获取对象高度。使用js设定高度，jquery同样无法获取，<b class="action">但如果是用jquery的css('height','150px')，则可以获取到</b>
+		<div class="showdate">jquery获取通过css('height'):<span id="s4"></span><span class="action"></span></div>
+		<div class="showdate">jquery获取通过.innerHeight():<span id="s5"></span><span class="action"></span></div>
+		<div class="showdate">jquery获取通过.outerHeight():<span id="s6"></span><span class="action"></span></div>
+		<div class="showdate">jquery获取通过.outerHeight(true):<span id="s7"></span><span class="action"></span></div>
+	</body>
+	<script type="text/javascript">
+		//*********js获取对象高度***************
+		var box = document.getElementById('box');
+		//****方式1****
+		var s1 = document.getElementById('s1');
+		s1.innerHTML = box.style.height;//这种方式只能获取内联样式，也就是写在标签中的样式，若没写则无法获取
+		//****方式2****
+		var s2 = document.getElementById('s2');
+		s2.innerHTML = box.offsetHeight;
+		//****方式3****
+		var s3 = document.getElementById('s3');
+		s3.innerHTML = box.clientHeight;
+		//*********js通过获取计算后的高度获取对象高度***************
+		var s8 = document.getElementById('s8');
+		function getStyle(obj,styleName){
+			if(obj.currentStyle){return obj.currentStyle[styleName];}else{
+				return getComputedStyle(obj,null)[styleName];
+			}
+		}
+		s8.innerHTML = getStyle(box,'height');
+		//*********jquery获取对象高度***************
+		$(function(){
+			//*********jquery获取对象高度***************
+			var box = $('#box');
+			//box.css('height','150px')
+			//****方式1****
+			var s4 = $('#s4');
+			s4.html(box.css('height'));
+			//****方式2****
+			var s5 = $('#s5');
+			s5.html(box.innerHeight());
+			//****方式3****
+			var s6 = $('#s6');
+			s6.html(box.outerHeight());
+			//****方式34****
+			var s7 = $('#s7');
+			s7.html(box.outerHeight(true));
+		})
+	</script>
+</html>

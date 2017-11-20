@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				position: absolute;
+				display: none;
+				
+				transition: all 0.5s;
+				-moz-transition: all 0.5s; /* Firefox 4 */
+				-webkit-transition: all 0.5s; /* Safari 和 Chrome */
+				-o-transition: all 0.5s; /* Opera */
+			}
+		</style>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				var mycanvas = document.getElementById("point");
+				var mycontext = mycanvas.getContext('2d');
+				var mygradient = mycontext.createRadialGradient(50,50,10,50,50,50);
+				mygradient.addColorStop(0.2,"rgba(255, 0, 0, 1)");
+				mygradient.addColorStop(0.4,"rgba(255, 0, 0, 0)");
+				mygradient.addColorStop(0.8,"rgba(255, 0, 0, 1)");
+				mygradient.addColorStop(0.9,"rgba(255, 0, 0, 0)");
+   				mycontext.fillStyle=mygradient;
+			    mycontext.fillRect(0,0,100,100);
+
+				$(document).mousedown(function(e){
+					
+					$("#point").show();
+					var X = e.pageX;
+					var Y = e.pageY;
+					var move = 2;
+//					alert(X+","+Y);
+					$("#point").css("left",X-50+"px");
+					$("#point").css("top",Y-50+"px");
+					
+	
+				})
+				
+				$(document).mousemove(function(){
+					
+						var X = e.pageX;
+						var Y = e.pageY;
+						alert(X+","+Y);
+						$("#point").css("left",X-50+"px");
+						$("#point").css("top",Y-50+"px");
+							
+				})
+				
+//				$(document).mouseup(function(e){
+//					$("#point").hide();
+//					
+//				})
+				
+				
+			})
+			
+//			***********canvas*******可以学习http://www.ibm.com/developerworks/cn/web/wa-html5canvas/******
+//			window.onload=function(){
+//				
+//				var mycanvas = document.getElementById("point");
+//				var mycontext = mycanvas.getContext('2d');
+//				var mygradient = mycontext.createRadialGradient(50,50,10,50,50,50);
+//				mygradient.addColorStop(0,"rgba(255, 0, 0, 1)");
+//				mygradient.addColorStop(1,"rgba(255, 0, 0, 0)");
+// 				mycontext.fillStyle=mygradient;
+//			    mycontext.fillRect(0,0,100,100);
+//
+//			}
+			
+		</script>
+	</head>
+	<body>
+		<canvas id="point"></canvas>
+	</body>
+</html>

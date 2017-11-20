@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>你好啊！我的名字叫张三，是一个实打实的农民。我为自己的职业感到骄傲！</div>
+	</body>
+	<script type="text/javascript">
+		//前面说到将方法写在dom的原型链的Node构造方法的原型上，这样任意的dom都可以调用刚才写的方法，再加上
+		//方法都以return this;结束，于是就可以实现dom链式调用方法
+		//将方法写在很深的原型链上确实可以实现每个dom都能调用到，但是每次调用都要查找好几层原型链有碍效率和性能
+		//我们可以封装一个方法，执行这个方法传入某个参数（代表dom）使得获取一个新的对象其封装了用于链式调用的方法，具体如下：
+		function domObj(arg){
+			//arg可能是id，class,tagName等等，我们希望像jquery一样通过
+			
+		}
+	</script>
+</html>

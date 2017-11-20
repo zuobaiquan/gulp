@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.content{
+				height: 400px;
+				margin: 10px;
+				border: 1px solid #666;
+			}
+			input{
+				border: none;
+				outline: none;
+				border-radius: 4px;
+				width: 100px;
+				font: 16px/40px "微软雅黑";
+				color: #fff;
+			}
+			#btn{
+				background: lightseagreen;
+				margin: 0 10px;
+			}
+			#btn_delete{
+				background: lightcoral;
+				margin: 0 10px;
+			}
+			#btn_delall{
+				background: lightsteelblue;
+				margin: 0 10px;
+			}
+			.little_box{
+				display: inline-block;
+				height: 40px;
+				background: lightblue;
+				border-radius: 3px;
+				margin: 4px;
+				padding: 0 20px;
+				
+				font: bold 16px/40px "微软雅黑";
+				color: #fff;
+			}
+		</style>
+		<script type="text/javascript">
+		
+			window.onload = function(){
+				
+				document.getElementById("btn").onclick = function addelement(){
+					var new_val = Math.floor(Math.random()*100);
+					document.getElementById("content_box").innerHTML += "<div class='little_box'>" + new_val + "</div>"
+				}
+				function removeelement(){
+					document.getElementById("content_box").removeChild(document.getElementById("content_box").lastChild)
+				}
+				function qingchu(){
+					document.getElementById("content_box").innerHTML = ""
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content" id="content_box"></div>
+		<input type="button" name="" id="btn" value="添加" onclick="addelement()"/>
+		<input type="button" name="" id="btn_delete" value="删除" onclick="removeelement()"/>
+		<input type="button" name="btn_delall" id="btn_delall" value="清除" onclick="qingchu()"/>	
+	</body>
+</html>

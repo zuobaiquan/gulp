@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="velocity.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: lightcoral;
+				text-align: center;
+				font: bold 24px/100px "微软雅黑";
+				color: #fff;
+				margin: 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				$("#box1").velocity({marginLeft:'500px'},{loop : true,delay:400});
+				$("#box2").velocity({ rotateY: "360deg" },1000);
+				$("#box3").velocity({width:"800px"},[0.17,0.67,0.83,0.67]);
+				$("#box4").velocity({width:"800px"},[250,15]);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box1">BOX1</div>
+		<div id="box2">BOX2</div>
+		<div id="box3">BOX3</div>
+		<div id="box4">BOX4</div>
+		<div id="box5">BOX5</div>
+	</body>
+</html>

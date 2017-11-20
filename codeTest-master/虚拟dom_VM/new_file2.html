@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<zform></zform>-->
+	</body>
+	<script type="text/javascript">
+		//test.html中有只针对dom树生成的简单实例，递归运算想了很久，必须深化学习
+		function setProps($dom,props){
+			if(props==={})return;
+			for(var item in props){
+				if(props.hasOwnProperty(item)){
+					if(props[item] instanceof Object){
+						if(props[item] instanceof Array){
+							$dom.setAttribute(item,props[item].join(" "));
+						}else{
+							var classes="";
+							for(var cla in props[item]){
+								if(props[item].hasOwnProperty(cla)){
+									classes += cla+":"+props[item][cla]+";";
+								}
+							}
+							$dom.setAttribute(item,classes);
+						}
+					}else{
+						$dom.setAttribute(item,props[item]);
+					}
+				}
+			}
+		}
+		function setMethods($dom,methods){
+			if(methods==={})return;
+			for(var item in methods){
+				if(methods.hasOwnProperty(item)){
+					$dom.addEventListener(item,methods[item])//添加事件侦听
+				}
+			}
+		}
+		function create(node){//基本节点的创建dom
+			var $dom = document.createElement('span');
+			(function fun(obj,dom){//表示当前操作的虚拟dom对象和父级真实dom
+				var props = obj.props;
+				var methods = obj.methods;
+				var this_dom;//当前真实dom
+				if(typeof obj === 'string'){
+					this_dom = document.createTextNode(obj);
+					dom.appendChild(this_dom);
+				}else{
+					this_dom = document.createElement(obj.tag);
+					setProps(this_dom,props);
+					setMethods(this_dom,methods)
+					dom.appendChild(this_dom);
+					if(obj.children){
+						if(typeof obj.children === 'string'){
+							fun(obj.children,this_dom);
+						}else{
+							for(var i=0;i<obj.children.length;i++){
+								fun(obj.children[i],this_dom);
+							}
+						}
+					}
+				}
+			})(node,$dom);
+			return $dom.childNodes[0];
+		}
+
+		var $zform = create({
+			//replace: 'zform',
+			tag:'div',
+			props: {
+				class: ["box",'box2'],
+				id: "",
+				style: {
+					width: '100px',
+					height: '100px',
+					background: 'red'
+				}
+			},
+			methods: {
+				click: function(){alert("点击的是红块")}
+			},
+			children: [
+				{
+					tag:'span',
+					props: {
+						class: "",
+						id: "dot",
+						style: {
+							color: '#fff'
+						}
+					},
+					methods: {
+						click: function(){
+							alert("点击的是白字")
+						}
+					},
+					children: "这是一个子集元素"
+				}
+			]
+		})
+		document.body.appendChild($zform);
+	</script>
+</html>

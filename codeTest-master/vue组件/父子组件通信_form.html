@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>这是父级：{{result}}</div>
+			<my-component info="这是form组件：" v-on:setval="getVal"></my-component>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		Vue.component('my-component',{//tagName,options
+			props: ['info'],
+			template: '<div>{{info}}<input type="text" :value="val" @input="changeVal($event.target.value)"/></div>',
+			data: function(){
+				return {
+					val: '',
+				}
+			},
+			methods: {
+				changeVal: function(value){
+					this.val = value;
+					this.$emit('setval',value);//触发setval事件
+				}
+			}
+		})
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				result: '表单组件中输入会在这里输出'
+			},
+			methods: {
+				getVal: function(value){
+					this.result = value;
+				}
+			}
+		})
+		
+		
+	</script>
+</html>

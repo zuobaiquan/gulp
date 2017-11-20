@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="保存" />
+	</body>
+	<script type="text/javascript">
+		
+		document.getElementById('btn').onclick = function(){
+			localStorage.setItem('zzhStatus','ok');
+		}
+		
+		window.onunload = function(){
+			localStorage.setItem('zzhStatus','false');
+		}
+		
+	</script>
+</html>

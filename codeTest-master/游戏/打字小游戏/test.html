@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="停止" />
+		<input type="button" name="btn" id="btn2" value="开始" />
+		<div id="ok"></div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.getElementById('btn2').onclick = function(){
+				dev();
+			}
+			document.getElementById('btn').onclick = function(){
+				dev("stop");
+			}
+			
+			function dev(state){
+				var go = setInterval(function(){
+					document.getElementById("ok").innerHTML = document.getElementById("ok").innerHTML+"hello!";
+				},400)
+				
+				if(state == 'stop'){
+					alert("llll")
+					clearInterval(go);
+				}
+			}
+//			document.getElementById("btn").onclick = function(){ //写在外面无法停止setInterval,需要写在一个函数里
+//				clearInterval(go);
+//			}
+			
+		}
+	</script>
+</html>

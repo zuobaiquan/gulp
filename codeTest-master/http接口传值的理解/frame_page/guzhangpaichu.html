@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>留言板</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	</head>
+	<body>
+		<div class="yingyong_content">
+			<div class="yingyong_title2">常见故障及排除</div>
+			<table class="jiage_table jiage_table2">
+				<tr class="jt_title">
+					<td>设备名称</td>
+					<td colspan="2">故障现象</td>
+					<td>可能存在的问题</td>
+					<td>处理</td>
+				</tr>
+				<tr>
+					<td rowspan="18">ZFP–DC–VI</td>
+					<td colspan="2">无反应，红色电源灯不亮</td>
+					<td>设备不通电</td>
+					<td>给设备提供符合要求的电源</td>
+				</tr>
+				<tr>
+					<td colspan="2">DI/DO口不报警，并且蜂鸣器不响</td>
+					<td>DI/DO口线路连接不正确</td>
+					<td>重新检查DI/DO口的线路</td>
+				</tr>
+				<tr>
+					<td colspan="2">DI/DO口报警不上传，但蜂鸣器响</td>
+					<td>在用电管理平台上未进行下发配置</td>
+					<td>登陆用电管理平台，进行配置</td>
+				</tr>
+				<tr>
+					<td rowspan="2" colspan="2">RS485口不通讯</td>
+					<td>RS485通讯线A、B接反</td>
+					<td>将通讯线A、B按正确位置接线</td>
+				</tr>
+				<tr>
+					<td>RS485口配置异常</td>
+					<td>登陆用电管理平台，重新进行配置</td>
+				</tr>
+				<tr>
+					<td rowspan="2" colspan="2">RS485口通讯异常	</td>
+					<td>485总线太长</td>
+					<td>缩短485总线的长度</td>
+				</tr>
+				<tr>
+					<td>总线上挂载的设备数量过多</td>
+					<td>减少总线上挂载的设备数量</td>
+				</tr>
+				<tr>
+					<td rowspan="5">连不上用电管理平台</td>
+					<td rowspan="2">以太网方式</td>
+					<td>连接端口错误</td>
+					<td>检查网线连接端口</td>
+				</tr>
+				<tr>
+					<td>网络不通畅</td>
+					<td>与网络供应商联系</td>
+				</tr>
+				<tr>
+					<td rowspan="3">GPRS方式</td>
+					<td>SIM卡未安装</td>
+					<td>安装符合要求的SIM卡</td>
+				</tr>
+				<tr>
+					<td>SIM卡不符合要求</td>
+					<td>更换符合要求的SIM卡</td>
+				</tr>
+				<tr>
+					<td>天线未连接</td>
+					<td>将天线接上</td>
+				</tr>
+				<tr>
+					<td rowspan="2" colspan="2">自带的采集器无响应</td>
+					<td>RS485通讯线不良</td>
+					<td>检查RS485连接线</td>
+				</tr>
+				<tr>
+					<td>地址错误</td>
+					<td>检查采集器的地址，确认下发的采集器地址正确</td>
+				</tr>
+				<tr>
+					<td colspan="2">采集的电流、功率等电参数误差大</td>
+					<td>电流互感器未正确安装</td>
+					<td>检查电流互感器，确认安装正确</td>
+				</tr>
+				<tr>
+					<td colspan="2">电流参数缺或者A、B、C三相的相序乱</td>
+					<td>电流互感器接线交错</td>
+					<td>正确连接电流互感器线</td>
+				</tr>
+				<tr>
+					<td colspan="2">电流参数不能采集</td>
+					<td>电流互感器坏</td>
+					<td>更换互感器</td>
+				</tr>
+				<tr>
+					<td colspan="2">失电不报警</td>
+					<td>锂电池不供电</td>
+					<td>更换锂电池</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

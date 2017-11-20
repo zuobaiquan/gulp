@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="ru-RU">
+<head>
+	<meta charset="UTF-8">
+	<title>日期多选</title>
+	<link rel="stylesheet" href="build/kalendae.css" type="text/css" charset="utf-8">
+	<script src="build/kalendae.standalone.js" type="text/javascript" charset="utf-8"></script>
+	<script src="src/moment.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	
+	<input type="text" id="testInput">
+	<script type="text/javascript">
+		new Kalendae.Input('testInput', {
+			months:1,
+			mode:'multiple',
+			format:'YYYY-MM-DD',
+			columnHeaderFormat :'ddd', 
+			titleFormat:'YYYY,MMMM',
+			selected:['2012-02-03','2012-04-03']//显示当前月Kalendae.moment().subtract({M:0})//Kalendae.moment().subtract({M:1}), Kalendae.moment().add({M:1})数组中加入这句默认选中系统日期前后两月
+		});
+	</script>
+	
+</body>
+</html>

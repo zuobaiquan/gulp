@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script language="javascript" type="text/javascript">
+	        function reinitIframe() {
+	            var iframe = document.getElementById("kuangjia");
+	            try {
+	                var bHeight = iframe.contentWindow.document.body.scrollHeight;
+	                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+	                var height = Math.max(bHeight, dHeight);
+	
+	                iframe.height = height;
+	            } catch (ex) { }
+	        }
+	        window.setInterval("reinitIframe()", 400);   
+    	</script>
+		<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper{
+			width: 1000px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.top{
+			width: 1000px;
+			margin: 0 auto;
+			height: 80px;
+			background-color: #CCCCCC;
+			
+		}
+		.top .topNav{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			background-color: #666666;
+		}
+		.top .topNav .topNavpre{
+			float: left;
+			text-align: center;
+			margin: ;
+		}
+		
+		.left{
+			width: 200px;
+			margin-top: 4px;
+			background-color: #eaeaea;
+			float: left;
+		}
+		.ul1{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.ul1 .ulTop{
+			list-style: none;
+			font: 18px "微软雅黑";
+			font-weight: bold;
+			line-height: 30px;
+			background-color: #666666;
+		}
+		.ul1 li{
+			background-color: #999999;
+			list-style-position: inside;
+			text-align: center;
+			line-height: 30px;
+			border-top: 1px solid #cccccc;
+			border-bottom: 1px solid #666666;
+		}
+			iframe{
+				float: right;
+				border: 1px solid #eaeaea;
+				width: 784px;
+				margin: 4px 0 0 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="top">
+				<ul class="topNav">
+					<li class="topNavpre">菜单一</li>
+					<li class="topNavpre">菜单二</li>
+					<li class="topNavpre">菜单三</li>
+					<li class="topNavpre">菜单四</li>
+					<li class="topNavpre">菜单五</li>
+				</ul>
+			</div>
+			<div class="left">
+				<ul class="ul1">
+					<li class="ulTop">分类</li>
+					<li>表格A</li>
+					<li>表格B</li>
+					<li>表格C</li>
+					<li>表格D</li>
+				</ul>
+			</div>
+			<iframe src="product.html" id="kuangjia" name="kuangjia" scrolling="no"></iframe>
+		</div>
+	</body>
+</html>

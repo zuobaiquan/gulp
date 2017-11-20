@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script charset="utf-8" src="kindeditor.js"></script>
+		<script charset="utf-8" src="lang/zh_CN.js"></script>
+		<script>
+			KindEditor.options.filterMode = false;//关闭过滤，保存所有标签。默认即便html编辑区粘贴进全部的html代码,也会只保存body内的内容，且<style></style>等都会被清除
+			KindEditor.ready(function(K) {
+				window.editor = K.create('#editor_id');
+			});
+		</script>
+	</head>
+
+	<body>
+		<textarea id="editor_id" name="content" style="width:700px;height:600px;">
+			&lt;strong&gt;HTML内容&lt;/strong&gt;
+		</textarea>
+	</body>
+</html>

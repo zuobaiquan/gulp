@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible"content="IE=9; IE=8; IE=7; IE=EDGE">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/global.css"/>
+		<link rel="stylesheet" type="text/css" href="css/look.css"/>
+		<script src="js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/look.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				creatTree("zhang1","jie1","jieCon_info1");//从课件详情点击过来需要默认打开前诉点击的内容，三个参数表示章的id，节的id，和内容的id
+			})
+		</script>
+	</head>
+	<body>
+		<table class="look_layout" cellpadding="0" cellspacing="0">
+			<tr>
+				<td class="ll_left" id="ll_left">
+					<div class="ll_title"><img id="look_arrow" src="img/look_arrow.png"/><span id="mulu_btn">目录</span></div>
+					<div class="moveBar" id="moveBar"></div>
+					<div class="list">
+						<div class="subList">
+							<div class="zhang" id="zhang1">第一章</div>
+							<div class="zhangCon">
+								<div class="jie" id="jie1">第1节XXXXXXX第1节XXXXXXX第1节XXXXXXX</div>
+								<div class="jieCon">
+									<a id="jieCon_info1" href="https://www.douban.com/" target="lc" class="jieCon_info"><img src="img/h5_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="http://www.runoob.com/" target="lc" class="jieCon_info"><img src="img/html_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="http://www.w3school.com.cn/index.html" target="lc" class="jieCon_info"><img src="img/vedio_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="http://www.w3school.com.cn/index.html" target="lc" class="jieCon_info"><img src="img/pdf_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+								</div>
+							</div>
+							<div class="zhangCon">
+								<div class="jie">第1节XXXXXXX</div>
+								<div class="jieCon">
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+								</div>
+							</div>
+						</div>
+						<div class="subList">
+							<div class="zhang" id="zhang1">第二章</div>
+							<div class="zhangCon">
+								<div class="jie" id="jie1">第1节XXXXXXX</div>
+								<div class="jieCon">
+									<a href="#"  class="jieCon_info"><img src="img/h5_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="#"  class="jieCon_info"><img src="img/html_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="#"  class="jieCon_info"><img src="img/vedio_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="#"  class="jieCon_info"><img src="img/pdf_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+								</div>
+							</div>
+							<div class="zhangCon">
+								<div class="jie">第1节XXXXXXX</div>
+								<div class="jieCon">
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+								</div>
+							</div>
+						</div>
+						<div class="subList">
+							<div class="zhang" id="zhang1">第三章</div>
+							<div class="zhangCon">
+								<div class="jie" id="jie1">第1节XXXXXXX</div>
+								<div class="jieCon">
+									<a href="#"  class="jieCon_info"><img src="img/h5_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="#"  class="jieCon_info"><img src="img/html_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="#"  class="jieCon_info"><img src="img/vedio_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+									<a href="#"  class="jieCon_info"><img src="img/pdf_icon.png"/><span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></a>
+								</div>
+							</div>
+							<div class="zhangCon">
+								<div class="jie">第1节XXXXXXX</div>
+								<div class="jieCon">
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+									<a href="#" class="jieCon_info">XXXXXXXXXXXXXXXXX</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td class="ll_right" align="center">
+					<div class="look_content">
+						<iframe name="lc" id="lc" src="" width="100%" height="99%" frameborder="no"></iframe>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+	
+</html>

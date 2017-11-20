@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//参考阅读：
+			//Javascript异步编程之三Promise: 像堆积木一样组织你的异步流程http://www.cnblogs.com/chrischjh/p/4692743.html#then方法
+			//使用Promise解决多层异步调用的简单学习心得http://www.jb51.net/article/84381.htm
+
+			function fun1(){
+				return new Promise(function(resolve){
+					console.log(1);
+					setTimeout(function(){
+						console.log(2);
+						resolve(3)
+					},300)
+				})
+			}
+			function fun2(value){
+				return new Promise(function(resolve){
+					setTimeout(function(){
+						console.log(value);
+						resolve(4)
+					},300)
+				})
+			}
+			function fun3(value){
+				return new Promise(function(resolve){
+					setTimeout(function(){
+						console.log(value);
+						resolve(5)
+					},300)
+				})
+			}
+			function fun4(value){
+				return new Promise(function(resolve){
+					setTimeout(function(){
+						console.log(value);
+						//resolve(3)
+					},300)
+				})
+			}
+			fun1().then(fun2).then(fun3).then(fun4)
+			//输出1，2，3，4，5
+			//注意：then()中的是函数或函数的引用而不是函数的执行
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

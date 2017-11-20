@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正弦曲线</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="1000" height="400"></canvas>
+	</body>
+	<script type="text/javascript">
+		
+		//参考阅读：
+		//http://matt.might.net/articles/rendering-mathematical-functions-in-javascript-with-canvas-html/
+		
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+		
+		function clear(){
+			context.fillStyle = '#333';
+			context.fillRect(0,0,1000,400);
+		}
+		
+		//参数解释：
+		//x,y:初始点的位置；
+		//dis:x跨度,调整曲线精细程度
+		//scaleX:压缩横向曲线,x轴的细密度
+		//scaleY:压缩纵向曲线,y轴的跨度
+		//pyAngle:偏移角度（度数），曲线在x轴上的偏移度数（输入度数，程序会转换成弧度，X*Math.PI/180）
+		//callback,画完曲线的回调函数
+		function drawWave(x,y,dis,scaleX,scaleY,pyAngle,callback){
+			context.strokeStyle = '#fff';
+			//context.fillStyle = "rgba(255,255,255,0.4)";
+			context.beginPath();
+			context.moveTo(x,y);
+			(function draw(x,y,dis,scaleX,scaleY,pyAngle){
+				if(x<=1000){
+					var sin = scaleY*Math.sin(((x+pyAngle*scaleX)/scaleX)*(Math.PI/180))
+					context.lineTo(x+dis,y+sin);
+					//context.fill();
+					//requestAnimationFrame(draw.bind(this,x+dis,y+sin,dis));
+					draw(x+dis,y,dis,scaleX,scaleY,pyAngle);
+				}else{
+					context.stroke();
+					context.closePath();
+					//console.log("绘制结束");
+					callback();
+				}
+			})(x,y,dis,scaleX,scaleY,pyAngle)
+		}
+		
+		//波浪动画
+		(function ani(x,y,dis,scaleX,scaleY,pyAngle){
+			
+			clear();
+			drawWave(x,y,dis,scaleX,scaleY,pyAngle,function(){
+				//requestAnimationFrame(ani.bind(this,x,y+scaleY*Math.sin(((x+pyAngle*scaleX)/scaleX)*(Math.PI/180)),dis,scaleX,scaleY,pyAngle+dis));
+				if(x-dis===-360){
+					ani(0,200,dis,scaleX,scaleY,pyAngle);
+					console.log("重新开始");//以防不断加大x轴负起点导致渲染会逐渐变慢
+				}else{
+					requestAnimationFrame(ani.bind(this,x-dis,y,dis,scaleX,scaleY,pyAngle+dis));
+				}
+			})
+			
+		})(0,200,1,1/2,100,90)
+		
+		
+		
+	</script>
+</html>

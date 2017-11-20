@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="new_file.css"/>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="luoxia_box"></div>
+		<div class="words_box">
+			<input type="text" name="input_word" id="input_word" value="" />
+		</div>
+		<audio preload="metadata" id="au_hong" >
+			<source src="hong.wav"></source>
+			哦呦，你的浏览器不行哦，声音播放不了哦！
+		</audio>
+		<audio preload="metadata" id="au_lose">
+			<source src="lose.wav"></source>
+			哦呦，你的浏览器不行哦，声音播放不了哦！
+		</audio>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			var au_hong = $("#au_hong")[0];//为什么要加0，http://www.tuicool.com/articles/ZfU7ju
+			var au_lose = $("#au_lose")[0];
+			$("#input_word").focus().val('');//载入聚焦并清空
+			
+			function luoxia_time(){
+				var time = Math.ceil(5*Math.random());
+				return time;
+			}
+			
+			var screen_width = $(window).width();
+			function develop_words(){
+				var words = ['love','stupid','what','angray','thirty','old','aha','picture','delicious','enjoy'];
+				var suiji = Math.random();
+				var which_word = Math.floor(words.length*suiji);
+				var left_long = Math.floor((screen_width-150)*suiji)+'px';
+				var word_sq = '<div class="word" id="'+ 10000000000000000000000000*suiji +'" style="left:'+left_long+'">'+words[which_word]+'</div>'
+				return word_sq;
+			}
+			
+			var poor = new Array();
+			function words_poor(id,value){
+				poor[id] = value;
+				return poor;
+			}
+			
+//			var img_dot = document.createElement('img');//该用使用背景图的方式添加一个类，这样不用每次都频繁重绘dom，有利于效率
+//			img.setAttribute('src','hong.png');
+			
+			function delete_dot(key){
+				var $key = document.getElementById(key);
+				//使用加类名添加背景图的方式可以提高效率但位置不能中心对齐，爆炸效果有点尴尬，所以下述用以改变对象横向偏移
+				var new_left_long = parseInt($key.style.left)-50+'px';//默认获取的是NaN类型，通过parseInt()函数将之转换为数字
+				$key.innerHTML = '';
+				$key.style.left = new_left_long;
+				$key.setAttribute('class','word_hong');
+				au_hong.play();//播放爆炸声音
+				setTimeout(function(){
+					if($key){  //因为过了400ms可能由于go函数中设置了离开画布删除元素并清除数组中记录，所以过了400ms可能发生上面情况导致找不到元素而无法清除
+						$key.parentNode.removeChild($key);
+					}
+				},100)
+			}
+			
+			var game_state = 'off';
+			$("#input_word").on('keyup',function(event){//输入go开始游戏
+				if(event.keyCode == '13'){
+					var thisinput_value = $(this).val();
+					var $word = $(".word");
+					if(thisinput_value == 'go'){//如果输入go开始游戏
+						if($word.length > 0){   //如果输入go后页面存在文字块，先为存在的文字块赋予动画并最终删除于文档流
+							$word.stop();
+							stop();//非常得注意这两句的使用，如果不加，连续输入多个go后，多个Inseterval会使时间混乱，
+								   //即便输入stop也只能关闭一个时间线上的对象
+							$word.animate({top:'100%'},luoxia_time()*2000,function(){
+								$(this).remove();
+//								au_lose.play();
+								
+							})
+						}
+						go();
+						$(this).val('');
+						game_state ='on';
+						
+					}
+					if(thisinput_value == 'stop'){//如果输入stop停止游戏
+						if($word.length == 0){//如果页面中不存在文字块断定为未先输入go，提示如下文字
+							$(this).val('请先输入‘go’开始游戏！');
+						}else{
+							$word.stop();
+							stop();
+							$(this).val('游戏结束！');
+						}
+						game_state = 'off'
+					}
+					if( (thisinput_value != 'stop') && (thisinput_value != 'go') && (game_state == 'on')){
+						var now_poor = words_poor();
+						for(key in now_poor){//尝试使用数组的indexof方法
+							if(thisinput_value == now_poor[key]){
+//								console.log($("#"+key).html());//通过$("#"+key)无法获取对象，下述原生的可以
+//								console.log(key+now_poor[key]);
+//								document.getElementById(key).parentNode.removeChild(document.getElementById(key));
+								delete_dot(key);
+								delete now_poor[key];
+							}
+						}
+						$(this).val('');
+					}
+					if( (thisinput_value != 'stop') && (thisinput_value != 'go') && (game_state == 'off')){
+						$(this).val('请输入go开始游戏！');
+					}
+					
+				}
+			})
+
+			
+//			function step_dev(){
+//				
+//			}
+			var STEP;  //需要申明一个全局变量，并在setInterval中将循环赋值给这个全局变量，才能全局关停setInterval
+			var $luoxia_box = $(".luoxia_box");
+			function go(){//开始游戏
+				var step = setInterval(function(){
+					var dot = develop_words();
+					$(dot).appendTo($luoxia_box).animate({top:'100%'},luoxia_time()*2000,function(){
+						$(this).remove();
+						//au_lose.play();//如果离开画板，播放失败声音
+						delete words_poor()[$(dot).attr('id')];//离开画板删除该对象在words_poor中的记录，因为动画和下述的为words_poor添加记录是异步的，所以这样写可行
+					})
+//					console.log($(dot).html());
+//					var sd = 
+					words_poor($(dot).attr('id'),$(dot).html());//将该对象添加到words_poor数组中
+//					for (key in sd) {
+//						console.log(sd[key]);
+//					}
+//					document.getElementById($(dot).attr('id')).parentNode.removeChild(document.getElementById($(dot).attr('id')));
+//					$(dot).parent('.luoxia_box').remove($(dot));／／这样不行，删不掉元素，上面这条原生的就可以
+				},luoxia_time()*1500);
+				STEP = step;
+				
+			}
+			function stop(){
+				clearInterval(STEP);
+			}
+			
+		})
+	</script>
+</html>

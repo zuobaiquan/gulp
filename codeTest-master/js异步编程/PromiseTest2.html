@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			function fun1(){
+				return new Promise(function(resolve){
+					console.log(1);
+					setTimeout(function(){
+						console.log(2);
+						resolve(3)
+					},300)
+				}).then(function(value){
+					setTimeout(function(){
+						console.log(value);
+						return 4;
+					},300)
+				})
+			}
+			fun1().then(function(value){
+				console.log(value);
+				return 5;
+			}).then(function(value){
+				console.log(value)
+			})
+			//最后输出1，2，undefined，5,3
+			//发现4没有被输出，
+			//可以知道，每次then()执行返回的是一个新的Promise实例，这个新的Promise实例
+			//的value(见【promise的方式】的解说)是then中return的值，并传递给下个链式调用的then(function(value){})函数
+			//的value值，如果你return的是一个新的promise实例，那么这个新的实例将代替then()执行后自动返回的promise实例
+			//具体见【PromiseTest3】，且下个例子也解决了上诉想then()中再执行异步才进行下去的操作，也就是异步嵌套同步化
+			//实现的问题
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

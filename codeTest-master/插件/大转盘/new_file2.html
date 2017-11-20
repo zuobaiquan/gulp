@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="turntable.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		
+	</style>
+	<body>
+		<div class="turntable" id="turntable" style="width: 400px;height: 400px;">
+			<div class="poiter"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		var options = {
+			bgImg: './fd.png/',
+			pointerImg: './pointer.png/',
+			pointerW: 35,
+			pointerH: 150,
+			angle:[30,50,90,20,100,70],
+		};
+		
+		var dom = document.getElementById('turntable');
+		var fd = new FD(dom,options);
+		fd.start(0);
+		
+		
+	</script>
+</html>

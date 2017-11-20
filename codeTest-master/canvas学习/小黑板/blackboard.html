@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script type="text/javascript">
+			window.onload = function(){
+				var mouseState = 0;//0表示鼠标提起，1表示鼠标按下
+				var pencolor='#fff',penwidth;
+				var can = document.getElementById('mc');
+				var ctx = can.getContext('2d');
+//				can.width = document.documentElement.clientWidth-40;
+//				can.height = document.documentElement.clientHeight-40;
+			
+				function drawLine(width,color,moveTo){
+					
+					ctx.lineWidth = width;
+					ctx.lineJoin = 'round';
+					ctx.lineCap = 'round';
+					ctx.strokeStyle = color;
+					
+					ctx.beginPath();
+					ctx.moveTo(moveTo[0],moveTo[1]);
+				}
+				
+				function record(){//为橡皮添加双击清空的功能
+					if(state == 1){
+						var record = setInterval(function(){
+							time = time+10;
+							if(time>=1000){
+								clearInterval(record);
+								time = 0;
+								state = 0;
+							}
+						},10)
+					}
+					if(state == 2){
+						if(time<1000){
+							ctx.clearRect(0,0,1000,600);
+							pencolor='#fff';//不加这个发现清空后画笔需要重新吸色才能有颜色，没有默认的白色
+							clearInterval(record);
+							time = 0;
+							state = 0;
+						}
+					}
+				}
+				
+				document.documentElement.onclick = function(e){//点击彩笔吸取颜色并赋值给画笔
+					if(e.target.className == 'pen'){
+						//var obj = document.getElementsByClassName('pen');//复查中发现这些注释掉的都不需要
+						//for(i=0,length=obj.length;i<length;i++){
+							//if(obj[i]==e.target){
+								pencolor = getComputedStyle(e.target,null)['background-color'];
+							//}
+						//}
+					}
+				}
+				
+				var state=0,time=0;
+				document.getElementById('xiangpi').onclick = function(){//点击橡皮
+					pencolor = "#2b7352";//通过覆盖背景色去除笔迹
+//					penwidth = '10';
+					state++;
+					record(state);
+				}
+				
+				can.onmousedown = function(e){
+					var startPoint = [e.offsetX,e.offsetY];
+					drawLine(penwidth,pencolor,startPoint);
+					mouseState = 1;
+				}
+				
+				can.onmousemove = function(e){
+					if(mouseState == 1){
+						ctx.lineTo(e.offsetX,e.offsetY);
+						ctx.stroke();
+					}
+				}
+				
+				can.onmouseup = function(){
+					mouseState = 0;
+					ctx.closePath();
+				}
+				
+//				************滑块功能**************
+				var $huakuai = document.getElementById('huakuai');
+				var huakuai_state;
+				$huakuai.onmousedown = function(){
+					huakuai_state = 1;
+					document.body.style.cursor = 'move';
+					document.getElementById('num').style.display = 'block';
+				}
+				document.documentElement.onmouseup = function(){
+					huakuai_state = 0;
+					document.body.style.cursor = 'auto';
+					document.getElementById('num').style.display = 'none';
+				}
+				document.documentElement.onmousemove = function(e){
+					if(huakuai_state == 1){
+						var mouse_instance  = e.pageX-parseFloat(document.getElementsByClassName('pen_width')[0].offsetLeft)-parseFloat(document.getElementsByClassName('toolBox')[0].offsetLeft)
+						//console.log(mouse_instance)
+						if(mouse_instance >= 0 && mouse_instance <= 200){
+							$huakuai.style.left = mouse_instance-8 +'px';//8表示圆形滑块的半径
+							penwidth = Math.abs($huakuai.offsetLeft+8)/10;
+							document.getElementById('num').innerHTML = penwidth;
+							//console.log(penwidth)
+						}
+						if(mouse_instance < 0){
+							$huakuai.style.left = 0;
+						}
+						if(mouse_instance > 200){
+							$huakuai.style.right = 0;
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content">
+			<canvas id="mc" width="1000px" height="600px"></canvas>
+			<div class="toolBox">
+				<div class="pen" style="background: lightskyblue;"></div>
+				<div class="pen" style="background: lightcoral;"></div>
+				<div class="pen" style="background: lightgreen;"></div>
+				<div class="pen" style="background: yellow;"></div>
+				<div class="pen" style="background: #fff;"></div>
+				<div class="pen_width">
+					<div class="huakuai" id="huakuai">
+						<div class="num" id="num">0</div>
+					</div>
+				</div>
+				<div id="xiangpi">橡皮<br/>双击清空</div>
+			</div>
+		</div>
+	</body>
+</html>

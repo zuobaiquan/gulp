@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			console.log(1)
+			new Promise(function(resolve){
+				console.log(2);
+				setTimeout(function(){
+					console.log(5);
+					resolve();//注意标记要放这里而不是下面，放下面就不会让异步执行完再执行then()中的函数
+				},100)		//resolve()标记的作用就是标记了才然后（then）去执行then中的程序
+				//resolve()
+			}).then(function(value){
+				console.log(3)
+			})
+			console.log(4)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

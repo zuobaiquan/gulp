@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+		//******call(),是更改函数的执行环境的一个方法，也就是指定函数中的this，是window还是其他对象
+			var color = 'green'
+			var catObj = {
+				color:'red'
+			}
+			function cat(){
+				alert("this is a "+this.color+' cat')//this指当前函数的执行环境，直接执行就是window对象
+			}
+			//cat();//输出：this is a green cat
+			//cat.call(catObj)//输出：this is a red cat
+		//******callee返回正在执行的函数本身的引用，它是arguments的一个属性
+			//由于arguments在函数被调用时才有效，因此arguments.callee在函数未调用时是不存在的（即null.callee），且解引用它会产生异常
+			//它有一个length属性，可以用来获得形参的个数，因此可以用来比较形参和实参个数是否一致，即比较arguments.length是否等于arguments.callee.length
+			(function(){
+				alert(arguments.callee)//输出这个函数本身：function(){alert(arguments.callee)}
+			})()
+		//******a.caller指的是调用a这个函数的函数，没有则为null。
+		//如果一个函数f是在全局作用域内被调用的,则f.caller为null,相反,如果一个函数是在另外一个函数作用域内被调用的,则f.caller指向调用它的那个函数.
+		//https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/caller
+			function a(){
+				alert(a.caller)
+			}
+			function b(){
+				a();
+			}
+			b();//输出：function b(){ a(); }
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

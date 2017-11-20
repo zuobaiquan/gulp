@@ -1,0 +1,193 @@
+@charset "utf-8";
+/*global*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	font: 10px/1.5 sans-serif, arial;
+	
+	-webkit-transform: translateZ(0); 
+	-moz-transform: translateZ(0); 
+	-ms-transform: translateZ(0); 
+	-o-transform: translateZ(0); 
+	transform: translateZ(0); 
+	
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
+	-ms-perspective: 1000;
+	perspective: 1000;
+	/* Other transform properties here */
+}
+input{
+	border: none;
+	outline: none;
+}
+/*用于slide设定屏幕高度后的样式设定*/
+
+html,
+body,
+.swiper-container,
+.swiper-slide {
+	height: 100%;
+}
+
+body {
+	background: #111 url(../img/bg_back.png) no-repeat center center;
+	background-size: 100% 100%;
+	/*text-align: center;*/
+}
+
+.swiper-slide {
+	position: relative;
+	background: transparent url(../img/bg_paper.png) no-repeat center center;
+	background-size: 100% 100%;
+	overflow: hidden;
+	/*text-align: center;*/
+}
+
+/********go***********/
+.shareEle{
+	font-size: 1.6rem;
+	color: #60adac;
+	line-height: 3.6rem;
+	margin: 5.3rem 0 0 3.5rem;
+}
+.shareEle .counter,.shareEle .sharePer{
+	font-size: 3.6rem;
+	color: #f37810;
+	font-weight: bold;
+}
+.shareEle span{
+	vertical-align: middle;
+}
+.counter{
+	font-size: 1.8rem;
+	font-weight: bold;
+}
+
+@media only screen and (max-width: 320px) {
+	.shareEle2{
+		position: relative;
+		width: 12rem !important;
+		height: 12rem !important;
+		margin: 6.5rem auto 0 auto;
+	}
+}
+.shareEle2{
+	position: relative;
+	width: 15rem;
+	height: 15rem;
+	margin: 6.5rem auto 0 auto;
+}
+.shareEle2 .counter{
+	font-size: 12px;
+	/*font-weight: normal;*/
+}
+.share_img1{
+	width: 100%;
+	height: 100%;
+}
+.shareEle2 div{
+	position: absolute;
+	font-size: 1.2rem;
+	width: 6rem;
+	color: #60adac;
+	text-align: left;
+}
+.shareEle2 div::before{
+	position: absolute;
+	display: inline-block;
+	white-space: nowrap;
+	font-size: 1.2rem;
+	color: #60adac;
+	line-height: 1.6rem;
+	padding-left: 2.0rem;
+	background-size: 1.6rem 1.6rem;
+	left: -2rem;
+	top: -1.6rem;
+}
+.share_cx{
+	top: -20%;
+	left: 40%;
+}
+.share_cx::before{
+	content: '绿色出行';
+	background: url(../img/share_cx.png) no-repeat left center;
+}
+.share_xf{
+	top: 25%;
+	left: 120%;
+}
+.share_xf::before{
+	content: '绿色消费';
+	background: url(../img/share_xf.png) no-repeat left center;
+}
+.share_js{
+	bottom: 10%;
+	left: 120%;
+}
+.share_js::before{
+	content: '校园健身';
+	background: url(../img/share_js.png) no-repeat left center;
+}
+.share_dl{
+	bottom: -40%;
+	left: 100%;
+}
+.share_dl::before{
+	content: '节省电量约';
+	background: url(../img/share_dl.png) no-repeat left center;
+}
+.share_pd{
+	bottom: -40%;
+	left: -10%;
+}
+.share_pd::before{
+	content: '节省排队时间约';
+	background: url(../img/share_pd.png) no-repeat left center;
+}
+.share_zxf{
+	bottom: 15%;
+	left: -45%;
+}
+.share_zxf::before{
+	content: '本月共消费';
+	background: url(../img/share_zxf.png) no-repeat left center;
+}
+.share_jies{
+	top: 25%;
+	left: -45%;
+}
+.share_jies::before{
+	content: '本月节省';
+	background: url(../img/share_zxf.png) no-repeat left center;
+}
+.share_btn{
+	width: 80%;
+	height: 4.5rem;
+	margin:8rem 0 0 10%;
+	background: #64bd58;
+	color: #FFF;
+	font-size: 1.5rem;
+	border-radius: 2.5rem;
+	-webkit-border-radius: 2.5rem;
+	-moz-border-radius: 2.5rem;
+	box-shadow: 0 0.35rem 0 #3d8d2f;
+	-webkit-box-shadow: 0 0.35rem 0 #3d8d2f;
+	-moz-box-shadow: 0 0.35rem 0 #3d8d2f;
+}

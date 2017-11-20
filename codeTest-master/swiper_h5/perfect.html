@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Swiper中文网(www.swiper.com.cn)</title>
+		<script type="text/javascript">
+			//添加加载进度(gif动画转成base64码作为背景图给$process，在加载html的时候就会加载，如果采用图片或css的方式就回去请求http增加耗时)
+			//参考：Base64编码原理与应用  blog.xiayf.cn/2016/01/24/base64-encoding/
+			var $mask = document.createElement('div');
+			var $process = document.createElement('div');
+			$mask.style.cssText = 'position: fixed;z-index: 100;background: rgba(59,173,101,1);width: 100%;height: 100%;left:0;top:0;text-align: center;'
+			$process.style.cssText = 'position: absolute;width: 120px;height: 40px;left: 50%;top: 50%;margin-left: -60px;margin-top: -20px;background:url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNDBweCcgaGVpZ2h0PSc0MHB4JyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCIgY2xhc3M9InVpbC1kZWZhdWx0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIgY2xhc3M9ImJrIj48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgwIDUwIDUwKSB0cmFuc2xhdGUoMCAtMzApJz4gIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9J29wYWNpdHknIGZyb209JzEnIHRvPScwJyBkdXI9JzFzJyBiZWdpbj0nLTFzJyByZXBlYXRDb3VudD0naW5kZWZpbml0ZScvPjwvcmVjdD48cmVjdCAgeD0nNDYuNScgeT0nNDAnIHdpZHRoPSc3JyBoZWlnaHQ9JzIwJyByeD0nNScgcnk9JzUnIGZpbGw9JyNmZmZmZmYnIHRyYW5zZm9ybT0ncm90YXRlKDMwIDUwIDUwKSB0cmFuc2xhdGUoMCAtMzApJz4gIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9J29wYWNpdHknIGZyb209JzEnIHRvPScwJyBkdXI9JzFzJyBiZWdpbj0nLTAuOTE2NjY2NjY2NjY2NjY2NnMnIHJlcGVhdENvdW50PSdpbmRlZmluaXRlJy8+PC9yZWN0PjxyZWN0ICB4PSc0Ni41JyB5PSc0MCcgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHJ4PSc1JyByeT0nNScgZmlsbD0nI2ZmZmZmZicgdHJhbnNmb3JtPSdyb3RhdGUoNjAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPSctMC44MzMzMzMzMzMzMzMzMzM0cycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSg5MCA1MCA1MCkgdHJhbnNsYXRlKDAgLTMwKSc+ICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSdvcGFjaXR5JyBmcm9tPScxJyB0bz0nMCcgZHVyPScxcycgYmVnaW49Jy0wLjc1cycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgxMjAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPSctMC42NjY2NjY2NjY2NjY2NjY2cycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgxNTAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPSctMC41ODMzMzMzMzMzMzMzMzM0cycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgxODAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPSctMC41cycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgyMTAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPSctMC40MTY2NjY2NjY2NjY2NjY3cycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgyNDAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPSctMC4zMzMzMzMzMzMzMzMzMzMzcycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgyNzAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPSctMC4yNXMnIHJlcGVhdENvdW50PSdpbmRlZmluaXRlJy8+PC9yZWN0PjxyZWN0ICB4PSc0Ni41JyB5PSc0MCcgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHJ4PSc1JyByeT0nNScgZmlsbD0nI2ZmZmZmZicgdHJhbnNmb3JtPSdyb3RhdGUoMzAwIDUwIDUwKSB0cmFuc2xhdGUoMCAtMzApJz4gIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9J29wYWNpdHknIGZyb209JzEnIHRvPScwJyBkdXI9JzFzJyBiZWdpbj0nLTAuMTY2NjY2NjY2NjY2NjY2NjZzJyByZXBlYXRDb3VudD0naW5kZWZpbml0ZScvPjwvcmVjdD48cmVjdCAgeD0nNDYuNScgeT0nNDAnIHdpZHRoPSc3JyBoZWlnaHQ9JzIwJyByeD0nNScgcnk9JzUnIGZpbGw9JyNmZmZmZmYnIHRyYW5zZm9ybT0ncm90YXRlKDMzMCA1MCA1MCkgdHJhbnNsYXRlKDAgLTMwKSc+ICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSdvcGFjaXR5JyBmcm9tPScxJyB0bz0nMCcgZHVyPScxcycgYmVnaW49Jy0wLjA4MzMzMzMzMzMzMzMzMzMzcycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PC9zdmc+") no-repeat left center;text-align: right;color: #fff;font:bold 16px/40px sans-serif;'
+			$process.innerText = 'loading...';
+			$mask.appendChild($process);
+			document.documentElement.appendChild($mask);
+		</script>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.self.css"/><!--自定义的动画-->
+		<!--Swiper3.0.4-->
+	</head>
+
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<!--下面的slide和slide的节点不要使用id来作为选择器进行获取dom，因为框架本身有对id的操作会出错,可以使用自定义属性-->
+				<div class="swiper-slide blue-slide" data-hash='slide1'>
+					<img src="img/baozou1.jpg" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s" />
+					<div class="ani" swiper-animate-effect="rotateKeep" swiper-animate-duration="1.5s" swiper-animate-delay="1.5s" ><!--通过嵌套实现多个动画-->
+						<div class="ani"  swiper-animate-effect="zoomIn" swiper-animate-duration="1s" swiper-animate-delay="1s" >这是ANIMATE</div>
+					</div>
+				</div>
+				<div class="swiper-slide red-slide" data-hash='slide2'>
+					<div class="s2_el1">
+						<span class="ani s2_el1_con" swiper-animate-effect="growY" swiper-animate-duration="0.7s" swiper-animate-delay="0s" ></span>
+					</div>
+					<div class="s2_el2">
+						<span class="ani s2_el2_con" swiper-animate-effect="growY" swiper-animate-duration="1s" swiper-animate-delay="0s" ></span>
+					</div>
+				</div>
+				<div class="swiper-slide orange-slide" data-hash='slide3'>slider3</div>
+				<div class="swiper-slide green-slide" data-hash='slide4'>slider4</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/swiper.animate1.0.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="js/swiper.animate-twice.min.js" type="text/javascript" charset="utf-8"></script>--><!--可以加载两个动画-->
+	<script type="text/javascript">
+		//查看new_file.html文件中冗长的代码，现整理如下，
+		//本来预想是想切换到不同页面时才开始执行动画，当然new_file.html中的操作也是可以的，可以在初始化时不用执行太多
+		//的动画以防卡顿，但只对于当时预防得初衷而言却是不需要这么做的，因为切换的时候不用动态添加属性，属性还是可以直接添加到标签中，只需要在
+		//切换的时候执行一遍"swiperAnimate(swiper)"就可以使得产生动画，因为动画的产生和那些属性没有直接关系，这些属性只是swiper插件
+		//的标记而已，实际上还是通过"swiperAnimate(swiper)"识别这些标记为对象标签添加css动画样式。相较于new_file.html中复杂的
+		//书写方式，虽然初始化的时候可能会出现卡顿，但实际且加之这份书写便捷性，还是如下方便
+		window.onload = function() {
+			$mask.parentNode.removeChild($mask); //加载完成移除"加载中"的显示
+			var mySwiper = new Swiper('.swiper-container', {
+				height:window.innerHeight,//需要在样式中设定100%，见style.css
+				loop: false,
+				speed: 400,
+				direction: 'vertical',
+				autoplayStopOnLast: true,
+				hashnav: true,
+				roundLengths: true,
+				passiveListeners : false,//提升swiper在移动设备的中的scroll表现
+				onInit: function(swiper) { //初始化
+					swiperAnimateCache(swiper); //隐藏动画元素
+					swiperAnimate(swiper); //初始化完成开始动画
+				},
+				onSlideChangeEnd: function(swiper) { //页面切换完成触发
+					//swiperAnimateCache(swiper);
+					swiperAnimate(swiper); //执行动画（不加将没有效果）
+				
+				}
+			})
+			
+		}
+	</script>
+
+</html>

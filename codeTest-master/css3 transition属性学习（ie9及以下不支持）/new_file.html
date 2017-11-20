@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			html{
+				height: 100%;
+				overflow: hidden;
+			}
+			body{
+				margin: 0;
+				overflow: hidden;
+				height: 100%;
+			}
+			.leftBox{
+				height: 100%;
+				width: 200px;
+				padding-top: 20px;
+				overflow: hidden;
+				background:#333;
+				float: left;
+			}
+			.rightBox{
+				height: 100%;
+				background:#f9f9f9;
+				margin-left: 200px;
+			}
+			.iframe{
+				height: 100%;
+				width: 100%;
+				border: none;
+			}
+			.logo{
+				height: 100px;
+				width:170px;
+				font: 72px "微软雅黑";
+				font-weight: bold;
+				color: #777;
+				line-height: 100px;
+				background: #444;
+				padding: 0;
+				margin: 10px;
+				text-align: center;
+				border: 2px solid #777;
+				
+				-moz-border-radius: 50px;      /* Gecko browsers */
+				-webkit-border-radius: 50px;   /* Webkit browsers */
+				border-radius:50px;
+				
+			}
+			.title{
+				display: inline-block;
+				font: 14px "微软雅黑";
+				color: #999;
+				font-weight: bold;
+				height: 52px;
+				line-height: 52px;
+				margin:0 0 0 -10px;
+			}
+			.list{
+				font: 14px "微软雅黑";
+				color: #999;
+				height: 32px;
+				line-height: 32px;
+				text-align: center;
+				border-top: 1px solid #666;
+				border-bottom: 1px solid #222;
+				background: #444;
+				overflow: hidden;
+				
+				transition: height 0.5s;
+				-moz-transition: height 0.5s; /* Firefox 4 */
+				-webkit-transition: height 0.5s; /* Safari 和 Chrome */
+				-o-transition: height 0.5s; /* Opera */
+			}
+			.list:hover{
+				font: 14px "微软雅黑";
+				color: #999;
+				height: 160px;
+				line-height: 32px;
+				text-align: center;
+				border-top: 1px solid #666;
+				border-bottom: 1px solid #222;
+				background: #444;	
+				
+			}
+			.list .sublist{
+				display: block;
+				background:#333;
+				line-height: 32px;
+				text-decoration: none;
+				color: #999;
+				border-bottom: 1px solid #444;
+				cursor: pointer;
+			}
+			.list .sublist:hover{
+				display: block;
+				background:#393939;
+				line-height: 32px;
+				text-decoration: none;
+				border-bottom: 1px solid #444;
+				cursor: pointer;
+			}
+			input{
+				width: 170px;
+				margin-left: 10px;
+				margin-top: 20px;
+				padding-left: 10px;
+				height: 20px;
+				border: none;
+				outline: none;
+				background: #222;
+				font: 14px "微软雅黑";
+				color: #666;
+				border-top: 1px solid #000;
+				border-bottom: 1px solid #666;
+				
+				-moz-border-radius: 20px;      /* Gecko browsers */
+				-webkit-border-radius: 20px;   /* Webkit browsers */
+				border-radius:20px;
+				
+				transition: height 0.1s;
+				-moz-transition: height 0.1s; /* Firefox 4 */
+				-webkit-transition: height 0.1s; /* Safari 和 Chrome */
+				-o-transition: height 0.1s; /* Opera */
+
+			}
+			
+			input:focus{
+				width: 170px;
+				margin-left: 10px;
+				margin-top: 20px;
+				padding-left: 10px;
+				height: 40px;
+				border: none;
+				outline: none;
+				background: #222;
+				font: 18px "微软雅黑";
+				color: #666;
+				border-top: 1px solid #000;
+				border-bottom: 1px solid #666;
+				
+				-moz-border-radius: 20px;      /* Gecko browsers */
+				-webkit-border-radius: 20px;   /* Webkit browsers */
+				border-radius:20px;
+				
+				transition: height 0.5s;
+				-moz-transition: height 0.5s; /* Firefox 4 */
+				-webkit-transition: height 0.5s; /* Safari 和 Chrome */
+				-o-transition: height 0.5s; /* Opera */
+
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="leftBox">
+			<p class="logo">ZS</p>
+			<input type="" name="" id="" value="搜索" onblur="if(this.value=='') this.value='搜索'" onfocus="if(this.value=='搜索') this.value=''"/>
+			<ul class="title"><li>网站导航</li></ul>
+			<div class="list">代码网站
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+			</div>
+			<div class="list">设计网站
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+			</div>
+			<div class="list">素材收集
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+			</div>
+			<ul class="title"><li>我的收藏</li></ul>
+			<div class="list">列表一
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+			</div>
+			<div class="list">列表一
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+			</div>
+			<div class="list">列表一
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+			</div>
+			<div class="list">列表一
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+				<a href="#nogo" class="sublist">W3Cschool</a>
+			</div>
+		</div>
+		<div class="rightBox">
+			<iframe src="http://www.w3school.com.cn" width="100%" height="100%" frameborder="no"></iframe>
+		</div>
+	</body>
+</html>

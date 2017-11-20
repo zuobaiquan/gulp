@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="num">hello</div>
+</body>
+<script type="text/javascript">
+    //采用正弦函数的方式，可以做到在一个区间内往复运动
+    //特征是：取的数值不是等差的。
+    var $div = document.getElementById('num');
+
+    function writeSinx(angle){//输入角度
+        var val = Math.sin(angle*2*Math.PI/360).toFixed(2);
+        return val;//输出-1~1之间的数
+    }
+
+    var angle = 0;
+    setInterval(function () {
+        $div.innerHTML += writeSinx(angle++)+'\n ';
+    }, 300);
+
+</script>
+</html>

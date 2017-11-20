@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 200px;
+				line-height: 32px;
+				padding: 0 10px;
+				background: #229999;
+				margin: 4px 0;
+				color: #fff;
+			}
+			.box2{
+				width: 240px;
+				line-height: 48px;
+				background: #660066;
+			}
+			#btn{
+				font-weight: bold;
+				font-size: 24px;
+			}
+			.select{
+				/*background: #FFA500;*/
+				width: 450px;
+			}
+		</style>
+		<script src="lottery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="开始抽取" />
+		<div class="box">0</div>
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box box2">3</div>
+		<div class="box">4</div>
+		<div class="box">5</div>
+		<div class="box">6</div>
+		<div class="box">7</div>
+		<div class="box">8</div>
+		<div class="box">9</div>
+	</body>
+	<script type="text/javascript">
+		
+		var btn = document.getElementById('btn');
+		
+		var options = {
+			selectClass: 'select',//选中dom添加的类
+			algorithm: 'sine',//算法,默认为空则为匀速，为‘sine’表示采用正弦曲线，先慢再快最后变慢
+			during: 6000,//总时长(毫秒)
+			loop: 6,//几圈，0表示不循环
+			target: 2,//最终定位元素index，0开始
+		};
+		var domArr = document.querySelectorAll('.box');
+		
+		var lottery = new Lottery(domArr,options);
+		btn.onclick = function(){
+			lottery.start(function(){//callback可选，表示选完之后得回调
+				console.log("抽奖结束！");
+			});
+		}
+		
+	</script>
+</html>

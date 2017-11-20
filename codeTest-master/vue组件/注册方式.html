@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></my-component>
+		</div>
+		<div id="app2">
+			<my-component2></my-component2>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//**注册全局组件（需要在实例化Vue实例之前完成）
+		//全局组件可在不同vue应用中使用，比方说有el为app2的模块中
+		Vue.component('my-component',{//tagName,options
+			template: '<div>这是一个全局vue组件</div>'
+		})
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app"
+		})
+		
+		//**注册局部组件
+		var vm2 = new Vue({
+			el: "#app2",
+			components: {
+				'my-component2': {
+					template: '<div>这是一个局部vue组件</div>'
+				}
+			}
+		})
+	</script>
+</html>

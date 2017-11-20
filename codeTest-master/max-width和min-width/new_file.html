@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				border: 1px solid royalblue;
+				margin: 20px 0;
+				overflow: hidden;
+			}
+			.subbox{
+				float: left;
+				height: 60px;
+				width: 20%;/*使用max-width一定要指定改元素的width为百分比,默认div等块元素是有width:100%的(设定浮动后会清除默认的百分百width)*/
+				max-width: 100px;/*上面这句加这句对于width的设置作用是，当父级宽度能使子级以100px的宽度展开时，子级width就是100px,当不足以展开时，则子级的width就是父级宽度的20%布局*/
+				border: 1px solid lightcoral;
+				box-sizing: border-box;
+			}
+			.subbox2{
+				float: left;
+				height: 60px;
+				/*width: 15%;*//*使用min-width不用指定改元素的width为百分比*/
+				width: 15%;
+				min-width: 100px;
+				border: 1px solid lightseagreen;
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="subbox">1</div>
+			<div class="subbox">2</div>
+			<div class="subbox">3</div>
+			<div class="subbox">4</div>
+			<div class="subbox">5</div>
+		</div>
+		<div class="box">
+			<div class="subbox2">A</div>
+			<div class="subbox2">B</div>
+			<div class="subbox2">C</div>
+			<div class="subbox2">D</div>
+			<div class="subbox2">E</div>
+		</div>
+	</body>
+</html>

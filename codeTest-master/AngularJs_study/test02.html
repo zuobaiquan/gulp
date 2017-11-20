@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = angular.module('inputApp',[]);  //初始化名为“inputApp”的angular应用，也就是对它及子级执行angularJs运算
+			app.controller('myContrl',function($scope){//执行app.controller(name,fun())函数，传入两个参数。表示对控制器名为name的内部元素执行
+				$scope.content = "wwwwwww";		//fun()操作，这一步相当于MVC中的C(control)。$scope是一个用来存储model数据的
+			})								   //对象，且仅作用于当前控制器范围下，类似鼠标键盘事件的event。表达式{{}}的输出数据来自于ng-model定义
+		 									  //的变量content,而这个变量事实上就是定义在对象$scope下的变量，也就是$scope.content。一个控制器范围内
+											 //新建的变量都是$scope对象的变量，且输出（{{...}}MVC中的V也就是视图）、标签中定义的变量（如ng-model='content'）、$scope对象(MVC中的M,即model，数据模型)
+										    //的相应变量是互相绑定，一方变动，实时变更的。
+		</script>								 
+		
+	</head>
+	<body>
+		<div ng-app="inputApp" ng-controller="myContrl"><!--ng-app的值为空，页面加载后会自动初始化，若不空，则需要手动初始化执行:如上诉方式-->
+			<input type="text" name="" id="" value="" placeholder="请输入任意字符" ng-model='content' />
+			<span>当前输入的内容是：{{content}}</span>
+		</div>
+	</body>
+</html>

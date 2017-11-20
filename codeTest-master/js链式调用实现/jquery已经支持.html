@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			//jquery支持函数链式调用，就像这样obj.fun1().fun2()...。这其实是一种管道思想，前者的输出即是后者的输入（在gulp自动构建的应用中涉及明显）
+			$(function(){
+				setInterval(function(){
+					$('<div></div>').
+					appendTo('body').
+					css({height:'100px',width:'100px',background:'red'}).
+					animate({'marginLeft':'1000px','opacity':'0'},1000,function(){
+						$(this).remove()
+					})
+				},1200)
+			})
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

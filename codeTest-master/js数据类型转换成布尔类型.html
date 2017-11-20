@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var num = 12345;//number类型
+			var str = 'hello world!';//string类型
+			var bln = true;//布尔类型（有true和false两个值）
+			var nl = null;//null类型（只有这一个值）
+			var udf = undefined;//undefined类型（也是只有这一个值）
+			//上面五种是基本数据类型，还有种类型称之为引用类型，即是对象。数组也属于对象
+			var arr = [1,2,3];//数组，引用类型
+			var obj = {a:1,b:2,c:3};//对象，引用类型
+			//通过！！两个非逻辑操作可以将数据类型转换成布尔类型
+			alert('number类型转换成布尔类型：'+!!num);//true
+			//绝大部分值转换成布尔类型都true,除了以下六种
+			alert('""空字符转换成布尔类型：'+!!'');
+			alert('null转换成布尔类型：'+!!null);
+			alert('undefined转换成布尔类型：'+!!undefined);
+			alert('0转换成布尔类型：'+!!0);
+			alert('NaN转换成布尔类型：'+!!NaN);
+			alert('false转换成布尔类型：'+!!false);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

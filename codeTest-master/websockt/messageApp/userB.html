@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+	<body style="background: #ccffee;">
+		<div class="message">
+			<div class="info">
+				<div class="infoBox" id="infoBox">
+					<!--最新消息放在上面，flex显示才会在下面-->
+					<!--<span class="othInfo">hello too</span>
+					<span class="selInfo">hello</span>-->
+				</div>
+				
+			</div>
+			<div class="opera">
+				<textarea class="operaIn" id="operaIn">输入信息，按Enter发送...</textarea>
+			</div>
+		</div>
+	</body>
+	<script src="js/cm.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		document.addEventListener('keydown',function(event){
+			if(event.keyCode===13){//Enter键
+				var $textarea = document.getElementById('operaIn');
+				var thisMessage = $textarea.value;
+				if(thisMessage){
+					$textarea.value = '';
+					obj.info = {
+						sender: 'self',
+						info: thisMessage
+					}
+					ws.send(thisMessage);
+				}else{
+					alert("不允许发送空消息！");
+					return;
+				}
+			}
+		})
+		
+	</script>
+</html>

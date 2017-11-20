@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>这是父级：{{result}}</div>
+			<my-component info="这是组件：" :num.sync="result"></my-component>
+			<!--监听num事件，如果需要监听原生事件如click，需要v-on:click.native="xx",添加native修饰符-->
+			<!--
+				如上style,可以添加未定义的prop，因为组件的通用性，未必能预料每个使用场景，添加的属性和值会添加到根元素上
+				注意的是：其他属性都会覆盖组件模板的根元素的相应属性（如果有的话），但是特例是class和style，不会替换而是合并
+			-->
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//通过.sync修饰符（语法糖，会自动扩展为v-on:update的方式更新子组件传递的值）
+		//采用这种方式可以同步组件内的值到组件外，耦合强，而2中的方式更加通用且基本无耦合
+		Vue.component('my-component',{//tagName,options
+			props: ['info'],
+			template: '<div>{{info}}<input type="button" value="改变父级的值" @click="changeVal"/></div>',
+			data: function(){
+				return {
+					//info: '这是一个组件',
+				}
+			},
+			methods: {
+				changeVal: function(){
+					this.$emit('update:num','新内容');//触发num事件
+				}
+			}
+		})
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				result: '点击组件按钮会改变父级的这个值'
+			}
+		})
+		
+		
+	</script>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">//学习参考：http://www.jb51.net/article/72044.htm  http://www.runoob.com/jsref/jsref-obj-regexp.html
+			var words = "是地6级78市df二j价sd铁圣诞节oiu水电费9Ef电风上诉扇sids是D92cvbq90搜索水电费ffsKdk y";//这是一个字符串，接下来我们想提取想要的信息
+			// 1 ，取出所有数字
+			console.log("数字:"+words.match(/\d/g));// \d表示查找数字字符。
+			// 1 ，取出所有中文
+			console.log("中文:"+words.match(/[\u4E00-\u9FA5\uF900-\uFA2D]/g));
+			// 1 ，取出所有英文
+			console.log("英文:"+words.match(/[a-zA-Z]/g));
+		</script>
+	</head>
+	<body><!--正则表达式是一种提取信息的模式，也可以说是提取信息的规则。比方说提取所有大写字母、a-h的字符等等-->
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#light{
+				width: 120px;
+				height: 120px;
+				margin: 30px;
+				border-radius: 100%;
+				background: #333;
+				border: 6px solid #FFFFFF;
+				box-shadow: 0 12px 30px #999;
+				transition: all 0.3s;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="btn1" id="btn1" value="按钮1关闭" />
+		<input type="button" name="btn2" id="btn2" value="按钮2关闭" />
+		<span id="info"></span>
+		<div id="light"></div>
+	</body>
+	<script type="text/javascript">
+		//【Promise的方式2】中我们实现了一个两个开关都按下才能打开灯的小案例，这节我们深化下，怎么实现只要关闭一个按钮就会关闭灯泡（也就是实现串联的效果）
+		
+			
+			var $btn1 = document.getElementById('btn1');
+			var $btn2 = document.getElementById('btn2');
+			var $info = document.getElementById('info');
+			var $light = document.getElementById('light');
+			//**********开关小案例***********
+//			var btnPromise1 = new Promise(function(resolve,reject){
+//				let state = true;
+//				$btn1.onclick = function(){
+//					if(state){
+//						resolve('按钮1按下成功');
+//						console.log('按钮1按下成功');
+//						console.log(btnPromise1)//promiseStatus是'resolved'
+//					}else{
+//						reject('按钮1关闭');//我们发现代码的确可以执行到这个else代码块内，但无法执行reject,这是promise的特性，一个promise实例状态只能
+//						console.log('按钮1关闭');//是resolve或者reject，一旦确定状态就不能更改，所以通过这种方式不能实现关闭灯泡
+//						console.log(btnPromise1)//看到promiseStatus还是'resolved',不会变更
+//					}
+//					//state?resolve('按钮1按下成功'):reject('按钮1关闭');//效果同上
+//					state = !state;
+//				}
+//			})
+//			var btnPromise2 = new Promise(function(resolve,reject){
+//				let state = true;
+//				$btn2.onclick = function(){
+//					state?resolve('按钮2按下成功'):reject('按钮2关闭');
+//					state = !state;
+//				}
+//			})
+//			Promise.all([btnPromise1,btnPromise2]).then(function(value){
+//				$light.style.background = '#ffdd00';
+//				$info.innerHTML = value[0]+';'+value[1]+';灯亮了！';//value[0]，value[1]值不是随机的，按照[btnPromise1,btnPromise2]顺序赋值
+//			})
+			//**********换种思路*采用事件的方式让灯泡侦听按钮的变动**********
+			//使用promise做异步开关灯泡的确有他的不足，本来Promise.all很能胜任，两者都成功就会触发成功函数，只要一者失败就会触发失败函数，和串联逻辑很吻合。
+			//但是promise实例无法变更状态，使得不能变更状态给监听者(then(...))
+			
+			let num = 0;
+			function turnUp(state){//灯泡点亮或熄灭
+				num = state?++num:--num;
+				if(num===2){
+					$light.dispatchEvent(turnUpEvent);//如果两个按钮都按下则触发开灯事件
+				}else{
+					$light.dispatchEvent(turnDownEvent);//只要一个按钮关闭就触发关灯事件
+				}
+			}
+			
+			(function(){//开关1控制，通过立即执行函数限定内部代码的作用域
+				let state = true;
+				$btn1.addEventListener('click',function(){
+					if(state){
+						this.value = '按钮1开启';
+					}else{
+						this.value = '按钮1关闭';
+					}
+					turnUp(state);
+					state = !state;
+				})
+			})();
+			(function(){//开关2控制
+				let state = true;
+				$btn2.addEventListener('click',function(){
+					if(state){
+						this.value = '按钮2开启';
+					}else{
+						this.value = '按钮2关闭';
+					}
+					turnUp(state);
+					state = !state;
+				})
+			})();
+			var turnUpEvent = new Event('turnUp');
+			var turnDownEvent = new Event('turnDown');
+			$light.addEventListener('turnUp',function(){//灯泡侦听按钮开启状态（坐等通知而不用频繁询问，这就是观察者模式的好处）
+				$light.style.background = '#ffdd00';
+				$info.innerHTML = '灯亮了！';
+			})
+			$light.addEventListener('turnDown',function(){//灯泡侦听按钮关闭状态
+				$light.style.background = '#333';
+				$info.innerHTML = '灯关了！';
+			})
+			
+	</script>
+</html>

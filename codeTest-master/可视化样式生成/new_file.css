@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+html,body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.content{
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.content>div{
+	display: table-cell;
+	vertical-align: top;
+}
+
+.showBlock{
+	background: #FAFAFA;
+	padding: 30px 60px;
+}
+.operation{
+	width: 20%;
+	background: #333;
+	padding: 30px 10px;
+}
+.btn_addModule{
+	width: 100%;
+	text-align: center;
+	border: 1px solid #aaa;
+	font-size: 16px;
+	color: #aaa;
+	margin: 0 auto;
+	padding: 10px 0;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.btn_addModule:active{
+	background: #444;
+}
+.btn_addModule i,.btn_addModule span{
+	vertical-align: middle;
+}
+.btn_addModule i{
+	font-size: 24px !important;
+	line-height: 30px;
+}

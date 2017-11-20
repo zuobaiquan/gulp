@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 1200px;
+				height: 600px;
+				margin: 20px auto;
+				background: #FFFFFF;
+				overflow: hidden;
+			}
+			.list{
+				float: left;
+				width: 86px;
+				height: 100px;
+				margin-left: 15px;
+				margin-bottom: 20px;
+				background: lightblue;
+			}
+			.list2{
+				float: left;
+				width: 86px;
+				height: 100px;
+				margin-right: 15px;
+				margin-bottom: 20px;
+				background: lightblue;
+			}
+			.tool{
+				width: 1215px;
+				overflow: hidden;
+				/*background: #f5f5f5;*/
+				background: #0091C0;
+				margin-left: -15px;
+			}
+			.tool2{
+				width: 1215px;
+				overflow: hidden;
+				/*background: #f5f5f5;*/
+				background: #0091C0;
+			}
+		</style>
+		
+	</head>
+	<body bgcolor="#eaeaea">
+		<div style="width: 1200px;margin: 0 auto;">
+			这种方式实现的思路就是在list的外面套一个父级tool，这个父级tool比box要长出一个间隙的长度，但是
+			由于box的宽度和list要求的宽度换算出来的间隙值并不一定是个整数，所以往往无法真正实现两头完全到头，如果
+			box是不定宽的，还要用js计算
+		</div>
+		<div class="box">
+			<div class="tool">
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+				<span class="list"></span>
+			</div>
+		</div>
+		<div style="width: 1200px;margin: 0 auto;">
+			如果采用list是margin-right的方式会稍微省力点。只要控制tool的长度让溢出的差不多刚好让最右侧的顶到头就可以了
+		</div>
+		<div class="box">
+			<div class="tool2">
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+				<span class="list2"></span>
+			</div>
+		</div>
+	</body>
+</html>

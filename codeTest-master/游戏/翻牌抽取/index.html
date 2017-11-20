@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script type="text/javascript">
+			function add_img(num){
+				for(i=0;i<num;i++){
+					var $paiBox = document.getElementById('paiBox');
+					var $img = document.createElement('div');
+					$img.setAttribute('class','img');
+					$paiBox.appendChild($img);
+				}
+			}
+		</script>
+	</head>
+	<body onload="add_img(30)">
+		<div class="border">
+			<div class="paiBox" id="paiBox"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//http://www.css88.com/jqapi-1.9/jQuery.ajax/
+			
+			function getData(url,rqType,para,callback){
+				//alert("执行了")
+				$.ajax({
+					type:rqType,
+					url:url,
+					async:true,//异步方式
+					//dataType:'json',//返回的数据类型以什么格式读取，txt和xml表示不解析直接读取responseText的内容，json表示按照json格式解析读取
+					//contentType: "application/x-www-form-urlencoded;chart=utf8",//默认就是这个可以不写，服务页一般会按照你请求的这个文档类型和编码方式来解码请求的数据
+					data:para,//{'name':b,'age':15}，这样的对象格式
+					success:function(result){//也可以有三个参数：result,status,xhr
+						callback(result);
+					},
+					error:function(xhr,status,error){
+						//callback("数据请求失败！请稍后重试！");
+						console.log("*********请求失败！************错误原因如下：\n")
+						console.log("xhr: ");//返回主体
+						console.log(xhr);
+						console.log(xhr.readyState+";"+xhr.status+";"+xhr.statusText);//主体的状态和状态信息
+						console.log("status: "+status);//错误原因
+						console.log("error: "+error);//错误详情
+						console.log("**************************************\n")
+					}
+				});
+			}
+			
+			
+			//注意
+			//1.上诉的xhr.status，即是我们常听的状态码，比方说200，302，304，404，504等，表示了http请求的状况，200表示数据请求且返回成功
+			//2.xhr.readyState，有五种状态：0，1，2，3，4，五种状态。0表示http请求（xhr）未初始化，也就是未send(),4表示响应内容解析完成可供使用
+				//其他详见：http://www.jb51.net/article/16966.htm
+			//3.着重注意，success只有在请求成功且dataType类型和返回数据MIME类型一致才会执行
+			//4.dataType类型包括 html、xml、json、jsonp、script或者text（xhr2也可以二进制等数据类型），其中，text和xml类型返回的数据不会经过处理。
+				//数据仅仅简单的将XMLHttpRequest的responseText或responseHTML属性传递给success回调函数，所以出现status：200，readyState：4，
+				//但是程序不进入success而是进入error函数的情况，将dataType改成txt或xml就行。
+				//参见：http://blog.csdn.net/u013476542/article/details/61414401
+			//5.接上诉，如果客户端不指定dataType，那么就会按照服务端指定的content-type类型（MIME类型）来解析，如果服务器端设定的content-type类型和实际response
+				//的类型不一致，而客户端若不指定dataType，就会采用服务端指定的content-type，此时就会出错。
+				//http://blog.csdn.net/guyan1111/article/details/53969033
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

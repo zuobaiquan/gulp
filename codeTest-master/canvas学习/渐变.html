@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var can = document.getElementById('myc');
+				var context = can.getContext("2d");
+				
+				//创建线性渐变色
+				var lg = context.createLinearGradient(40,40,240,40);//渐变色的起终位置
+				lg.addColorStop(0,'#ff0000');//渐变色的范围和色值
+				lg.addColorStop(0.5,'#00ff00');
+				lg.addColorStop(1,'#0000ff');
+				
+				context.strokeStyle = lg;
+				context.fillStyle = lg;
+				
+				context.strokeRect(40,40,200,60);
+				context.fillRect(300,40,200,60);
+				context.fillRect(40,120,200,120);
+				
+				//创建径向渐变色
+				var rg = context.createRadialGradient(40,390,40,300,340,100);
+				rg.addColorStop(0,'#ff0000');
+				rg.addColorStop(0.5,'#00ff00');
+				rg.addColorStop(1,'#0000ff');
+				
+				context.fillStyle = rg;
+				
+				context.fillRect(40,340,260,120);
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="myc" width="800px" height="600px" style="border: 1px solid darkslategray;"></canvas>
+	</body>
+</html>

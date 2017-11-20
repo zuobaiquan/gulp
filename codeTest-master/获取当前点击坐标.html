@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="zepto.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="mine_star" style="background: #fafafa;">CLICK　ＭＥ</div>
+		<script type="text/javascript">
+			$(function(){
+				var $mine_star = $(".mine_star");
+				$mine_star.on('click',function(e){
+					alert(e.clientX + ',' + e.clientY);
+				})
+				
+			})
+		</script>
+	</body>
+</html>

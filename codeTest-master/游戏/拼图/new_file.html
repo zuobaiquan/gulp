@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<style type="text/css">
+			body{
+				margin: 0;
+				background: #eaeaea;	
+			}
+			.map{
+				width: 600px;
+				height: 600px;
+				margin: 40px auto;
+				border-collapse: collapse;
+				position: relative;
+			}
+			.map td{
+				/*border: 1px solid red;*/
+				border: 1px solid #f5f5f5;
+			}
+			.pix{
+				position: relative;
+				left: 0;
+				top: 0;
+				background-color: #fff;
+				background: url(bg.jpg) no-repeat;
+				background-size: 600px 600px;
+				transition: all 0.6s;
+			}
+			.pix:hover{
+				position: relative;
+				box-shadow: 0 0 9px #333;
+			}
+		</style>
+		<script type="text/javascript">
+			function setBg(){//设置背景图
+				var $tr  = document.getElementsByTagName('tr');
+				var $pix  = document.getElementsByClassName('pix');
+//				var bgSize = window.getComputedStyle($pix[0],null).getPropertyValue('background-size');
+				for (i=0;i<$tr.length;i++) {
+					var $tr_pix  = $tr[i].getElementsByClassName('pix');
+					for (j=0;j<$tr_pix.length;j++){
+						$tr_pix[j].setAttribute('style','width: 150px;height: 150px;');
+						$tr_pix[j].style.backgroundPositionY = (-600/4)*i+'px';
+						$tr_pix[j].style.backgroundPositionX = (-600/4)*j+'px';
+					}
+				}
+				setTimeout(function(){
+					changeSite($pix);
+				},2000)
+			}
+			function changeSite(obj){//改变拼贴的位置
+				siteA = siteArray(obj);
+				for (i=0;i<obj.length;i++){
+					var suiji = Math.floor(Math.random()*(siteA.length));
+					site = siteA[suiji];
+					siteA.splice(suiji,1);
+					obj[i].style.left = site.x;
+					obj[i].style.top = site.y;
+					obj[i].style.position = "absolute"	
+				}
+			}
+			function getSite(obj){//获取xy轴值
+				var site = {};
+				site.x = obj.offsetLeft+'px';
+				site.y = obj.offsetTop+'px';
+				return site;
+			}
+			function siteArray(obj){//生成一个xy轴数组
+				var siteArray = [];
+				for (i=0;i<obj.length;i++) {
+					var thisSite = getSite(obj[i]);
+					siteArray.push(thisSite);
+				}
+				return siteArray;
+				
+			}
+			window.onload = function(){
+				setBg();
+			}
+		</script>
+	</head>
+	<body>
+		<table class="map" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+				<td>
+					<div class="pix"></div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

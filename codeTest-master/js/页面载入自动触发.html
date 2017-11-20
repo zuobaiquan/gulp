@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		body{
+			margin: 0;
+			overflow: hidden;
+			text-align: center;
+		}
+			.input1{
+				height: 40px;
+				width: 300px;
+				background-color: red;
+				color: #fff;
+				border: 0;
+				margin: 100px auto;
+			}
+			.input2{
+				height: 40px;
+				width: 300px;
+				background-color: orange;
+				color: #fff;
+				border: 0;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name=""  value="原本红色页面载入变绿色" class="input1" id="Bt1"/>
+		<input type="button" name=""  value="原本橙色载入自动点击此按钮显变灰色" class="input2" id="Bt2"/>
+		
+		<script type="text/javascript">
+				$(document).ready(function() {
+					$("#Bt1").css("background-color","green");
+					
+					
+					$("#Bt2").click(
+						function(){
+							$("#Bt2").css("background-color","gray");
+						}
+					)
+				$("#Bt2").click();  
+//	注意这句话的位置，不能放$("#Bt2").click(function(){...});之前
+				})
+		</script>
+	</body>
+</html>

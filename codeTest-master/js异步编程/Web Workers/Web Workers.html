@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			//Web Workers是一种新的实现异步编程的方式，js是单线程执行的语言，一般的异步编程无论是计时器,还是事件监听，或是promise,asyc，generate
+			//都是单线程的，异步任务被放在任务队列中，等待主线程执行完成再去执行队列中的任务，本质上还是一次只能干一件事，
+			//XMLHttpRquest是浏览器新开线程去请求资源的，但是回调函数却也是放在任务队列中的，也就是success:function(){...}
+			//的执行不是立即执行的，也是看任务队列里的event loop，轮到了才能执行。
+			//而Web Workers是浏览器新开线程在后台执行js任务，与上诉的异步编程有本质区别
+			//Web Workers “专注数据计算”，无法传输dom对象给worker，即便传过去了也只是对象副本而非引用
+			
+			//关于js的单线程还是多线程看【javascript既然是单线程语言 ， 为什么会分主线程和消息线程(event loop) ?】
+			//——https://www.zhihu.com/question/35905242?sort=created
+			
+			//详情参见：【使用 Web Workers】https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers
+			
+			//一个主页显示，后台计算的实例
+			window.onload = function(){
+				let $cal1 = document.getElementById('cal1');
+				let $cal2 = document.getElementById('cal2');
+				let $calBtn = document.getElementById('calBtn');
+				let $calRes = document.getElementById('calRes');
+				let $calOpera = document.getElementById('calOpera');
+				
+				let myWorker = new Worker('worker.js');
+				
+				$calBtn.onclick = function(){
+					let $cal1Value = $cal1.value*1;
+					let $cal2Value = $cal2.value*1;
+					let opMethod = $calOpera.querySelectorAll('option')[$calOpera.selectedIndex].innerHTML;
+					//***postMesage是无法传输dom的，会报 The object could not be cloned.错误
+					//把数据传给worker.js开启新线程专注计算，计算完成返回数据用于展示
+					myWorker.postMessage([$cal1Value,$cal2Value,opMethod]);
+					console.log("信息发送成功！");
+					myWorker.onmessage = function(e){
+						$calRes.innerHTML = e.data;
+						console.log("信息返回接受成功！");
+					}
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div style="width: 60%;margin: 200px 20% 0 20%;text-align: center;">
+			<input type="text" name="" id="cal1" value="" placeholder="输入数字"/>
+			<select name="" id="calOpera">
+				<option value="" selected="selected">+</option>
+				<option value="">-</option>
+				<option value="">*</option>
+				<option value="">/</option>
+			</select>
+			<input type="text" name="" id="cal2" value="" placeholder="输入数字"/>
+			=
+			<input type="button" id="calBtn" value="计算：" />
+			<span id="calRes">结果</span>
+		</div>
+	</body>
+</html>

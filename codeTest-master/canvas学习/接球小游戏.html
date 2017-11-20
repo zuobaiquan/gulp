@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="can" width="400" height="400" ></canvas>
+</body>
+<script type="text/javascript">
+	
+	window.onload = function(){
+		
+		var can = document.getElementById('can');
+		can.style.cssText = "background: #333;margin: 70px;"
+		
+		//画布宽高
+		var cW = can.width*1;
+		var cH = can.height*1;
+		
+		//滑块属性
+		var qubeW = 10;
+		var qubeH = 80;
+		var qubeStyle = "#fff";
+		var qubeY = (cH-qubeH)/2;//记录纵向轴滑块得位置
+		var qubeX = (cW-qubeH)/2;//记录横向轴滑块得位置
+		
+		//小球属性
+		var ballR = 5;
+		var ballStyle = 'rgba(255,0,0,1)';
+		var ballX = (cW-ballR*2)/2;
+		var ballY = (cH-ballR*2)/2;
+		var context = can.getContext("2d");
+		var addX = random();
+		var addY = random();
+		
+		//动画（可用于停止动画）
+		var ani;
+		
+		function drawRec(top,left){//绘制滑块
+			//context.clearRect(0,0,cW,cH);
+			context.fillStyle = qubeStyle;
+			context.fillRect(0,top,qubeW,qubeH);
+			context.fillRect(cW-qubeW,top,qubeW,qubeH);
+			context.fillRect(left,0,qubeH,qubeW);
+			context.fillRect(left,cH-qubeW,qubeH,qubeW);
+		}
+		
+		function drawBall(ballX,ballY){//绘制小球
+			//context.clearRect(0,0,cW,cH);
+			context.beginPath();
+			context.fillStyle = ballStyle;
+			context.arc(ballX,ballY,ballR,0,Math.PI*2,true);
+			context.fill();
+			context.closePath();
+		}
+		
+		function clear(){//清空画布
+			context.fillStyle = "#000";
+			context.fillRect(0,0,cW,cH);
+		}
+		function random(){
+			return Math.round(Math.random()*5);
+		}
+		
+		function backBall(position){//成功事件——弹回小球
+			if(position==='x'){
+				addX = -addX;
+			}
+			if(position==='y'){
+				addY = -addY;
+			}
+		}
+		function passBall(){//失败事件——穿过画布
+
+				ballX = (cW-ballR*2)/2;
+				ballY = (cH-ballR*2)/2;
+
+		}
+		
+		function listenCollison(suc,err){//监听碰撞
+			if(ballX>=qubeX-ballR*2&&ballX<=qubeX+qubeH){
+				if((ballY<=qubeW&&ballY>=0)||(ballY>=cH-ballR*2-qubeW&&ballY<=cH-ballR*2)){
+					suc('y');
+					console.log("横轴反弹成功")
+				}
+			}
+			if(ballY>=qubeY-ballR*2&&ballY<=qubeY+qubeH){
+				if((ballX<=qubeW&&ballX>=0)||(ballX>=cW-ballR*2-qubeW&&ballX<=cW-ballR*2)){
+					suc('x');
+					console.log("纵轴反弹成功")
+				}
+			}
+			if(!(ballX>=qubeX-ballR*2&&ballX<=qubeX+qubeH)&&!(ballY>=qubeY-ballR*2&&ballY<=qubeY+qubeH)){
+				if(ballX<=qubeW||ballX>=cW-qubeW-ballR*2){
+					err();
+					console.log("纵轴出界了！")
+				}
+				if(ballY<=qubeW||ballY>=cH-qubeW-ballR*2){
+					err();
+					console.log("横轴出界了！")
+				}
+			}
+			
+		}
+		
+		function emit(){
+			addX = random();
+			addY = random();
+			(function go(){
+				listenCollison(backBall,passBall);
+				//backBall();
+				ballX += addX*0.99;
+				ballY += addY*0.99;
+				clear();
+				drawBall(ballX,ballY);
+				drawRec(qubeY,qubeX);
+				ani = requestAnimationFrame(go);
+			})();
+		}
+		
+		emit();
+		
+		
+		can.addEventListener('mousemove',function(event){
+			var top = event.offsetY;
+			var left = event.offsetX;
+			//console.log(top+';'+left);
+			qubeY = top-qubeH/2;
+			if(top>cH-qubeH/2){
+				qubeY = cH-qubeH;
+			}else if(top<=qubeH/2){
+				qubeY = 0;
+			}
+			
+			qubeX = left-qubeH/2;;
+			if(left>cW-qubeH/2){
+				qubeX = cW-qubeH;
+			}else if(left<=qubeH/2){
+				qubeX = 0;
+			}
+		})
+		
+	}
+	//思路是emit()函数里按照屏幕刷新频率不断更新画布，而动画效果是另外的刷新函数更新对象的属性（坐标，大小等）；
+	//这样在emit中专心绘制，还能因此确认对象层级，而动画由其他函数支持。不然如果每个对象都单独有自己的一套绘制，刷新的操作，那么很可能
+	//最终画布上没有元素出现或混乱，因为每次刷新都要清空上次画布中的元素才能实现对对象本身的运动效果。故而一定要在一个统一的刷新频率下才行
+</script>
+</html>
+

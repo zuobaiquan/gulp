@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			while(1){//主线程让他一直执行
+				
+			}
+			document.onclick = function(){//此时点击事件无效，因为主线程未执行完毕
+				alert();
+			}
+			//上诉的写法不容易看出异步的性质，其实它和下述写法一致
+			document.addEventListener('click',function(){//匿名回调函数
+				alert();
+			})
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

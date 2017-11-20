@@ -1,0 +1,195 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<meta http-equiv="X-UA-Compatible" content="IE=7">
+		<title>甬城相关方施工证及资质管理咨询项目</title>
+		<link rel="stylesheet" href="css/css.css" type="text/css">
+		<script type="text/javascript" src="/product/lib/powerbid_new/js/common.js"></script>
+		<script language="JavaScript" src="/product/lib/powerbid_new/js/general.js" type="text/javascript"></script>
+		<script type="text/javascript" src="/product/lib/powerbid_new/js/calendar/WdatePicker.js"></script>
+		<link href="http://192.168.0.12:7024/product/lib/powerbid_new/js/calendar/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="/product/lib/powerbid_new/js/buffalo/prototype.js"></script>
+		<script type="text/javascript" src="/product/lib/powerbid_new/js/buffalo/buffalo.js"></script>
+		<script>
+			var tmpSelect;
+
+			function setSelect(obj) {
+					if (tmpSelect != null)
+						tmpSelect.className = "";
+					obj.className = "selected";
+					tmpSelect = obj;
+				}
+				// Drag DIV
+			document.onmousedown = initDrag;
+			document.onmouseup = new Function("isdrag=false");
+		</script>
+	</head>
+
+	<body scroll="no">
+		<div id="container">
+			<table id="header" width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tbody>
+					<tr>
+						<td>
+							<div class="logo"></div>
+							<div class="buttons">
+								<ul class="topmenu">
+									<li class="left"></li>
+
+									<li>超级管理员，您好！</li>
+									<!--li><a href="/product/struts/pm/toEditCompanyPage.do?handleType=proUpdate&_MENUID=0" target="_blank"><span>个人设置</span></a></li -->
+									<li><a href="/product/POM/powerbid_new/dynamic_page.jsp?CODE=BOS_USER_CHANGE_MY_PWD" target="_blank"><span>修改密码</span></a>
+									</li>
+									<li><a href="javascript:logout_f();" class="ico_quit">退出系统</a>
+									</li>
+									<li class="right"></li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="headBottom">
+							<!-- 头部2级菜单 start -->
+							<ul id="tabmenu">
+
+								<li onclick="setSelect(this)"><a href="left_menu.jsp?sysID=880000000000001226" name="first_menu" target="ddd"><span>我的事务</span></a>
+								</li>
+								<li class="liner"></li>
+
+								<li onclick="setSelect(this)"><a href="left_menu.jsp?sysID=360000000000000003" name="first_menu" target="ddd"><span>施工信息管理</span></a>
+								</li>
+								<li class="liner"></li>
+
+								<li onclick="setSelect(this)"><a href="left_menu.jsp?sysID=360000000000000001" name="first_menu" target="ddd"><span>稽查管理</span></a>
+								</li>
+								<li class="liner"></li>
+
+								<li onclick="setSelect(this)"><a href="left_menu.jsp?sysID=360000000000000002" name="first_menu" target="ddd"><span>二维码生成</span></a>
+								</li>
+								<li class="liner"></li>
+
+								<li onclick="setSelect(this)"><a href="left_menu.jsp?sysID=360000000000000008" name="first_menu" target="ddd"><span>APP发布</span></a>
+								</li>
+								<li class="liner"></li>
+
+								<li onclick="setSelect(this)"><a href="left_menu.jsp?sysID=420000000000000001" name="first_menu" target="ddd"><span>审核模板管理</span></a>
+								</li>
+								<li class="liner"></li>
+
+							</ul>
+							<!-- 头部2级菜单 end -->
+							<div id="sysnav">
+								<div id="subSys">
+									<a onclick="showSubNav(this);" onblur="hideSubNav(this);" id="keyword" class="txt">
+										<input type="text" id="txt">
+									</a>
+									<br>
+									<ul style="display: none; " onmouseover="showSubNav(document.getElementById('keyword'));" onmouseout="hideSubNav(document.getElementById('keyword'));">
+										<li><a href="#" onclick="toSystem('880000000000000159','BUS');getValue(this)">业务管理</a>
+										</li>
+										<li><a href="#" onclick="toSystem('880000000000000085','HY');getValue(this)">系统管理</a>
+										</li>
+										<li><a href="#" onclick="toSystem('110000000000000001','OIS');getValue(this)">支撑管理系统</a>
+										</li>
+										<li><a href="#" onclick="toSystem('powerbos');">POWERBOS</a>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table id="content" width="100%" cellpadding="0" cellspacing="0" border="0" style="height: 635px; ">
+				<tbody>
+					<tr>
+						<td valign="top">
+							<iframe src="left_menu.jsp?sysID=880000000000001226" width="160" id="sidebar" name="ddd" frameborder="0" onload="this.height = (document.documentElement.clientHeight-96) + 'px'" scrolling="auto" height="672px"></iframe>
+						</td>
+						<td class="resizeLayerBorder">
+							<a onclick="toggleFrame('sidebar')" href="#">
+								<img src="/product/lib/powerbid_new/images/btn_remove.gif" hspace="1" id="sbToggleImg">
+							</a>
+						</td>
+						<td valign="top" width="100%">
+							<iframe id="mainboard" name="mainboard" class="mainContent" frameborder="0" width="100%" onload="this.height = (document.documentElement.clientHeight-96) + 'px'" scrolling="yes" height="672px"></iframe>
+							<!--   <iframe id="mainboard" name="mainboard" class="mainContent" src="dynamic_page.jsp?CODE=SM_T_TO_DO&_MENUID=880000000000000165" frameborder="0" width="100%" onload="this.height = (document.documentElement.clientHeight-96) + 'px'" scrolling="yes"></iframe>
+		 -->
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+			<div id="footer">
+				<a href="http://www.freshpower.com.cn" target="blank">版权所有 浙江新能量 Copyright 2014 FRESHPOWER,Inc.  版    本：3.0 </a>
+			</div>
+		</div>
+		<script>
+			document.getElementById('content').style.height = (document.documentElement.clientHeight - document.getElementById('header').clientHeight - 30) + 'px';
+			var menuObj = {
+				innerHTML: "业务管理"
+			}
+			getValue(menuObj);
+			var buffalo = new Buffalo("/product");
+			dealLogout = function(reply) {
+				var result = reply.getResult();
+				//	window.location.href="/product";
+				//	window.location.href="/product/struts/portal/indexAction.do";
+				window.location.href = "/product/POM/powerbid_new/login.jsp";
+			}
+
+			function logout_f() {
+				buffalo.remoteCall("LoginService.logout", [], dealLogout);
+			}
+
+			function getSubMenu(functionId) {
+				buffalo.remoteCall("FunctionService.getSubMenu", [functionId], getSubMenuRs);
+			}
+			getSubMenuRs = function(reply) {
+				var result = reply.getResult();
+				var arrayMenuList = result.arrayMenuList;
+				var htmlStrTmp = "";
+				for (var i = 0; i < arrayMenuList.length; i++) {
+					htmlStrTmp +=
+						'<li onclick="setSelect(this)"><a href="left_menu.jsp?sysID=' + arrayMenuList[i].functionId + '" name="first_menu" id="first_menu' + arrayMenuList[i].functionId + '" target="ddd"><span>' + arrayMenuList[i].functionName + '</span></a></li>' +
+						'<li class="liner"></li>';
+				}
+				$("tabmenu").innerHTML = htmlStrTmp;
+				if (arrayMenuList.length > 0) {
+					$("first_menu" + arrayMenuList[0].functionId).click();
+				}
+			}
+
+			function toSystem(val, permissionCode) {
+					/* hiddenLeftMenu(permissionCode); */
+					if (val == 'powerbos') {
+						window.open("/product/POM/adp/index.jsp");
+					} else {
+						getSubMenu(val);
+					}
+				}
+				//模块菜单隐藏
+
+			function hiddenLeftMenu(permissionCode) {
+					var obj = document.getElementById("sidebar");
+					if ('BUS' == permissionCode) {
+						obj.style.display = "none";
+						document.getElementById('sbToggleImg').src = "../../lib/powerbid_new/images/btn_add.gif";
+						document.getElementById('sbToggleImg').parentElement.parentElement.style.display = "none";
+					} else {
+						obj.style.display = "";
+						document.getElementById('sbToggleImg').src = "../../lib/powerbid_new/images/btn_remove.gif";
+						document.getElementById('sbToggleImg').parentElement.parentElement.style.display = "";
+					}
+				}
+				//showConent('popBody',document.getElementById("popRighto"));
+		</script>
+
+		<div style="position: absolute; z-index: 19700; top: -1970px; left: -1970px; ">
+			<iframe src="http://192.168.0.12:7024/product/lib/powerbid_new/js/calendar/My97DatePicker.htm" frameborder="0" border="0" scrolling="no" style="width: 186px; height: 198px; "></iframe>
+		</div>
+	</body>
+
+</html>

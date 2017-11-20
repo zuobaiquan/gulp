@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//localStorage和sessionStorage的写法一致，函数也是一样的，就是本身的存储性质有差异
+			function storeMessage(objId){
+				var obj = document.getElementById(objId);
+				if(typeof(Storage)!='undefined'){
+					localStorage.setItem('message',localStorage.getItem('message')+';'+obj.value);
+				}else{
+					alert('不支持localStorage存储')
+				}
+			}
+			function showMessage(objId){
+				var obj = document.getElementById(objId);
+				obj.innerText = localStorage.getItem('message');
+			}
+			function removeData(keyName){
+				localStorage.removeItem(keyName);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" name="ip_text" id="ip_text" value="" placeholder="输入存储信息"/>
+		<input type="button" id="ip_btnc" value="存储" onclick="storeMessage('ip_text')"/>
+		<input type="button" id="ip_btnc" value="清空" onclick="removeData('message')"/>
+		<div style="margin-top: 20px;">
+			<input type="button" id="ip_btnd" value="读取" onclick="showMessage('con')"/>
+			<span id="con">点击存储这里显示存储的数据</span>
+		</div>
+		
+	</body>
+</html>

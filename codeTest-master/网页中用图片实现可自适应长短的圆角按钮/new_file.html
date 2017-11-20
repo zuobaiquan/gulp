@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				display:inline-block ;
+				background: url(bt.png) left -0 no-repeat;
+				padding-left: 20px;	
+				margin-right: 20px;
+			}
+			div span{
+				display: block;
+				background: transparent url(bt.png) right -0 no-repeat;
+				padding:0 20px 0 0px;
+				font: 16px "微软雅黑";
+				color: #0f6b06;
+				text-shadow: 0 1px 0 #adfe96;
+				line-height: 28px;
+				margin-right: -4px;
+			}
+			div:hover span{
+				background: url(bt.png) right -28px no-repeat;
+			}
+			/*注意这里要用div:hover span，而不能用div span:hover，用后者会使span和div的背景图不能同步更改*/
+			div:hover{
+				background: url(bt.png) left -28px no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<div><span>短短</span></div>
+		<div><span>中短中短</span></div>
+		<div><span>最长最长最长</span></div>
+		<div><span>原来用图片做圆角也可以自适应啊</span></div>
+	</body>
+</html>

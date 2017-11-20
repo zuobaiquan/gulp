@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 200px;
+				height: 100px;
+				background: green;
+				margin: 300px;
+				border: 1px solid red;
+			}
+			.box:after{
+				display:inline-block;
+				content: "";
+				width: 40px;
+				height: 100px;
+				background: cyan;
+			}
+			.box:before{
+				display: inline-block;;
+				content: "";
+				width: 40px;
+				height: 100px;
+				background: burlywood;
+			}
+			
+			
+			h1{
+				margin-left: 200px;
+			}
+			
+			h1:before{
+				content: open-quote;/*前引号*/
+				
+				display: inline-block;
+				height: 40px;
+				width: 40px;
+				border-radius: 20px;
+				background: #0d4156;
+				color: #fff;
+				line-height: 50px;
+				text-align: center;
+				position: relative;
+				top: 4px;
+				right: 10px;
+			}
+			h1:after{
+				content: close-quote;/*后引号*/
+				
+				display:inline-block;
+				height: 40px;
+				width: 40px;
+				border-radius: 20px;
+				background: #0d4156;
+				color: #fff;
+				line-height: 50px;
+				text-align: center;
+				position: relative;
+				top: 4px;
+				left: 10px;
+			}
+			h1:hover:after,h1:hover:before{
+				background: #00cee1;
+				height: 100px;
+				
+				transition: all 1100ms;
+				-o-transition: all 1100ms;
+				-moz-transition: all 1100ms;
+				-webkit-transition: all 1100ms;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<h1>默认生成的元素是一个内联元素</h1>
+	</body>
+</html>

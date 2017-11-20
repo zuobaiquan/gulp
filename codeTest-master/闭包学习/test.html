@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript">
+        function addSelf(){
+			var i=0;
+		  //<<<<<<<<<<<<<<<<<<
+			function add(){//这就是闭包。什么是闭包：一个A函数内部的B函数能帮助我们获取A里的局部变量的就是一个闭包
+				i++;       //能访问A函数内的变量的实现思路就是在A中新建一个函数B，函数B return这个变量，运行运行函数A后，
+				console.log(i); //return 函数B的引用。接下来在使用时，将函数A的执行结果赋值给一个新的变量，也就是该引用赋值给了这个变量，
+			}             //此时就诞生了一个新的携带A函数内变量的函数。闭包的作用：1.获取函数内部变量 2.让变量始终保存在内存中不被清掉
+		  //>>>>>>>>>>>>>>>>>>
+			return add;//add表示函数的引用（如果alert(add)会输出一个function add(){...}），add()表示执行函数。
+		}
+		var newAdd = addSelf();
+		newAdd();
+		newAdd();
+		newAdd();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

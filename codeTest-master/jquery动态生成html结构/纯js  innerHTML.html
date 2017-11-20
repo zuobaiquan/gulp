@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				width: 100%;
+				border: none;
+				border-collapse: collapse;
+			}
+			table td{
+				padding: 0 20px;
+			}
+			table tbody td,tbody th{
+				border: 1px solid #e1e1e1;
+				text-align: center;
+			}
+			table thead{
+				background: #1c7545;
+				border: 1px solid #1c7545;
+				text-align: right ;
+			}
+			table thead a,table thead a:link,table thead a:visited{
+				font:bold 15px/32px "微软雅黑";
+				color: #fff;
+				text-decoration: none;
+				margin-left: 20px;
+			}
+			table thead a:hover{
+				text-decoration: underline;
+			}
+			table th{
+				background: #e7e7e7;
+				font: bold 14px/28px "微软雅黑";
+				color: #555;
+			}
+			table tbody td{
+				font: normal 14px/28px "微软雅黑";
+				color: #666;
+			}
+			.tanchu{
+				width: 65%;
+				height: 400px;
+				margin: 100px 10%;
+				background: #FFFFFF;
+				position: fixed;
+				z-index: 2;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				
+				
+				document.getElementById("add").onclick = function(){
+					var dialog = document.createElement("div")
+					var dialog_title = document.createElement("div")
+					var block = document.createElement("div")
+					
+					dialog.setAttribute("id","dia")
+					block.setAttribute("id","blo")
+					
+					dialog_title.innerHTML = "<a href='javascript:void(0)' style='color: #fff;text-decoration: none;' onclick='close_dialog()'>关闭</a>"
+					
+					dialog.style.cssText = 
+					'width: 65%;'+
+					'height: 400px;'+
+					'background:#fff;'+
+					'border: none;'+
+					'position: fixed;'+
+					'z-index: 2;'+
+					'left: 15%;'+
+					'top:'+ (document.documentElement.clientHeight-400)*0.5 +'px'+';'
+					
+					block.style.cssText="width: 100%;height: 100%;background: #000;opacity: 0.6;position: fixed;z-index: 1;left: 0;top: 0;"
+					
+					dialog_title.style.cssText = "background:#1c7545;font: 15px/32px 微软雅黑;color:#fff;text-align: right;padding: 0 10px;"
+					
+					document.getElementById("body").appendChild(dialog)
+					document.getElementById("body").appendChild(block)
+					dialog.appendChild(dialog_title)
+					dialog.innerHTML +="<iframe src='http://www.baidu.com' width='100%' height='100%' frameborder='no' style='display: block;'>eee</iframe>"
+				}
+				
+				function close_dialog(){
+					document.getElementById("body").removeChild()
+				}
+				
+			}
+		</script>
+	</head>
+	<body id="body">
+
+		<table id="table">
+			<thead>
+				<tr>
+					<td colspan="4" align="right"><a href="javascript:void(0)" id="add">添加</a><a href="javascript:void(0)" id="delete">删除</a></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>基本工资</th>
+					<th>奖金</th>
+					<th>提成</th>
+					<th>补贴</th>
+				</tr>
+				<tr>
+					<td>2000</td>
+					<td>1000</td>
+					<td>3000</td>
+					<td>500</td>
+				</tr>
+				<tr>
+					<td>2000</td>
+					<td>1000</td>
+					<td>3000</td>
+					<td>500</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

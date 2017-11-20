@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{/*可以是任何对象,类或id,只是用来存储计数器*/
+				counter-reset: dotCount 0 dotCount1 2;/*如果需要多个计数器可以定义多个计数器,如counter-reset: dotCount1 1 dotCount2 2;*/
+			}
+			.dot:before{
+				counter-increment: dotCount 1;
+				/*这个递增设定也不要求一定写在相关元素的伪元素上,可以是任何对象,类或id,只是用来存储计数器递增操作，如apply1.html中的设定*/
+				/*设定计数器的递增倍数，如1则表示倍数为1（初始值为上诉0的下一位即1，不写的话默认也是0），接下来为1*1，2*1，3*1的值，如2则表示倍数为2（初始值为上诉0的下一位即1，不写的话默认也是0），接下来为1*2，2*2，3*的值*/
+				/*每个添加这个样式的元素都会执行一遍这个递增操作,是不断累积的过程。这也是apply1.html实现计数的原理*/
+				content: '这里可以写常量字符-'counter(dotCount,decimal);/*该元素的伪元素使用counter()函数绑定计数器dotCount。decimal表示计数风格，类似list-style-type，还有点，块，罗马数字等等，具体参考上诉参考文章*/
+				font-size: 24px;
+				color: #000066;
+			}
+		</style>
+	</head>
+	<body>
+		<p>参考阅读：
+			<a href="http://www.w3cplus.com/css3/css-counters.html">
+				CSS Counters
+			</a>&nbsp;&nbsp;
+			<a href="http://www.zhangxinxu.com/wordpress/2014/08/css-counters-automatic-number-content/">CSS counter计数器(content目录序号自动递增)详解</a>
+		</p>
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+	</body>
+</html>

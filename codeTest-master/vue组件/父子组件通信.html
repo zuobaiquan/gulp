@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component info="我是父级传递的内容"></my-component>
+			<!--
+				注意使用字面量传递的只能是字符串，如写成info="message"，那么传递过去的就字符串message而不是变量message的值，也就是不能传递表达式的
+				结果，再比如info="1"，传递的是字符串1而不是number：1，如果想穿number型，则需要使用v-bind:info='1'(也就是:info='1')。
+			-->
+			<my-component :info="message"></my-component>
+			<!--:info是v-bind:info的简写。还有个简写：@click是v-on:click的简写-->
+			
+			<my-component info="我是父级传递的内容3" style="color: red;"></my-component>
+			<!--
+				如上style,可以添加未定义的prop，因为组件的通用性，未必能预料每个使用场景，添加的属性和值会添加到根元素上
+				注意的是：其他属性都会覆盖组件模板的根元素的相应属性（如果有的话），但是特例是class和style，不会替换而是合并
+			-->
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//父子组件通信或父为vue应用和内部组件通信通过props向下传递，emit向上发射
+		//通过组件中设定props属性的值开放某个变量用于承接上级传递的变量值
+		//注意：如果使用的是camelCased (驼峰式) 命名的prop,那么在html中使用时，要转换成相对应的 kebab-case (短横线隔开式) 命名
+		//例如：props: ['myProp'],那么<my-component my-prop="我是父级传递的内容"></my-component>
+		Vue.component('my-component',{//tagName,options
+			props: ['info'],
+			template: '<div>{{info}}</div>',
+			data: function(){//没有data中的info变量也不会让数据承接失败，props和data都可以用于定义变量，只是前者用于内部，后者用于开放给外部
+				return {
+					//info: '这是一个组件',//可以作为默认值，如果父级不传递变量值的话
+				}
+			}
+		})
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				message: '我是父级传递的内容2'
+			}
+		})
+		
+		
+	</script>
+</html>

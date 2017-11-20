@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type='text/css'>
+			body,html{
+				height:100%;
+				margin:0;
+				background:#fafafa;
+			}
+			#block{
+				position:relative;
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			#info{
+				position:fixed;
+				z-index:100;
+				top:0;
+				left:0;
+				width: 100%;
+				height: 42px;
+				font:bold 16px/42px '微软雅黑';
+				color:#333;
+				text-align:center;
+				background:#fff;
+				
+				-webkit-box-shadow: 0 2px 4px #999;
+				-moz-box-shadow: 0 2px 4px #999;
+				box-shadow: 0 2px 4px #999;
+			}
+		</style>
+		<script type='text/javascript'>
+			window.onload = function(){
+				var $body = document.body;
+				var $block = document.getElementById('block');
+				var $info = document.getElementById('info');
+				var $windowH = document.documentElement.clientHeight;
+				
+				function leftW(){
+					var suiji = Math.floor(Math.random()*90)
+					return suiji+'%';
+				}
+				
+				function chooseColor(){
+						var colorNum = Math.floor(Math.random()*50)
+						var color_poor = ['#F05E41','#F09541','#F0B841','#F0DB41','#DBE93F','#7CD73A','#37CD7F','#3793CD','#3751CD','#6E37CD','#CD37CD','#DD3B64','#F37E67','#F3AA67','#F3C667','#F3E267','#E2ED65','#96DF61','#5FD799','#5FA9D7','#5F74D7','#8B5FD7','#E46283','#D06A56','#DA9A60','#E0B966','#E6D86C','#D8E26B','#8AC95C','#4C8DB5','#4153A9','#6741AA','#B249B2','#EB89A2','#BB7364','#CB9E74','#D6BA7F','#E0D589','#D6DD89','#93C072','#67B28B','#5B88A5','#475492','#634892','#A056A0','#9C7F79','#B6A393','#C6BBA3','#D6D2B3','#D4D7B5']
+						return color_poor[colorNum];
+				}
+				
+				function animateBox(obj){
+					var setAnimate = setInterval(function(){
+						var objOffsetTop = obj.offsetTop;
+						if(parseFloat(objOffsetTop)<parseFloat($windowH)){
+							obj.style.top = objOffsetTop+1+"px";
+						}else{
+							clearInterval(setAnimate);
+							obj.parentNode.removeChild(obj);
+						}
+					},5)
+				}
+				
+				function creatBox(){
+					//debugger;
+					var $box = document.createElement("div");
+					$box.setAttribute('style','width:50px;height:50px;background:#79bf74;border-radius:100%;position:absolute;left:'+leftW()+';background:'+chooseColor()+";top:0'");
+					//上诉是js为动态对象添加属性的方式，jquery也同理可通过css(''.'')的方式添加。根本在于需要在创建对象的时候添加
+					//属性而不是在以后了还奢求能动态获取这个对象，除非是js的event.target和jquery的on(event,fun())这种在事件
+					//操作中进行获取。
+					$block.appendChild($box);
+					animateBox($box);
+					$info.innerHTML = "<span style=\"border-left:24px solid "+chooseColor()+";padding-left:5px\">"+"当前BOX的数量是：" + $block.childNodes.length;+"</span>"
+				}
+				
+				setInterval(function(){
+					creatBox();
+				},500)
+				
+			}
+		</script>
+	</head>
+	<body>
+	<div id="info"></div>
+	<div id="block"></div>
+	</body>
+</html>

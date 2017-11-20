@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .box{
+            position: absolute;
+            width: 800px;
+            height: 400px;
+            background: #8cbbdd;
+            left: 20px;
+            top: 20px;
+        }
+        .subox{
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background: #e6ad40;
+            left: 40px;
+            top: 10px;
+        }
+        .dot{
+            position: absolute;
+            width: 220px;
+            height: 100px;
+            background: #48c132;
+            left: 100px;
+            top: 0;
+            z-index: 200;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="subox">
+            <div class="dot" style="background:red"></div>
+        </div>
+        <div class="subox" style="left:280px">
+            <div class="dot"></div>
+        </div>
+        <div class="subox" style="left:520px;">
+            <div class="dot"></div>
+        </div>
+    </div>
+</body>
+</html>

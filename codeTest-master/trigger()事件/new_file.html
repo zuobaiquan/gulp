@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			p{
+				font:bold 72px "微软雅黑" ;
+				padding: 20px;
+				border: 1px solid goldenrod;
+				border-radius: 12px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$(function() {
+				$("p").bind("MyEvent",function(){
+					$(this).css("color","red")
+				})
+				$(document).click(function(){
+					$("p").trigger("MyEvent")
+				})
+			})
+		</script>
+		<p>eeee</p>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+.w260{width:260px;}
+.w730{width:730px;}
+.h168{height:168px;}
+/*==content==*/
+.layout-content{margin-top:10px;}
+	.layout-content-slider .lc-column{margin-bottom:10px;}/*==left==*/
+	.layout-content-ct .lc-column{margin-bottom:15px;}/*==right==*/
+	
+	/*==lc-column-head==*/
+	.layout-content-slider .lc-column-head{height:25px; line-height:24px; padding-left:32px; padding-right:12px;}/*==left-标题==*/
+	.layout-content-ct .lc-column-head{ height:21px; line-height:20px; padding-left:20px; margin-bottom:8px;}/*==right-标题==*/
+		.layout-content-slider .lc-column-head span,.layout-content-ct .lc-column-head span{font-size:15px; font-family:"微软雅黑";}
+		.layout-content-ct .lc-column-head span{ font-weight:bold;}
+		.layout-content-ct .lc-column-head a{display:inline-block; height:18px; margin-top:2px; line-height:18px; width:45px; text-align:center;}
+	
+	/*==lc-column-inner==*/
+	.layout-content-slider .lc-column-inner{padding:8px;}/*==left inner==*/		
+	.layout-content-ct .lc-column-inner{padding:12px 8px;} /*==right inner==*/
+	
+	.lc-column-inner h3 a{overflow: hidden;text-overflow:ellipsis;white-space: nowrap;display: block;}
+
+
+/*==库存调剂==*/
+.layout-content-ct .channels{padding-left:0px;}
+	.layout-content-ct .channels li{float:left; height:25px; line-height:20px; width:67px; text-align:center; margin-right:10px; display:inline;}
+	.layout-content-ct .channels li a{ display:inline; width:auto;}
+.lc-column-inner .container{}
+	.lc-column-inner .container thead tr{height:29px; width:714px;}
+	.lc-column-inner .container thead th{text-align:center;}
+	.lc-column-inner .container tbody td{height:24px; padding:2px 3px;}
+	
+/*supernatant*/
+.setUi{ position:fixed; z-index:200; top:177px; left: 50%; margin-left:500px; width:24px;}
+* html .setUi{position:absolute;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||10)));}
+	.setUi a{width:24px; height:192px; display:inline-block; background:url(../../images/shopset/setUi.gif) no-repeat;}
+	.supernatant ul li{width:12px; padding:10px 12px; height:96px; line-height:16px; text-align:center; border-right:1px solid #eeebe7; float:left; }
+	.supernatant ul li.bdrno{ border-right:0 none;}
+	.supernatant ul li a{color:#2e963d;}
+
+

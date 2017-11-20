@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>留言板</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	</head>
+	<body>
+		<div class="yingyong_content">
+			<div class="yingyong_title2">ZFP-DC-VI型序列号编码规则</div>
+			<table class="jiage_table jiage_table2">
+				<tr class="jt_title">
+					<td></td>
+					<td>VI型外置主序列号12位各自对应关系</td>
+					<td>VI型内置eTP序列号12位各自对应关系</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname">产品的类型</td>
+					<td>6---VI</td>
+					<td>6---VI</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname">区分汇集器与主站的通讯方式</td>
+					<td>1---以太网通讯方式<br /> 2---GPRS通讯方式(带失电报警功能）</td>
+					<td>/</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname">区分汇集器与下位机的通讯方式</td>
+					<td>1---只支持485通讯方式<br />2---支持485和网络通讯方式</td>
+					<td>/</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname">区分站点类型</td>
+					<td>
+						1---ZFP-DC-VI-A(受总的遥测监测)（简易版）（配1个485）<br />
+						2---ZFP-DC-VI-B（受总的遥测监测+出线的遥信监测）（简约版）（配1个485）<br />
+						3---ZFP-DC-VI-C（受总与出线的遥测监测）（标准版）(配3个485)<br />
+						4---ZFP-DC-VI-D(门禁版)<br />
+						5---ZFP-DC-VI-E(Zigbee通讯板)<br />
+						6---ZFP-DC-VI-F（Wifi通讯板）<br />
+						7---ZFP-DC-VI-G(受总与出线的遥测监测+5个485)
+					</td>
+					<td>/</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname">箱体的固定方式</td>
+					<td>
+						1---外挂式<br />
+						2---机柜式<br />
+						3---嵌入式
+					</td>
+					<td>/</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname">区分电压等级</td>
+					<td>
+						1---110V<br />
+						2---220V
+					</td>
+					<td>
+						1---110V<br />
+						2---220V
+					</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname">区分接线方式</td>
+					<td>
+						1---3相4线<br />
+						2---3相3线
+					</td>
+					<td>
+						1---3相4线<br />
+						2---3相3线
+					</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname">区分所对应的电流互感器</td>
+					<td>
+						1---16（08）-开合安装式互感器，钳口尺寸：Φ8mm，变比：5A：5mA<br />
+						2---25-开合安装式互感器，钳口尺寸：Φ25mm，变比：100A：40mA<br />
+						3---30-开合安装式互感器，钳口尺寸：Φ30mm，变比：500A：100mA<br />
+						4---QY40-开合安装式互感器，变比：600A：100mA<br />
+						5---内置互感器，变比：5A:5mA
+					</td>
+					<td>
+						1---16（08）-开合安装式互感器，钳口尺寸：Φ8mm，变比：5A：5mA<br />
+						2---25-开合安装式互感器，钳口尺寸：Φ25mm，变比：100A：40mA<br />
+						3---30-开合安装式互感器，钳口尺寸：Φ30mm，变比：500A：100mA<br />
+						4---QY40-开合安装式互感器，变比：600A：100mA<br />
+						5---内置互感器，变比：5A:5mA
+					</td>
+				</tr>
+				<tr>
+					<td class="jt_tdname"></td>
+					<td>9、10、11、12：具体型号流水号</td>
+					<td>
+						5、6、7、8：默认为0<br />
+						9、1011、12：具体型号流水号
+					</td>
+				</tr>
+			</table>
+			
+			<div class="yingyong_title2">ZFP-eTP-VI型型号细则</div>
+			<table class="jiage_table jiage_table2">
+				<tr class="jt_title">
+					<td rowspan="2"></td>
+					<td rowspan="2">型号细分</td>
+					<td colspan="2">回路电压</td>
+					<td colspan="2">互感器选择</td>
+				</tr>
+				<tr class="jt_title">
+					<td>工作电源</td>
+					<td>输入电压</td>
+					<td>回路电流范围</td>
+					<td>电流互感器规格</td>
+				</tr>
+				<tr>
+					<td rowspan="10">ZFP-eTP-VI</td>
+					<td rowspan="4">ZFP-eTP-VI-1Ω</td>
+					<td rowspan="2">110VAC</td>
+					<td rowspan="2">110VAC</td>
+					<td>0A～500A</td>
+					<td>500A/0.1A,KH30</td>
+				</tr>
+				<tr>
+					<td>0A～600A</td>
+					<td>600A/0.1A,KH40</td>
+				</tr>
+				<tr>
+					<td rowspan="2">220VAC</td>
+					<td rowspan="2">220VAC</td>
+					<td>0A～500A</td>
+					<td>500A/0.1A,KH30</td>
+				</tr>
+				<tr>
+					<td>0A～600A</td>
+					<td>600A/0.1A,KH40</td>
+				</tr>
+				
+				<tr>
+					<td rowspan="4">ZFP-eTP-VI-4.7Ω</td>
+					<td rowspan="2">110VAC</td>
+					<td rowspan="2">110VAC</td>
+					<td>0A～100A</td>
+					<td>100A/0.04A，KH25</td>
+				</tr>
+				<tr>
+					<td>0A~5A（取互感器二次侧电流）</td>
+					<td>5A/0.005A，KH16</td>
+				</tr>
+				<tr>
+					<td>220VAC</td>
+					<td>220VAC</td>
+					<td>0A～100A</td>
+					<td>100A/0.04A，KH25</td>
+				</tr>
+				<tr>
+					<td>220VAC</td>
+					<td>220VAC</td>
+					<td>0~5A（取互感器二次侧电流）</td>
+					<td>5A/0.005A，KH16</td>
+				</tr>
+				<tr>
+					<td rowspan="2">ZFP-eTP-VI-5.1Ω</td>
+					<td>110VAC</td>
+					<td>110VAC</td>
+					<td>0A~5A</td>
+					<td>5A/0.005A,SCT2011A</td>
+				</tr>
+				<tr>
+					<td>220VAC</td>
+					<td>220VAC</td>
+					<td>0A~5A</td>
+					<td>5A/0.005A,SCT2011A</td>
+				</tr>
+				<tr class="jt_action">
+					<td colspan="6">注：在实际选择采集器时需考虑按照回路电压等级、回路电流，并按照上述规则选择合适的互感器。</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

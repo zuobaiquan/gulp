@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component :info="message"></my-component>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//https://cn.vuejs.org/v2/guide/components.html
+		Vue.component('my-component',{//tagName,options
+			props: {
+				info: {
+					type: String,
+					required: true,
+					default: '这是默认值'//如果父级没有传值给组件，就会显示默认值
+				}
+			},
+			template: '<div>{{info}}</div>',
+			data: function(){
+				return {
+					//info: '这是一个组件',//可以作为默认值，也可以如上诉直接再default中指定
+				}
+			}
+		})
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				message: '我是父级传递的内容'
+			}
+		})
+		
+		
+	</script>
+</html>

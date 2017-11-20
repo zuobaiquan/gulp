@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,body{
+				width:100%;
+				height:100%;
+				overflow:hidden;
+				background:#247cbb;
+			}
+			.box{
+				padding: 10px;
+				background: #FFFFFF;
+				color: #247cbb;
+				font:bold 18px/18px "微软雅黑";
+				text-align: center;
+				cursor: pointer;
+				border-radius: 6px;
+				
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+	
+		var windowH = document.documentElement.clientHeight;
+//		**********添加box的函数***************	
+		function addBox(){
+			var box = document.createElement('div');
+			box.innerHTML = 'hello world!';
+			box.setAttribute('class','box');
+			
+			var leftL = Math.floor(Math.random()*90);
+			var topL = Math.floor(Math.random()*90);
+			
+			box.style.left = leftL+'%';
+			box.style.top = '-100px';//topL+'%'
+			
+			document.body.appendChild(box);
+			moveBox(box);
+			
+		}
+		
+//		**********改变box属性和内容***************	
+		function changeBox(obj){
+			var objhtml = obj.innerHTML;
+			switch (objhtml){
+				case 'hello world!':
+					obj.innerHTML = 'Delete This';
+					obj.style.background = '#ffff00';
+					break;
+				case 'Delete This' :
+					obj.innerHTML = 'hello world!';
+					obj.style.background = '#ffffff';
+					break;
+			}
+		}
+		
+//		**********移入移出box事件进行相关操作***************
+		document.body.onmouseover = function(event){//注意onmouseover和onmouseenter的区别
+			var thisBox = event.target;
+			if(thisBox.tagName != 'BODY'){
+				changeBox(thisBox);
+			}
+			//alert(thisBox.tagName);
+		}
+		document.body.onmouseout = function(event){
+			var thisBox = event.target;
+			if(thisBox.tagName != 'BODY'){
+				changeBox(thisBox);
+			}
+			//alert(thisBox.tagName);
+		}
+		
+//		**********删除对象的函数***************
+		function deleteBox(obj,movego){
+			obj.parentNode.removeChild(obj);
+			obj=null;//回收内存，上面removeChild()只是删除显示列表中的对象，内存中依旧存在，这样操作可以回收内存，提高性能
+			clearInterval(movego);//必须关闭循环，虽然删掉了对象但循环并未关系，即便页面没有几个元素但依旧会越来越卡
+		}
+		
+//		**********点击box事件进行相关操作***************
+		document.body.onclick = function(event){
+			var thisBox = event.target;
+			if(thisBox.tagName != 'BODY'){
+				deleteBox(thisBox);
+			}
+		}
+		
+		
+//		**********box移动函数***************
+		function moveBox(obj){
+			obj=obj||{};//为了防止obj不存在导致程序阻塞报错，可以这样判断，有则还是本身，没有就是空，如果传过来的是字符串可以obj=obj||'';这里可能并不需要，但这是一个很好 的习惯，要保持
+			var movego=0;
+			var speed = Math.floor(Math.random()*10);
+			movego = setInterval(function(){
+				if(parseInt(obj.style.top) < parseInt(windowH)){
+					obj.style.top = parseInt(obj.style.top)+1+'px'//每过speed秒添加添加1px，用以表示移动速度
+				}else{
+					deleteBox(obj,movego);
+				}
+			},speed)
+			//console.log(speed)
+		}
+		
+//		**********添加五个box***************
+//		for (i=0;i<5;i++) {
+//			addBox();
+//		}
+		setInterval(function(){
+			addBox();
+		},2000)
+	</script>
+</html>

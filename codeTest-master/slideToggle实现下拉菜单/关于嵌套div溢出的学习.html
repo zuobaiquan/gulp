@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.bigBox{
+				display: inline-block;
+				border: 1px solid red;
+				margin: 200px 0 0 200px;
+				width: 40px;
+				height: 40px;
+				/*overflow: hidden;*/	
+			}
+			.secendBox{
+				display: inline-block;
+				border: 1px solid black;	
+			}
+			.smallBox{
+				width: 100px;
+				height: 100px;
+				background: #0066FF;	
+			}
+			.smallBox2{
+				width: 100px;
+				height: 100px;
+				margin-left: 200px;
+				margin-top: 100px;
+				background: green;	
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".smallBox").toggle(
+					function(){
+					$(".smallBox").animate({width:"300"})
+					},
+					function(){
+						$(".smallBox").animate({height:"300"})
+					}
+					)
+			})
+		</script>
+	</head>
+	<body>
+		<div class="bigBox">
+			<div class="secendBox">
+				<div class="smallBox"></div>
+			</div>
+		</div>
+		<div class="smallBox2"></div>
+	</body>
+</html>

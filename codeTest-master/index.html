@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>menu</title>
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		<style type="text/css">
+			.ul1{
+				padding: 0;
+				margin: 100px;
+			}
+			.box1{
+				display: block;
+				float: left;
+				padding:0 40px;
+				font: 26px "微软雅黑";		
+				font-weight: normal;
+				line-height: 36px;
+				border-left: 1px solid #333333;
+				background-color: red;
+			}
+			.li1{
+				font: 16px "微软雅黑";
+				font-weight: normal;
+/*				border-bottom: 1px solid #ffffff;*/
+				margin: 0;
+				padding:5px 0;
+				list-style: none;
+			}
+			
+		</style>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$("#subNav1,#subNav2,#subNav3").hide();
+			$("#"+this.id).mouseenter(function(){
+					$("#"+this.id:).show();
+				})
+			$("#nav1").mouseout(function(){
+					$("#subNav1").hide();
+				})
+//			alert("hello world!")
+
+		})		
+		</script>
+		
+	</head>
+	<body>
+		<ul class="ul1" id="box">
+			<li class="box1" id="nav1">这是菜单
+				<ul id="subNav1">
+					<li class="li1">选项1</li>
+					<li class="li1">选项2</li>
+					<li class="li1">选项3</li>
+				</ul>
+			</li>
+			<li class="box1" id="nav2">这是菜单
+				<ul id="subNav2">
+					<li class="li1">选项1</li>
+					<li class="li1">选项2</li>
+					<li class="li1">选项3</li>
+				</ul>
+			</li>
+			<li class="box1" id="nav3">这是菜单
+				<ul id="subNav3">
+					<li class="li1">选项1</li>
+					<li class="li1">选项2</li>
+					<li class="li1">选项3</li>
+				</ul>
+			</li>
+			
+		</ul>
+	</body>
+</html>

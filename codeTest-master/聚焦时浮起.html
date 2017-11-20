@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 20px;
+				background: #fafafa;
+			}
+			.float_t{
+				width: 100%;
+				border: none;
+				border-collapse: collapse;
+			}
+			.float_t td{
+				border: 1px solid #f3f3f3;
+			}
+			.block{
+				width: 100%;
+				height: 180px;
+				background: #fcfcfc;
+				transition: all 0.3s;
+				position: relative;
+				transition: all 0.3s;
+			}
+			.block:hover::after{
+				position: absolute;
+				z-index: 2;
+				content: '';
+				width: 100%;
+				height: 180px;
+				left: 0;
+				top: 0;
+				background: #fefefe;
+				
+			}
+			.block:hover::before{
+				position: absolute;
+				z-index: 1;
+				content: '';
+				width: 94%;
+				height: 180px;
+				left: 3%;
+				top: 0;
+				box-shadow: 0px 10px 24px #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<table class="float_t" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+				<td>
+					<div class="block"></div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			//这一节主要实践使用生成器实现异步编程
+			console.log(1);//其他任务
+			function* fun1(){
+				var asyncOp1 = yield setTimeout(function(){//异步任务
+					console.log(2);
+				},1000);
+				var asyncOp1 = yield setTimeout(function(){//异步任务
+					console.log(3);
+				},1000);
+				console.log(4)//其他任务
+			}
+			let fun1do = fun1();
+			fun1do.next();
+			fun1do.next();
+			fun1do.next();
+			//输出1，4，2，3。2，3均延时1秒同时出现，这不是我们要的结果，我们希望异步任务同步化，也就是只有执行完一步再去执行
+			//另一步。变通方式是类似回调函数的方式，把希望执行的任务放在异步任务内部，就像下述：
+			//var asyncOp1 = yield setTimeout(function(){//异步任务
+			//	console.log(2);
+			//	fun1do.next();//这样就会执行完异步任务再去执行别的任务，但这和传统的方式有何异呢。我们希望的是像promise一样结构简单清晰
+			//},1000);
+			
+			//再见下一例
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

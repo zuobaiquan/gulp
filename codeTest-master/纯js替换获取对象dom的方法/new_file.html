@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				font: 18px/40px "微软雅黑";
+				border: 1px solid #d7d7d7;
+				margin: 20px 0;
+				padding: 0 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.getElementById("btn").onclick = function(){
+					alert(document.getElementById("box").innerHTML)
+					document.getElementById("box").innerHTML = "innerHTML改变的是对象内部的内容"
+				}
+				document.getElementById("btn2").onclick = function(){
+					alert(document.getElementById("box").outerHTML)
+					document.getElementById("box").outerHTML = "outerHTML改变的是对象本身"
+				}
+				document.getElementById("btn3").onclick = function(){
+					alert('I love you,You love me'.replace('love','hate'))
+					alert('I love you,You love me'.replace(/love/g,'hate'))
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">点击下方的按钮改变相关内容</div>
+		<input type="button" name="" id="btn"  value="innerHTML的方法" />
+		<input type="button" name="" id="btn2"  value="outerHTML的方法" />
+		<input type="button" name="" id="btn3"  value="replace的方法" />
+	</body>
+</html>

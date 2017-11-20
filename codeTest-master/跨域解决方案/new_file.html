@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="margin: 20px 100px;">
+		<h3 style="color: #0055aa;">学习参考：</h3>	
+		<a target="_blank" href="http://blog.csdn.net/joyhen/article/details/21631833">前端解决跨域问题的8种方案（最新最全）</a>
+		<br/><a target="_blank" href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html">浏览器同源政策及其规避方法</a>
+		<br/><a target="_blank" href="http://www.ruanyifeng.com/blog/2016/04/cors.html">跨域资源共享 CORS 详解</a>
+		<h3 style="color: #0055aa;">阐述：</h3>
+		<b>同源</b> 是指域名（子域名一致也不行），协议，端口一致，所有的浏览器都遵循同源策略，三点有一点不一致的访问都属于跨域访问。浏览器默认是都不支持跨域访问的，
+		（1） Cookie、LocalStorage 和 IndexDB 无法读取，（2） DOM 无法获得，（3） AJAX 请求不能发送，这三方面会受到禁止。
+		但很多时候我们需要一个页面操作另一个页面或iframe中页面的内容，或请求不同服务器下的接口数据，这都是常见的常见的数据交互。下述几种规避同源策略实现
+		跨域访问的方式。
+		<h4>·分成两种情况，一种是主域名相同，一种是完全不同源</h4>
+		<h5>—主域名相同的情况实现跨域访问，解禁上诉三方面？</h5>
+		<p style="background: #f5f5f5;padding: 10px;">
+			比方说w1.example.com/a.html需要w2.example.com/b.html访问这种情况只要在需要访问的双方页面上注明：<b>document.domain = 'example.com';</b>
+			就可以实现<b>cookie</b>的访问和<b>iframe中页面</b>的通信问题，但是LocalStorage 、 IndexDB 、不同的页面和AJAX还是无法通信。
+		</p>
+		<h5>—完全不同源的情况下</h5>
+		<p style="background: #f5f5f5;padding: 10px;">
+			目前完全不同源的情况下的跨域访问，在解决上诉前两个问题时主要用到三种技术：<b>1、锚点（访问链接中加入片段识别码#xxx）;2、window.name;3、h5的跨文档通信API（window.postMessage）</b>
+			对于第三个问题，AJAX的请求，跨域情况下可以通过JSONP、webSocket和CORS的方式，其中CORS和JSONP在前端的操作是一样的，只是如果检测到跨域，支持CORS的浏览器（ie得10以上），就会自动
+			在http请求的头中加入origin字段，携带当前源域名地址，关键还是服务器端的配置，检测传过来的源域名地址是否在白名单中
+		</p>
+	</body>
+</html>

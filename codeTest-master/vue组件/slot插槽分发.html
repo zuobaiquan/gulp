@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component>
+				<span>这是插入的内容</span>
+			</my-component>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//前述讲解得都是注册一个组件以及组件之间如何通信，但有时候我们注册得组件都是需要复用得，这就要求组件有很好得扩展性能满足不同开发者得需求
+		//就像脚手架一样，一个扩展能力强的组件应该是一个框架，里面的可定制内容可以按照需求自定义，也就是可以随意插拔，于是
+		//我们的组件需要预留插槽，方便我们插入自定义内容，这些自定义内容写在组件的子级，也就是组件标签的内部
+		Vue.component('my-component',{//tagName,options
+			template: '<div><slot>这是默认内容，没有分发内容才会显示</slot></div>',
+			data: function(){
+				return {
+					//val: '',
+				}
+			}
+		})
+
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				
+			}
+		})
+		
+	</script>
+</html>

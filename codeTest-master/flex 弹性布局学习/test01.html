@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,html{
+				height: 100%;
+				margin: 0;
+			}
+			.box{
+				height: 100%;
+				background: lightpink;
+				display: -webkit-flex;
+				flex-flow: column wrap;/*这里是flex-direction和flex-wrap两个属性的缩写，分别表示主轴方向和主轴上的项目是否可以换行*/
+				justify-content: space-around;/*规定项目在"主轴"上的对齐方式,因为下述对项目的属性设置，删掉这句不会影响当前布局*/
+				align-items: stretch;/*定义项目在"交叉轴"上如何对齐。stretch值意为伸展开撑满*/
+				
+			}
+			.item{
+				font: 16px/24px "微软雅黑";
+				color: #fff;
+				text-align: center;
+				margin:4px;
+				background: lightcyan;
+				
+				flex: 1 1 auto;/*flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。意为：1:主轴方向可自适应放大 ， 1:主轴方向自适应缩小，项目的主轴方向宽度为本身宽度（浏览器根据这个属性，计算主轴是否有多余空间）。后两个属性可选。*/
+			}
+			.itemPlus{
+				background: lightseagreen;
+				height: 300px;/*这句话的作用是当主轴方向为横向时，设置高度为300px，此时宽度为“flex: 0 0 50px;”中的50px*/
+				width: 300px;/*这句话的作用是当主轴方向为纵向时，设置宽度为300px，此时高度为“flex: 0 0 50px;”中的50px，这样就算改变摆列方式也能视觉统一*/
+				flex: 0 0 50px;/*使用flex-shrink设置大小有个好处就是这个值是主轴方向的宽度，如果主轴方向改变那么看上去宽度也就是高度*/
+			}
+			.sub_item{
+				background:blue;
+				display: flex;
+				flex-flow: column wrap;
+				align-items: stretch;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="item"><span class="sub_item">1</span></div>
+			<div class="item itemPlus"><span class="sub_item">2</span></div>
+			<div class="item"><span class="sub_item">3</span></div>
+			<div class="item"><span class="sub_item">4</span></div>
+		</div>
+	</body>
+</html>

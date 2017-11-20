@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="res"></div>
+		<input type="file" name="" id="file" value="click" />
+	</body>
+	<script type="text/javascript">
+			
+			//参见：https://developer.mozilla.org/zh-CN/docs/Web/API/Blob
+			//【理解DOMString、Document、FormData、Blob、File、ArrayBuffer数据类型】http://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/
+			
+			//blob对象是js中一个存储二进制数据的对象,如图片，文件。它包括两个属性：size和type,前者表示二进制字节数，
+			//也就是俗称的文件大小，后者表示文件类型(MIME)，如image/jpeg。且都是只读属性不能更改。
+			
+			//*****创建方式：
+			//var newBlob = new Blob([Array parts],[BlobPropertyBag properties])
+			//参数中，前者表示添加到newBlob中的数据数组，可以是任意元素，因为计算机上的任意对象本质上都是二进制数据，
+			//可以是DOMString（可以理解为就是字符串）,Blob,ArrayBuffers（缓存在内存中固定长度的二进制数据源，生成后不能更改）
+			//后者为一个对象，设置Blob对象的一些属性，主要是type属性，表示数据来源的类型（MIME），如image/jpeg。
+			
+			//*****获取方式：
+			//从blob对象中获取数据的唯一方式是 使用FileReader()。
+			//参见：https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader
+			//FileReader 对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，
+			//使用 File 或 Blob 对象指定要读取的文件或数据。
+			
+			//****几种读取方式的解释：(字符编码笔记：ASCII，Unicode和UTF-8  http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
+			//readAsText(blob,"UTF-8")：以UTF-8的编码方式读取blob中的二进制数据作为result的值
+			//readAsDataURL(blob):以Data URL的方式读取二进制数据作为result的值，也就是俗称的base64编码方式编译成URL（ Data URL简介及Data URL的利弊  http://www.cnblogs.com/xuechenlei/p/5940371.html）
+			//readAsBinaryString(blob)：读取blob的原始二进制数据作为result的值(非标准，不建议使用，使用readAsArrayBuffer() 代替)
+			//readAsArrayBuffer(blob): 以ArrayBuffer的方式读取blob中的二进制数据作为result的值（ArrayBuffer缓存在内存中固定长度的二进制数据源，生成后不能更改）
+			//注意：readAsBinaryString已经废弃，因为不建议直接获取二进制数据，因为我们的操作都是视觉化的，数据的展示
+			//依靠编码和解码，在页面输出获取到的数据我们可以看到是乱码的，因为并不知道怎么编码。正确的做法应该是readAsArrayBuffer
+			//把数据缓存在内存中，这样才能保证数据的保真不被篡改，然后用它辅以正确的解读方式来操作
+			
+			let $res = document.getElementById('res');
+			//DOMString——text
+			var blob1 = new Blob(["例1：hello world!"],{type : 'text/plain'});//数据写入blob1对象
+			//console.log(blob),输出：Blob { size: 12, type: "text/plain" }
+			let reader = new FileReader();
+			reader.readAsText(blob1);//读取blob1对象
+			reader.onload = function(){//读取成功后（也可以使用onloadend，表示读取结束事件不管是否成功）
+				$res.innerHTML+=reader.result;//输出 hello world!
+			}
+			//DOMString——html
+			var blob2 = new Blob(["<ul>例2：<li>1</li><li>2</li></ul>"],{type : 'text/html'});//数据写入blob2对象
+			let reader2 = new FileReader();
+			reader2.readAsText(blob2);//读取blob2对象
+			reader2.onload = function(){//读取成功后（也可以使用onloadend，表示读取结束事件不管是否成功）
+				$res.innerHTML+=reader2.result;//页面显示渲染后的结果
+			}
+			//DOMString——javascript
+			var blob3 = new Blob(["<script type='text/javascript'>alert('例3：弹出成功')<\/script>"],{type : 'text/javascript'});//数据写入blob3对象
+			let reader3 = new FileReader();
+			reader3.readAsText(blob3);//读取blob3对象
+			reader3.onload = function(){//读取成功后（也可以使用onloadend，表示读取结束事件不管是否成功）
+				$res.innerHTML+=reader3.result;//弹出信息
+			}
+			//还有更多文件类型参见:http://www.w3school.com.cn/media/media_mimeref.asp
+			//https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+			
+			//image（其他文件一样的道理）
+			//网页中最常使用的方式是通过地址链接载入图片，那我们怎么将图片转换成blob对象呢。
+			//图片进入web页面,传统的就两种方式，一种是通过地址请求加载到页面，比方说传统的img标签，一种是input，'file'的方式,
+			//对于前者，浏览器通过url获取到二进制数据并渲染在页面上，我们能知道的只有一个url，而得不到图片本身的数据，所以
+			//我们如果能替代浏览器得到这个请求到的二进制数据不就可以生成blob对象了，上诉后者就是通过file打开本地资源管理器载入页面的
+			//就是二进制数据，而【 File 接口基于Blob，继承 blob功能并将其扩展为支持用户系统上的文件】（MDN https://developer.mozilla.org/zh-CN/docs/Web/API/Blob）
+			//file的方式可以获取到blob对象，如下例：
+			
+			//http://www.cnblogs.com/zichi/p/html5-file-api.html
+			var $file = document.getElementById('file');
+			var reader4 = new FileReader();
+			$file.onchange = function(){
+				reader4.readAsArrayBuffer(document.getElementById('file').files[0]);//注意需要使用files属性选择具体哪个文件
+				reader4.onload = function(){
+					$res.innerHTML+= reader4.result;
+				}
+			}
+			
+			//回到上诉未结的问题，现在通过file加载的方式我们可以获取img或其他任何文件的ArrayBuffer，但对于网络请求来
+			//的数据怎么获取它的源二进制数据呢，我们知道http请求回来的肯定是二进制的数据，之所以会最终得到不同的数据类型
+			//和xhr请求中的requestType的设置有关，如果未设置则默认采用数据本身的MIME类型来解析，在传统的xhr level1
+			//中，我们可以获取到的数据类型只有6种：xml,html,script,json,jsonp,text。也就是无法获取二进制数据，但是在
+			//xhr level2中确实可以的，
+			//参见：
+			//【ajax 请求二进制流 图片 文件 XMLHttpRequest 请求并处理二进制流数据 之最佳实践】  http://www.cnblogs.com/cdemo/p/5225848.html
+			//【XMLHttpRequest Level 2 使用指南】  http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html
+			
+			//具体实例参见 【js异步编程】中的【fetch.html】
+		</script>
+</html>

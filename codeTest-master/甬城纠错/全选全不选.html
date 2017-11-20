@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<FORM onsubmit="return anyChecked()" method=post name=form1 action="">
+			全选:
+			<INPUT id=checkAll onclick=checkall() type=checkbox> 多项选择框列表:
+			<INPUT value=1 type=checkbox name=cb>
+			<INPUT value=2 type=checkbox name=cb>
+			<INPUT value=3 type=checkbox name=cb>
+			<INPUT value=submit type=submit name=Submit>
+		</FORM>
+		js代码
+		<SCRIPT language=javaScript>
+			 //全选或全部不选      
+			function checkall() {
+					var isChecked = (document.form1.checkAll.checked == true);
+					var elements_all = document.form1.elements;
+					for (i = 0; i < elements_all.length; i++) {
+						var element = elements_all[i];
+						if (element.type == "checkbox") {
+							element.checked = isChecked;
+						}
+					}
+				}
+				//是否有checkbox被选中      
+
+			function anyChecked() {
+				var elements_any = document.form1.elements;
+				for (i = 0; i < elements_any.length; i++) {
+					var element = elements_any[i];
+					if (element.checked == true) {
+						return true;
+					}
+				}
+				return false;
+			}
+		</SCRIPT>
+	</body>
+
+</html>

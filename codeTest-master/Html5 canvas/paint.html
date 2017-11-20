@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		body{
+			background: #fcfcfc;
+		}
+			.main{
+				height: 500px;
+				background: #00593d;
+				border: 10px solid #d0bd83;
+				border-radius: 4px;
+				box-shadow: 0 2px 0px #694f12;
+				
+				font: 14px "微软雅黑" !important;
+				
+				margin: 20px auto ;
+			}
+			canvas{
+				width: 100%;
+				height: 100%;
+			}
+			.juxing{
+				background: red;
+				height: 20px;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				var mycanvas = document.getElementById("myCanvas");
+				var mycontext = mycanvas.getContext("2d");
+				$(".main").mousemove(function(e){
+					 $(".juxing").html("X: " + e.pageX + ", Y: " + e.pageY);
+					 
+					mycontext.strokeStyle = "#fff";
+			        mycontext.fillStyle = "#fff";
+			        mycontext.moveTo(e.pageX-20, e.pageX-20);
+			        mycontext.lineTo(e.pageX-20, e.pageY-20);
+			        mycontext.stroke();
+
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="juxing"></div>
+		<div class="main">
+			<canvas id="myCanvas" width="" height=""></canvas>
+		</div>
+	</body>
+</html>

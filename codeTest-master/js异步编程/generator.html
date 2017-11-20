@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//参见：【Generator】https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Generator
+			//【Generator 函数的含义与用法】 http://www.ruanyifeng.com/blog/2015/04/generator.html
+			//generate（生成器）可以中断函数执行
+			
+			//function* fun(){}的方式创建一个生成器
+			function* step(){
+				console.log(1);
+				yield 2;
+				console.log(3);
+				yield 4;
+				console.log(5);
+				var res = yield 6;//注意在这一步stepFun.next()的时候只是执行了yield后面的语句，赋值会在下一个next()执行
+				console.log(res);
+			}
+			//next()执行函数到下一个中断的地方，返回中断的对象（由 yield表达式生成的值）和是否存在中断。
+			//返回一个包含属性done和value的对象。当遍历到生成器末端时，done返回true表示遇到yield当前被中断
+			//value返回的是中断后面的值，如上诉2,4，可以是任意类型。
+			//next(param)传递一个值给生成器
+			
+			let stepFun = step();
+			console.log(stepFun)
+			console.log(stepFun.next())
+			console.log(stepFun.next())
+			console.log(stepFun.next())
+			console.log(stepFun.next(8))//传入参数值8，表示设置上一部中断任务的返回值为8，并传递给下一步任务作为变量
+			//输出：
+			//Generator {  }//执行函数生成一个生成器对象
+			//1
+			//Object { value: 2, done: false }
+			//3
+			//Object { value: 4, done: false }
+			//5
+			//Object { value: 6, done: false }
+			//8
+			//Object { value: undefined, done: true }
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

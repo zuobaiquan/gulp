@@ -1,0 +1,301 @@
+/* ============================================
+Style for table page.
+Created by sky at 2008-9-23
+============================================ */
+.btn_link{
+    background:transparent url(../images/btnlf.png) left top no-repeat;
+    height:22px;
+    padding:0px 0px 0px 10px;
+    float:left;
+    white-space:nowrap;
+    margin:0px 5px;
+}
+.btn_link span{
+    background:transparent url(../images/btnrt.png) right top no-repeat;
+    color:#0B333C !important;
+    line-height:22px;
+    padding:0px 15px 0px 5px;
+    font-weight:bold;
+    cursor:pointer;
+    float:left;
+    white-space:nowrap;
+}
+.btn_link:hover{
+    background:transparent url(../images/btnlf.png) left -22px no-repeat;
+}
+.btn_link:hover span{
+    background:transparent url(../images/btnrt.png) right -22px no-repeat;
+}
+.btn_black{
+    background:transparent url(../images/button_bg_left.gif) left top no-repeat;
+    height:24px;
+    padding:4px 0px 5px 10px;
+    *padding:0px 0px 0px 10px;
+    white-space:nowrap;
+}
+.btn_black span{
+    background:transparent url(../images/button_bg_rihgt.gif) right top no-repeat;
+    color:#fff !important;
+    line-height:24px;
+    padding:4px 15px 5px 5px;
+    *padding:5px 15px 5px 5px;
+    cursor:pointer;
+    white-space:nowrap;
+}
+.btn_black:hover{
+    background-position:left -24px;
+}
+.btn_black:hover span{
+    background-position:right -24px;
+}
+
+.btn_red{
+    background:transparent url(../images/button_bg_left.gif) left -48px no-repeat;
+    height:24px;
+    padding:4px 0px 5px 10px;
+    *padding:0px 0px 0px 10px;
+    white-space:nowrap;
+}
+.btn_red span{
+    background:transparent url(../images/button_bg_rihgt.gif) right -48px no-repeat;
+    color:#848484 !important;
+    line-height:24px;
+    padding:4px 15px 5px 5px;
+    *padding:5px 15px 5px 5px;
+    cursor:pointer;
+    white-space:nowrap;
+}
+.btn_red:hover{
+    background-position:left -72px;
+}
+.btn_red:hover span{
+    background-position:right -72px;
+}
+
+.edit{
+    background:transparent url(../images/buttons_bg.gif) left top no-repeat;
+    width:60px;
+    height:22px;
+    border:0px;
+    display:block;
+}
+.edit:hover{
+    background-position:left -22px;
+}
+.add{
+    background:transparent url(../images/buttons_bg.gif) left -44px no-repeat;
+    width:60px;
+    height:22px;
+    border:0px;
+    display:block;
+}
+.add:hover{
+    background-position:left -66px;
+}
+.delete{
+    background:transparent url(../images/buttons_bg.gif) left -88px no-repeat;
+    width:60px;
+    height:22px;
+    border:0px;
+    display:block;
+}
+.delete:hover{
+    background-position:left -110px;
+}
+.info{
+    background:transparent url(../images/buttons_bg.gif) left -132px no-repeat;
+    width:110px;
+    height:22px;
+    border:0px;
+    display:block;
+}
+.info:hover{
+    background-position:left -154px;
+}
+.help{
+    background:transparent url(../images/buttons_bg.gif) left -176px no-repeat;
+    width:60px;
+    height:22px;
+    border:0px;
+    display:block;
+}
+.help:hover{
+    background-position:left -198px;
+}
+.red{
+    color:#FF0000;
+    margin:0px 5px;
+}
+.btn_delete{
+    background:transparent url(../images/buttons.gif) left top no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+    margin:0px 3px;
+}
+.btn_add{
+    background:transparent url(../images/buttons.gif) -16px top no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+    margin:0px 3px;
+}
+.btn_edit{
+    background:transparent url(../images/buttons.gif) -32px top no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+    margin:0px 3px;
+}
+.btn_check{
+    background:transparent url(../images/buttons.gif) -48px top no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+    margin:0px 3px;
+}
+.btn_detail{
+    background:transparent url(../images/buttons.gif) -64px top no-repeat;
+    width:16px;
+    height:16px;
+    float:left;
+    margin:0px 3px;
+}
+.link,
+.tabelTitle .operatoin li a{
+    background:transparent url(../images/button_left.gif) left top no-repeat;
+    line-height:20px;
+    padding:0px 0px 0px 10px;
+    font-weight:normal;
+    cursor:pointer;
+    float:left;
+    margin:3px 0px 0px 0px;
+    display:inline;
+}
+.link:hover,
+.tabelTitle .operatoin li a:hover{
+    background:transparent url(../images/button_left.gif) left -20px no-repeat;
+}
+.link span,
+.tabelTitle .operatoin li a span{
+    background:transparent url(../images/button_right.gif) right top no-repeat;
+    padding:0px 12px 0px 2px;
+    border:0px;
+    float:left;
+
+}
+.link:hover span,
+.tabelTitle .operatoin li a:hover span{
+    background:transparent url(../images/button_right.gif) right -20px no-repeat;
+}
+/*--pageInfo--*/
+.first{
+    background:transparent url(../images/page_info.gif) left top no-repeat;
+    width:18px;
+    height:18px;
+    display:block;
+    margin-top:3px;
+}
+.first:hover{
+    background-position:-18px top;
+}
+.forward{
+    background:transparent url(../images/page_info.gif) -36px top no-repeat;
+    width:18px;
+    height:18px;
+    display:block;
+    margin-top:3px;
+}
+.forward:hover{
+    background-position:-54px top;
+}
+.next{
+    background:transparent url(../images/page_info.gif) -72px top no-repeat;
+    width:18px;
+    height:18px;
+    display:block;
+    margin-top:3px;
+}
+.next:hover{
+    background-position:-90px top;
+}
+.end{
+    background:transparent url(../images/page_info.gif) -108px top no-repeat;
+    width:18px;
+    height:18px;
+    display:block;
+    margin-top:3px;
+}
+.end:hover{
+    background-position:-126px top;
+}
+.btn_go{
+    background:transparent url(../images/page_info.gif) -144px top no-repeat;
+    width:18px;
+    height:18px;
+    border:0px;
+}
+select{
+    border:1px solid #ccc;
+    background:#fff;
+}
+.text{
+    border:1px solid #ccc;
+}
+textarea{
+    width:90%;
+    border:1px solid #ccc;
+}
+.button_blank{
+    background:transparent url(../images/button_bg.jpg) left top repeat-x;
+    border:1px solid #127A65;
+    height:22px;
+    *height:24px;
+    line-height:18px;
+    padding:0px 10px;
+    color:#fff;
+    margin:0px 10px;
+}
+.button_red{
+    background:transparent url(../images/button_bg.jpg) left -22px repeat-x;
+    border:1px solid #BCBCBC;
+    height:22px;
+    *height:24px;
+    line-height:22px;
+    padding:0px 5px;
+    color:#848484;
+    margin:0px 10px;
+}
+.icon_link{
+    margin:0px 2px;
+}
+.lista{
+    border-right:1px solid #999;
+    padding-right:8px;
+    margin-right:8px;
+}
+
+#uploadifyUploader{
+    float:left;
+}
+.btnUpload{
+    background:url(../images/button_bg.jpg) left top repeat-x;
+    float:left;
+    color:#fff !important;
+    line-height:20px;
+    display:block;
+    padding:0px 10px;
+    border:1px solid #01579D;
+    margin:0px 5px;
+}
+.btnCancel{
+    background:url(../images/button_bg.jpg) left -22px repeat-x;
+    float:left;
+    color:#848484 !important;
+    line-height:20px;
+    display:block;
+    padding:0px 10px;
+    border:1px solid #BCBCBC;
+    margin:0px 5px;
+}
+

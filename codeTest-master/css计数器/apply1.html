@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				counter-reset: selectCount 0;
+			}
+			input:checked{
+				counter-increment: selectCount 1;
+			}
+			.num::before{
+				content: counter(selectCount);
+				color: #FF0000;
+				font:bold 14px/1 sans-serif;
+				margin: 0 10px;
+			}
+		</style>
+	</head>
+	<body>
+		参考阅读：
+		<a href="http://www.zhangxinxu.com/wordpress/2014/12/css-counters-pseudo-class-checked-numbers/">
+			小tip:CSS计数器+伪类实现数值动态计算与呈现
+		</a><br />
+		<input type="checkbox" name="" id="pg" value="苹果" /><label for='pg'>苹果</label><br />
+		<input type="checkbox" name="" id="xj" value="香蕉" /><label for='xj'>香蕉</label><br />
+		<input type="checkbox" name="" id="bl" value="菠萝" /><label for='bl'>菠萝</label><br />
+		<input type="checkbox" name="" id="cz" value="橙子" /><label for='cz'>橙子</label><br />
+		您选中了<span class="num"></span>项
+	</body>
+</html>

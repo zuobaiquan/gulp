@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.tab{
+				width: 120px;
+				height: 36px;
+				border: 1px solid #f1f1f1;
+				overflow:hidden;
+				float: left;
+				margin-left: 40px;
+				margin-top: 50px;
+				cursor: pointer;
+				
+				-moz-border-radius: 18px;      /* Gecko browsers */
+			    -webkit-border-radius: 18px;   /* Webkit browsers */
+			    border-radius:18px; 
+				
+			}
+			.dot{
+				width: 24px;
+				height: 24px;
+				background:#f1f1f1;
+				display: inline-block;
+				margin-left: 10px;
+				margin-top: -6px;
+				vertical-align: middle;
+				
+				-moz-border-radius: 15px;      /* Gecko browsers */
+			    -webkit-border-radius: 15px;   /* Webkit browsers */
+			    border-radius:15px; 
+			}
+			.text{
+				display: inline;
+				font: 18px "微软雅黑";
+				color:#333;
+				margin-left: 10px;
+				line-height: 36px;
+			}
+			.text2{
+				display: block;
+				float: left;
+				font: 18px "微软雅黑";
+				color:#333;
+				padding: 0 20px;
+				border-right: 1px solid lightblue;
+				line-height: 36px;
+				
+				position: relative;
+			}
+			.text2:after{
+				content: "";
+				position: absolute;
+				width: 12px;
+				height: 12px;
+				background: lightsalmon;
+				right: -6px;
+				top: -6px;
+				cursor: pointer;
+				
+				-moz-border-radius: 100%;      /* Gecko browsers */
+			    -webkit-border-radius: 100%;   /* Webkit browsers */
+			    border-radius:100%; 
+			}
+			.valueBox{
+				/*overflow:visible;*/
+				clear: all;
+				height: 36px;
+				margin: 0 40px;
+				line-height: 36px;
+				border: 1px solid lightblue;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			$(function(){
+				$(".tab").toggle(
+					function(){
+						var value = $(this).children(".text").text();
+						var show = "<span class='text2'>"+value+ "</span>";
+						$(".valueBox").append(show);
+						$(this).children(".dot").animate({width:"50"},200);
+						$(this).css("border","1px solid red");
+						$(this).children(".dot").css("background","#EE2200");
+					},
+					function(){
+						var value = $(this).children(".text").text();
+						var spanNum = 0;
+						var spanLength = $(".valueBox span").length;
+						while(spanNum < spanLength){
+							var spanText = $(".valueBox span").eq(''+spanNum+'').text();
+							if(spanText == value){
+								$(".valueBox span").eq(''+spanNum+'').remove();
+								break;
+							};
+							spanNum++;
+							
+								
+						};
+						
+//						var show = "<span class='text2'>"+value+ "</span>";
+//						if(value == "蓝天"){
+//							$(".valueBox").children("span:contains(蓝天)").remove();
+//						};
+//						if(value == "白云"){
+//							$(".valueBox").children("span:contains(白云)").remove();
+//						};
+//						if(value == "青山"){
+//							$(".valueBox").children("span:contains(青山)").remove();
+//						};
+//						if(value == "绿水"){
+//							$(".valueBox").children("span:contains(绿水)").remove();
+//						};
+//						$(".valueBox").find(ddd)).remove();
+//						$(".valueBox").children("span:contains(value)").remove();
+						$(this).children(".dot").animate({width:"24"},150);
+						$(this).css("border","1px solid #f1f1f1");
+						$(this).children(".dot").css  ("background","#f1f1f1");
+					}
+				)
+				
+				$(".text2:after").click(function(){
+					$(this).parent(".text2").remove();
+				})
+				
+			})
+		</script>
+		
+	</head>
+	<body>
+		<div style="overflow: hidden;margin-bottom: 50px;">
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">蓝天</div>
+			</div>
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">白云</div>
+			</div>
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">青山</div>
+			</div>
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">绿水</div>
+			</div>
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">红霞</div>
+			</div>
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">绯缎</div>
+			</div>
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">靛绸</div>
+			</div>
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">墨汁</div>
+			</div>
+			<div class="tab">
+				<div class="dot"></div>
+				<div class="text">橙光</div>
+			</div>
+		</div>
+		<div class="valueBox"></div>
+		
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>hello world</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    	//取消浏览器的所有事件，使得active的样式在手机上正常生效
+		document.addEventListener('touchstart',function(){
+		    return false;
+		},true);
+		// 禁止选择
+		document.oncontextmenu=function(){
+			return false;
+		};
+		var em=null,map=null;
+		// H5 plus事件处理开始
+		function plusReady(){
+			// 确保DOM解析完成
+			if(!em||!window.plus||map){return};
+			map = new plus.maps.Map("allmap");
+			
+			map.getUserLocation( function ( state, point ){ //获取用户地点
+				if( 0 == state ){
+					var jsonpoint = JSON.stringify(point);//JSON.stringify()用于从一个json对象解析出字符串
+					var lg = eval('('+jsonpoint+')').longitude*1;//eval()提取json类型数据
+					var la = eval('('+jsonpoint+')').latitude*1;
+					var pt1 = new plus.maps.Point( lg , la );
+					map.centerAndZoom(pt1,15) //缩放并置用户位置为中心
+					var marker = new plus.maps.Marker( point );
+					marker.setIcon("img/heart.png");
+//					marker.setLabel("HBuilder");
+					map.addOverlay(marker);
+					
+					plus.maps.Map.reverseGeocode(pt1,{},function(event){
+						var address = event.address;  // 转换后的地理位置
+						var pt1 = event.coord;  // 转换后的坐标信息
+						var coordType = event.coordType;	// 转换后的坐标系类型
+						alert("Address:"+address);
+						var bubble = new plus.maps.Bubble(address);
+						marker.setBubble(bubble);
+					},function(e){
+						alert("Failed:"+JSON.stringify(e));
+					});
+					
+				}else{
+					alert( "Failed!" );
+				}
+			} );
+		}
+		if(window.plus){
+			plusReady();
+		}else{
+			document.addEventListener("plusready",plusReady,false);
+		}
+		// DOMContentloaded事件处理
+		document.addEventListener("DOMContentLoaded",function(){
+			em=document.getElementById("allmap");
+			plusReady();
+		},false);
+    </script>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>

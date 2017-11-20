@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+	</body>
+		<script type="text/javascript">
+			//参考学习：JS链式调用的实现方法   http://www.jquerycn.cn/a_8601
+			//能采用链式调用主要在于实现每次函数执行完成会返回对象本身作为下个函数的执行对象，也就是return this;
+			//现在定义三个函数如下,使用return this 就可以每次执行后返回对象：
+			function a(){
+				alert('执行函数a');
+				return this;
+			}
+			function b(){
+				alert('执行函数b');
+				return this;
+			}
+			function c(){
+				alert('执行函数c');
+				return this;
+			}
+			//现在我们想实现obj.a().b().c()的调用方式，怎么做呢
+			//我们可以把上面这三个函数加到obj的原型里
+			//(console.dir(body或其他dom)一层层看原型链可以发现终归dom原型链的尽头是Object构造函数（有效函数，实际尽头是Null）
+			//按照原型继承的机制，会一层层查询整个原型链找到目标方法，所以我们把方法写在尽头Object的原型中，虽然有损效率但是一定会被找到并执行
+			//当然了，我们可以写在Node构造函数里也是可以的，他是document和内部其他dom对象最开始继承的构造函数（查询控制台输出的原型链）
+			Node.prototype.a = function(){
+				alert(this.tagName+'执行函数a');
+				return this;
+			}
+			Node.prototype.b = function(){
+				alert('执行函数b');
+				return this;
+			}
+			Node.prototype.c = function(){
+				alert('执行函数c');
+				return this;
+			}
+			//*****这样任意dom都可以调用了*******
+			console.dir(document.getElementsByTagName('div')[0])
+			document.a().b().c();//输出执行函数a 执行函数b 执行函数c
+			document.body.a().b().c();//同上
+			document.getElementsByTagName('div')[0].a().b().c();//同上
+			function Fun(){}
+			new Fun().a().b().c();//吃错，除非上诉原型采用Object的原型，才能让三者皆可行
+		</script>
+	
+</html>

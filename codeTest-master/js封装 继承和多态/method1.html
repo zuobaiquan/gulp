@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//演示继承的操作
+			//首先我们已经有了一个构造函数
+			function Cat(color,age){
+				this.color = color;
+				this.age = age;
+				this.info = function(){
+					alert('this is a '+this.age+' years old '+this.color+' cat!');
+				}
+			}
+			Cat.prototype.skill = function(){//在原型中定义一个函数，原型中的属性和方法是被每个实例公用的
+				alert('this '+this.color+' cat can speak chinese!')
+			}
+			//实例化一个对象
+			var newCat = new Cat('black','7');
+			newCat.info()//输出：this is a 7 years old black cat!
+			newCat.skill()//自动查找，现在newCat中找skill()，找不到再自动去原型中找。输出：this black cat can speak chinese!
+			//比方说现在要输出cat的体型信息，那么我们就要扩展原先的功能，直接重写构造函数很繁琐，我们可以继承
+			//************************************************************************
+			function Cat2(color,age,size){
+				this.size = size;//新增的属性
+				Cat.call(this,color,age);//调用Cat构造函数，继承Cat的属性和方法，但是注意无法继承原型，使用下方的方式继承原型
+			}							//如果是apply写法就是Cat.apply(this,[color,age]);
+			for(item in Cat.prototype){//继承原型
+				Cat2.prototype[item] = Cat.prototype[item];
+			}
+			Cat2.prototype.howBig = function(){//新增原型中的方法
+				alert('this cat is a '+this.size+' one!');
+			}
+			//************************************************************************
+			var newCat2 = new Cat2('red','5','big');
+			newCat2.info()//这是继承来的方法
+			newCat2.skill()//这是继承来的原型中的方法
+			newCat2.howBig()//这是新增的方法
+			console.log(newCat2.info)
+			
+		</script>
+	</head>
+	<body>
+		<h2>参考阅读：</h2>
+		<a href="http://www.cnblogs.com/wangyingblog/p/5583825.html">深入理解js构造函数</a>
+	</body>
+</html>

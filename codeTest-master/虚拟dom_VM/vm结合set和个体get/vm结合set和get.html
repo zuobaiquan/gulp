@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="common.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.list {
+				font: 16px/1.5 "微软雅黑";
+				background: #fafafa;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app"></div>
+	</body>
+	<script type="text/javascript">
+		//虚拟dom的实现参见其他文件，主要是new_files2.html,new_files3.html
+
+		//var argument = 
+		var value = "现在是全局环境"
+		var zzh = new ZZH({
+			el: "app",
+			data: {
+				value: "这是要输入的值"
+			},
+			methods: {
+				alertInfo: function(val){
+					alert(val);
+				}
+			},
+			vm: {
+				tag: "ul",
+				props: {
+					class: "list",
+				},
+				methods: {
+
+				},
+				children: [ //子集
+					{
+						tag: "input",
+						props: {
+							type: "text",
+							placeholder: "请输入信息",
+							value: this.value
+						}
+					},
+					{
+						tag: "li",
+						children: "这是li1",
+						methods: {
+							click: function() {
+								alert(this.innerHTML)
+								//this.alertInfo("这是一个li")
+							}
+						}
+					}
+				]
+			}
+		})
+		//set&get操作
+		setTimeout(function(){
+			zzh.value = "这是新的value值";
+		},2000)
+		//渲染真实dom并挂载页面中
+		zzh.render()
+		//document.body.appendChild(zzh.render());
+	</script>
+
+</html>

@@ -1,0 +1,64 @@
+ html,body{
+            height: 100%;
+            margin: 0;
+            font: 14px/21px sans-serif,serif;
+            color: #333;
+        }
+        table{
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-collapse: collapse;
+        }
+        .left{
+            background: #1b2638;
+            width: 200px;
+            vertical-align: top;
+        }
+        .left_top{
+             margin: 30px;
+        }
+        .logo{
+            width: 60px;
+            height: 60px;
+            border-radius:100%;
+            overflow: hidden;
+        }
+        .name{
+            color: #afc0ce;
+        }
+        .logo img{
+            width: 60px;
+            height: 60px;
+        }
+        ul,li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .list{
+            width: 100%;
+            height: 48px;
+            font: 16px/48px serif;
+            color: #fff;
+            cursor: pointer;
+            border-bottom: 1px solid #2c3b48;
+            border-top: 1px solid #2c3b48;
+            margin-top: -1px;
+            overflow: hidden;
+            
+            transition: all 0.3s;
+        }
+        .list:hover{
+            background: #192233;
+            height: auto;
+        }
+        .select{
+            width: 100%;
+            font: 14px/36px serif;
+            color: #b4c3d0;
+            cursor: pointer;
+        }
+        .select:hover{
+            background: #101722;
+        }

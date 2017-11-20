@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//参考阅读：
+			//Javascript异步编程的4种方法——http://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html
+			//上诉链接阐述的有问题，回调函数是异步必要的手段（而不是一种方式），主要的异步编程方式有xhr,timer,event,还有es6中promise,worker
+			//JavaScript 运行机制详解：再谈Event Loop  http://www.ruanyifeng.com/blog/2014/10/event-loop.html
+			//都知道js程序的执行是单线程的，也就是一次执行一个任务.但是有时前一个任务如果很耗时，依旧线性的一次执行一个
+			//等待操作的话体验就会很糟糕，于是js中把任务分为了‘同步’和‘异步’两种，同步任务在主线程上依次执行，异步任务放在任务队列中等待，等到主线程、
+			//空闲再调入主线程执行。哪些操作会产生异步任务呢，主要就上诉几种。
+			
+			setTimeout(function(){//这个function(){}就是回调函数，回调函数的使用有两种，一种即是如是：以匿名函数作为其他函数的参数传入
+				alert()			//第二种方式就是申明一个非匿名函数，也就是有变量名，再把引用作为其他函数的参数传入
+			},0)//这里写的是0ms，但其实js引擎会自动给他加到4ms(老版本最短10ms,少于就会自动加到这个值，而H5中规定是4ms),即便这里是0ms,异步的机制也决定了会先主线程再任务队列的顺序完成执行
+			function cat(){
+				alert('this is a cat')
+			}
+			cat();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 20px;
+				background: #f5f5f5;
+				font-size: 16px;
+			}
+			body *{
+				display: block;
+				margin: 10px 0;
+			}
+		</style>
+		<script type="text/javascript">
+			
+			function partentDialog(){
+				alert('我是parent页面');
+			}
+			window.onload = function(){
+				document.getElementById('btn1').onclick = function(){//获取子级child.html页面中p标签的内容
+					var $btn1_con = document.getElementById('btn1_con');
+					$btn1_con.innerHTML += document.getElementById('Mframe').contentWindow.document.getElementById('childP').innerHTML;
+				}
+				document.getElementById('btn2').onclick = function(){//在子级页面执行childDialog()函数
+					document.getElementById('Mframe').contentWindow.childDialog();
+				}
+			}
+		</script>
+	</head>
+	<body><!--通过获取父子级的内容和操控函数执行，包含了同域下的iframe父子通信的正常诉求，可以解决大多数问题了-->
+		<p id="parentP" style="font-weight: bold;">这个是父级页面的内容</p>
+		<input type="button" name="" id="btn1" value="点击我获取child.html中p标签的内容" />
+		<span id="btn1_con" style="margin: -5px 0 0 10px;font-size: 14px;text-decoration: underline;">在这里显示上诉获取内容：</span>
+		<input type="button" name="" id="btn2" value="点击我在child.html中运行函数" />
+		<iframe id="Mframe" src="child.html" width="800" height="600" frameborder="1"></iframe>
+	</body>
+</html>

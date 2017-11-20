@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+		.turntable{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 150px;
+			left: 150px;
+			background: #FF1919 url(../../000Picture_MaterialS/baozou1.jpg) center center no-repeat;
+			background-size: 100%;
+			border-radius: 100%;
+			border: 1px solid #333;
+			box-sizing: border-box;
+		}
+		.poiter{
+			width: 5px;
+			height: 160px;
+			position: absolute;
+			left: 50%;
+			top: 20px;
+			margin-left: -2.5px;
+			background: #FF1919;
+		}
+		.poiter::before{
+			content: '';
+			display: block;
+			height: 5px;
+			background: #ffff00;
+		}
+		/*持续旋转*/
+		@-webkit-keyframes rotateKeep {
+			0%{-webkit-transform:rotate(0deg);}
+			50%{-webkit-transform:rotate(180deg);}
+			100%{-webkit-transform:rotate(360deg);}
+		}
+		
+		@keyframes rotateKeep {
+			0%{-webkit-transform:rotate(0deg);}
+			50%{-webkit-transform:rotate(180deg);}
+			100%{-webkit-transform:rotate(360deg);}
+		}
+		.rotateKeep {
+			-webkit-animation: rotateKeep infinite linear;
+			animation: rotateKeep infinite linear;
+			animation-duration: 10s;
+		    -webkit-animation-duration: 10s;
+		    animation-delay: 0s;
+		    -webkit-animation-delay: 0s;
+		}
+	</style>
+	<body>
+		<div class="turntable">
+			<div class="poiter rotateKeep"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		
+		
+	</script>
+</html>

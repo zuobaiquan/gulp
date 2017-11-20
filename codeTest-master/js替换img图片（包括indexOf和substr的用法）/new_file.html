@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#img{
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="../000Picture_MaterialS/baozou1.jpg" id="img"/>
+		<input type="button" name="btn" id="btn" value="用src的方式改变图片的URL地址"/>
+		<input type="button" name="btn" id="btn2" value="用setAttribute的方式改变图片的URL地址" />
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.getElementById("btn").onclick = function(){
+				var pic_url = document.getElementById("img").src
+				if(pic_url.indexOf("/")>-1){   //indexOf("x")函数的意思是获取字符串"pic_url"中字符"x"的位置(从左到右不计空格),如果没有返回-1。下一行的lastIndexOf("x")表示最后一个x的位置
+					this_picName = pic_url.substr( pic_url.lastIndexOf("/")+1, pic_url.length )  //substr（start,length）函数的意思是获取字符串"pic_url"从start位置开始长度为length的字符串(start和length为数字或变量)
+				}else{
+					this_picName = pic_url
+				}
+				if(this_picName=='baozou1.jpg'){
+					document.getElementById("img").src = "../000Picture_MaterialS/baozou2.jpg"
+				}else{
+					document.getElementById("img").src = "../000Picture_MaterialS/baozou1.jpg" 
+				}
+				
+			}
+			document.getElementById("btn2").onclick = function(){
+				document.getElementById("img").setAttribute("src","../000Picture_MaterialS/baozou2.jpg")//上诉按钮1的一系列脚本只是为了学习indexOf()等的用法，真正改变图片url的方法就是src和setAttribute
+			}
+		}
+	</script>
+</html>

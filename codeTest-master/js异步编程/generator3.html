@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			function* fun1(){
+				var asyncOp1 = yield setTimeout(function(){//异步任务
+					console.log(2);
+				},1000);
+				var asyncOp1 = yield setTimeout(function(){//异步任务
+					console.log(3);
+				},1000);
+				console.log(4)//其他任务
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

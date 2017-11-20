@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../easyui/1.3.4/themes/default/easyui.css" />
+		<link rel="stylesheet" type="text/css" href="../css/icon.css" />
+		<script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="../easyui/1.3.4/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="../easyui/1.3.4/locale/easyui-lang-zh_CN.js"></script>
+		<style type="text/css">
+			.form_t{
+				width: 100%;
+				border-collapse: collapse;
+				font: 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+			}
+			.form_t td{
+				border:1px solid #c0d6f3;
+				padding:5px 10px;
+			}
+			.ft_name{
+				font-weight: bold;
+				color: #0E2D5F;
+				background: #ebf3ff;
+			}
+			.ft_submit{
+				background: #ebf3ff;
+				text-align: center;
+				padding: 10px 0 !important;
+			}
+		</style>
+	</head>
+	<body>
+		<table class="form_t">
+			<tr>
+				<td class="ft_name" width="100px">文本框</td><!--一列的宽度可在这列的任何一个列标签中设定（注意：不能每列都设宽度，至少一列要保持自由拉伸，即不设宽度）-->
+				<td width="400px"><input class="easyui-textbox" style=""></td>
+				<td class="ft_name" width="100px">下拉框</td>
+				<td>
+					<select class="easyui-combobox" name="state" style="width:173px;">
+						<option value="AL">Alabama</option>
+						<option value="AK">Alaska</option>
+						<option value="AZ">Arizona</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="ft_name">选择日期</td>
+				<td><input class="easyui-datebox" data-options="sharedCalendar:'#cc'"></td>
+				<td class="ft_name">验证框</td>
+				<td><input style="width: 173px;" class="easyui-validatebox textbox" data-options="prompt:'Enter User Name.',required:true,validType:'length[3,10]'"></td>
+			</tr>
+			<tr>
+				<td class="ft_name">组合网格</td>
+				<td>
+					<select class="easyui-combogrid" style="width:173px" data-options="
+							panelWidth: 500,
+							idField: 'itemid',
+							textField: 'productname',
+							url: 'datagrid_data1.json',
+							method: 'get',
+							columns: [[
+								{field:'itemid',title:'Item ID',width:80},
+								{field:'productname',title:'Product',width:120},
+								{field:'listprice',title:'List Price',width:80,align:'right'},
+								{field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+								{field:'attr1',title:'Attribute',width:200},
+								{field:'status',title:'Status',width:60,align:'center'}
+							]],
+							fitColumns: true
+						">
+					</select>
+				</td>
+				<td class="ft_name">按钮</td>
+				<td>
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">Add</a>
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">Remove</a>
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
+					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cut',disabled:true">Cut</a>
+					<a href="#" class="easyui-linkbutton">Text Button</a>
+				</td>
+				<tr>
+					<td colspan="4" class="ft_submit">
+						<a href="#" class="easyui-linkbutton">提交</a>
+						<a href="#" class="easyui-linkbutton">取消</a>
+					</td>
+				</tr>
+			</tr>
+		</table>
+	</body>
+</html>

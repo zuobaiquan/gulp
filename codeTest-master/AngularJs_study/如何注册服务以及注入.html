@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ROUTER</title>
+		<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = angular.module('myApp',[]);
+			
+			app.config(function(setValueProvider){//config函数用来配置服务，下述的服务注册过程其实也是对$provide服务配置的过程
+				setValueProvider.setResult("是的这是配置过的内容！")
+				console.log(setValueProvider)
+			})
+			app.controller('myContrl',function($scope,setValue){//依赖注入setValue服务，因为此处引用的名字和服务的名字一致，所以知道注入哪个服务，否则需要使用$inject标记数组-->http://angularjs.cn/A00z
+				//$scope.inputVal = setValue;//应用方式1:factory()
+				//$scope.inputVal = setValue.value;//应用方式2:service()
+				$scope.inputVal = setValue;//应用方式3:provider()
+			})
+//*****************方式1:factory()*********
+			//app.factory('setValue',function(){//使用factory()函数注册一个服务，除了factory()还有value(),service(),provider(),constant()只是用途不同
+				//return value='hello！';//setValue的类型取决于return的对象的类型，或者说是后台会将return的对象赋值给setValue
+			//})
+//*****************方式2:service()*********
+			//app.service('setValue',function(){//factory()需要return出来而service()不用
+				//this.value='hello！';//setValue是一个service()第二个参数函数作为构造函数实例化的对象，实际上后台会实例化她并赋给setValue
+			//})
+//*****************方式3:provider()*********http://www.cnblogs.com/joyco773/p/5702569.html
+			app.provider('setValue',function(){//provider()是其他三个（除了constant()）注册服务的函数的的老大，因为他们本质上都是对provider()的封装
+				var value = 'hello!';
+				this.setResult = function(newValue){
+					value = newValue;
+				}
+				this.$get = function(){
+					return value;
+				};
+				//provider()可以理解为一个可配置的factory()（在config阶段配置，其他注册函数不行）http://www.cnblogs.com/joyco773/p/5702569.html http://www.cnblogs.com/joyco773/p/5702337.html    https://segmentfault.com/q/1010000006198901
+				//切记：注意配置provider()注册的服务需要对服务名以驼峰式加一个provider后缀即setValueProvider,
+				//配置的时候setValueProvider是一个以provider()第二个参数函数作为构造函数实例化的对象，作为构造函数，var value = 'hello!';将不会被对象继承，除非写成this.value = 'hello!';故而此时不能对value进行配置但可以对setResult()和$get()函数配置
+				//必须包含一个$get函数，函数内部由return包含并返回出来
+				//setValue是一个service()第二个参数函数作为构造函数实例化的对象，实际上后台会实例化她并赋给setValue
+			})
+			
+		//以上三者使用方式和用途就是这样factory()返回任意类型对象，service()返回一个对象，provider()返回一个可配置的任意类型对象
+		//注册一个服务的方式是：app.config(function($provide){//注入$provide服务，注册函数都是$provide对象的子函数
+		//						$provide.factory('服务名'，服务主体)服务主体可以是常量，函数，对象{}   http://camnpr.com/javascript/1693.html
+		//				  })
+		//注册方式还有语法糖写法：app.factory('服务名'，服务主体)  http://www.cnblogs.com/joyco773/p/5702337.html
+		//值得注意的是，注册服务app.config(function($provide){...})和配置服务app.config(function('服务名'){...})
+		//看上去类似，本质都是注入服务做某事，但后者只能配置provider()和constant() https://segmentfault.com/q/1010000006198901
+		</script>
+	</head>
+	<body ng-app="myApp" ng-controller="myContrl">
+		<input type="text"  value="" ng-model="inputVal"/><span>您输入的内容是：{{inputVal}}</span>
+	</body>
+</html>

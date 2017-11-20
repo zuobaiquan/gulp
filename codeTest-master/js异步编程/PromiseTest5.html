@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			new Promise(function(t){
+				console.log("hello");
+				setTimeout(function(){
+					console.log("|")
+					t("world")
+				},1000)
+			}).then(function(value){
+				console.log(value);
+			})
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

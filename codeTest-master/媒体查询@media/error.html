@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<style type="text/css">
+			.errorBody{
+				margin: 0;
+			}
+			.errorMain .errorBt:hover{
+					opacity: 0.6;
+				}
+			.errorMain{
+					margin:70px auto 0 auto;
+					text-align: center;
+					padding: 0 10px;
+				}
+				.errorMain img{
+					width: 64px;
+				}
+				.errorMain .title{
+					font:20px "微软雅黑";
+					color: #000;
+					margin-top: 22px;
+				}
+				.errorMain p{
+					padding: 0;
+					margin: 0;
+					font: 14px "微软雅黑";
+					color: #666;
+					margin-top: 20px;
+				}
+				.errorMain .errorBt{
+					text-align: center;
+					font: 16px "微软雅黑";
+					color: #fff;
+					padding: 14px 0;
+					margin-top: 34px;
+					background: #04be01;
+					border-radius: 8px;
+					-webkit-border-radius: 8px;
+				}
+				
+			@media only screen and (max-width: 480px) {
+				*{
+					font-size: 100% !important;
+					background: lightblue;
+				}
+			}
+			@media only screen and (min-width: 481px) and (max-width: 640px) {
+				*{
+					font-size: 150% !important;
+					background: lightcoral;
+				}
+			}
+			@media only screen and (min-width: 641px) and (max-width: 720px) {
+				*{
+					font-size: 200% !important;
+					background: lightcyan;
+				}
+			}
+			@media only screen and (min-width: 721px) and (max-width: 960px) {
+				*{
+					font-size: 225% !important;
+					background: lightgray;
+				}
+			}
+			@media only screen and (min-width: 961px) {
+				*{
+					font-size: 300% !important;
+					background: lightgreen;
+				}
+			}
+			
+		</style>
+
+	</head>
+	<body class="errorBody">
+		<div class="errorMain" id="M">
+			<img src="img/action.png"/>
+			<div class="title">没有记录</div>
+			<p>您好，最近一个月没有您的服务记录</p>
+			<div class="errorBt">返回</div>
+		</div>
+	</body>
+</html>

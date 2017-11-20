@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 400px;
+				height: 400px;
+				margin: 100px auto;
+				background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+
+				var $box = document.getElementById('box');
+				setInterval(function(){
+					var value = Math.floor(Math.random()*10);
+					//$box.style.cssText = "opacity: 0."+value+";filter:alpha(opacity="+value+"0);"
+					if($box.filters){//ie
+						$box.style.filter = "alpha(opacity:"+value*10;+")";//设置对象透明度
+						console.log($box.filters.alpha.opacity);
+					}else{//非ie
+						$box.style.opacity = value/10;
+						console.log($box.style.opacity);//上面设置这里获取
+					}
+				},200)
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>

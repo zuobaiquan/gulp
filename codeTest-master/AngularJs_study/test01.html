@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div ng-app=""><!--ng-app属性告诉angular.js，这里面的内容需要angular的相关计算操作，也就是才能被识别 。若为空则自动定义，若有名字则需要手动定义。详见下讲-->
+			<input type="text" name="" id="" value="" placeholder="请输入任意字符" ng-model='content' /><!--ng-model表示以将当前标签的值作为值传给变量content-->
+			<span>当前输入的内容是：{{content}}</span>
+			<!--{{...}}表达式的位置是输出数据的位置，可以是常量，变量，也能使用运算符，上诉可以写成{{"当前输入的内容是："+content}} -->
+		</div>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.bigBox{
+				width: 400px;
+				height: 400px;
+				background: #00609E;
+			}
+			.box{
+				width: 300px;
+				height: 300px;
+				background: #0077AA;
+			}
+			.littleBox{
+				width: 150px;
+				height: 150px;
+				background: #009CE1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bigBox">
+			<div class="box">
+				<div class="littleBox"></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+//		document.querySelector('.bigBox').onclick = function(){
+//			alert("event.target的类名:"+event.target.getAttribute('class'));
+//			alert("event.currentTarget类名:"+event.currentTarget.getAttribute('class'))
+//		}
+		document.querySelector('div').onclick = function(){
+			alert("event.target的类名:"+event.target.getAttribute('class'));
+			alert("event.currentTarget类名:"+event.currentTarget.getAttribute('class'))
+		}
+	</script>
+</html>

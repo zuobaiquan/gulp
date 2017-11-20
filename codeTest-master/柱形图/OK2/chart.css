@@ -1,0 +1,142 @@
+@charset "utf-8";
+
+body{
+	background: #f0f0f0;
+}
+.zhu_chart{
+	position: relative;
+	width: 100%;
+	height: 220px;
+	background: #FFFFFF;
+	/*overflow: hidden;*/
+}
+.zuobiao{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: none;
+	border-collapse: collapse;
+	/*border: 1px solid red;*/
+	/*top: -32px;*/
+}
+.zhu_kedu{
+	width: 44px;
+	max-width: 44px;
+	text-align: center !important;
+	vertical-align: bottom !important;
+}
+.zhu_kedu span{
+	position: relative;
+	font-size: 12px;
+	color: #333333;
+	bottom: -10px;
+}
+.zhu_line{
+	border-bottom: 1px solid #f6f6f6;
+}
+.zuobiao_zanwei{
+	height: 32px;
+	max-height: 32px;
+}
+.zhuxing{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: none;
+	border-collapse: collapse;
+	left: 0;
+	bottom: 0;
+	/*border: 1px solid black;*/
+}
+.zhuxing td{
+	text-align: center;
+}
+.zhu_zanwei{
+	width: 44px;
+	max-width: 44px;
+}
+.zhu_body td{
+	/*position: relative;*/
+	/*height: 100%;*//*在ie中td的100%会撑开,这里会在js中设置*/
+	vertical-align: bottom !important;
+	/*overflow: hidden;*/
+	/*border: 1px solid red;*/
+}
+.zhu_con{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.zhu_mubiao{
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	width: 80%;
+	background: #3a4752;
+	cursor: pointer;
+	
+	position: absolute;
+	bottom: 0;
+	left: 10%;
+}
+.zhu_title td{
+	height: 32px;
+	font-size: 12px;
+	color: #3a4752;
+/*	border: 1px solid green;*/
+	vertical-align: middle !important;
+}
+.zhu_title td span{
+	display: block;
+	width: 72px;
+	margin: 0 auto;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.info_sq{
+	position: absolute;
+	/*width: 90%;*/
+	font: bold 12px/24px "微软雅黑";
+	color: #FFFFFF;
+	text-align: center;
+	background: #df6565;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	/*left: 5%;*/
+	top: -26px;
+	z-index: 10000;
+}
+.zhu_info{
+	padding:10px;
+	border-top: 1px solid #eaeaea;
+	background: #fff;
+	overflow: hidden;
+}
+.zi_sq{
+	float: left;
+	font-size: 12px;
+	line-height: 14px;
+	padding: 0 5px;
+	border-left: 14px solid lightseagreen;
+	margin: 5px 20px 5px 0;
+	cursor: pointer;
+	position: relative;
+	top: 0;
+	transition: all 0.3s;
+}
+.zi_sq:hover{
+	position: relative;
+	top: -1px;
+	background: #fafafa;
+	box-shadow: 0 2px 4px #888;
+}
+.zi_sq_hover{
+	position: relative;
+	top: -1px;
+	background: #fafafa;
+	box-shadow: 0 2px 4px #666;
+}
+

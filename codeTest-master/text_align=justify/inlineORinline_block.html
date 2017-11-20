@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 1000px;
+				padding: 20px;
+				margin: 20px auto;
+				background-color: #f0f3f9;
+				/*font-size: 0;用于取消inline-block元素之间的空隙，默认空隙就是空格，本质上还是字符，设置为0即可取消。记住如有文字，可在子级恢复字体大小*/
+				text-align: justify;
+			}
+			.list{
+				width: 80px;
+				height: 80px;
+				background: lightblue;
+				display: inline-block;
+				font-size: 14px;
+				margin-bottom: 20px;
+				text-align: center;
+				vertical-align: top;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"><!--要使用这种对齐方式实现对齐，前提条件是正常排列下元素的行数多于一行-->
+	        <span class="list">这是内容1</span>
+	        <span class="list">这是内容2</span>
+	        <span class="list">这是内容3</span>
+	        <span class="list">这是内容4</span>
+	        <span class="list">这是内容5</span>
+	        <span class="list">这是内容6</span>
+	        <span class="list">这是内容7</span>
+	        <span class="list">这是内容8</span>
+	        <span class="list">这是内容9</span>
+	        <span class="list">这是内容10</span>
+	        <span class="list">这是内容11</span>
+	        <span class="list">这是内容12</span>
+	    </div>
+	</body>
+</html>

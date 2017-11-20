@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/ajax.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			var data = new Promise(function(resolve,reject){
+				getData('http://localhost:3000/userInfo','get',{},resolve)
+			})
+			data.then(function(value){
+				console.dir(value)
+			})
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

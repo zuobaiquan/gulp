@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		
+//		JavaScript中定义"类"的时候可以通过构造函数、工厂模式和原型的方式来实现，具体看下面的阐述：
+				window.onload = function(){
+					
+					var $body = document.getElementsByTagName('body')[0];
+//					********11111111****构造函数的方式创建对象并实例化的例子*************
+					function Cat1(name,age,color){//构造函数虽然看上去是函数，其实实际运行时会被自动变成 var Cat = {};的对象
+						this.color = color;
+						this.age = age;
+						this.name = name;
+						this.info = function(){
+							var infotag = document.createElement('p');
+							infotag.innerHTML = '构造函数方式：'+this.name+' is a '+this.age+' years old '+this.color+' cat';
+							$body.appendChild(infotag);
+						}
+					}
+//					******************工厂模式的方式创建对象并实例化的例子*************
+					function Cat2(name,age,color){
+						var o = new Object();
+						o.color = color;
+						o.age = age;
+						o.name = name;
+						o.info = function(){
+							var infotag = document.createElement('p');
+							infotag.innerHTML = '工厂模式方式：'+this.name+' is a '+this.age+' years old '+this.color+' cat';
+							$body.appendChild(infotag);
+						}
+						return o;
+					}
+					
+					//>>>>>>>>>>>>>>>>>>点击执行<<<<<<<<<<<<<<<<<<<<<
+					document.getElementById('btn1').onclick = function(){//点击执行构造函数模式
+						var cat = new Cat1('Tom',6,'yellow');
+						cat.info();
+					}
+					document.getElementById('btn2').onclick = function(){//点击执行工厂模式
+						var cat = Cat2('Jack',4,'balck');
+						cat.info();
+					}
+					
+				}
+				
+				
+			
+		</script>
+	</head>
+	<body style="font-size: 24px;">
+		<input type="button" name="" id="btn1" value="构造函数的方式创建对象"/>
+		<input type="button" name="" id="btn2" value="工厂模式的方式创建对象"/>
+	</body>
+</html>

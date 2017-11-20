@@ -1,0 +1,12 @@
+{
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.11.0",
+    "csv": "^1.1.1",
+    "inquirer": "^3.3.0",
+    "request": "^2.82.0",
+    "request-promise": "^4.2.1"
+  }
+}

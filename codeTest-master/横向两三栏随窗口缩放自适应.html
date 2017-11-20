@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.con{
+				height: 150px;
+				width: 100%;
+				background: #fafafa;
+				margin: 20px 0;
+			}
+			/*******方式1***左右定不定宽均可***不浮动项一定要放在最后*/
+			.con1center{
+				height: 150px;
+				background: lightseagreen;
+			}
+			.con1left{
+				float: left;
+				height: 150px;
+				background: lightblue;
+			}
+			.con1right{
+				float: right;
+				height: 150px;
+				background: lightcoral;
+			}
+			/*******方式2**左右知道多宽才能左中右贴合*****/
+			.con2center{
+				height: 150px;
+				background: lightseagreen;
+				margin: 0 100px;
+			}
+			.con2left{
+				position: absolute;
+				left: 0;
+				height: 150px;
+				background: lightblue;
+			}
+			.con2right{
+				position: absolute;
+				right: 0;
+				height: 150px;
+				background: lightcoral;
+			}
+			/*******方式3***不浮动项一定要放在最前**也是要知道两侧宽度才能贴合**/
+			.wrap{
+				width: 100%;
+				float: left;
+			}
+			.con3center{
+				height: 150px;
+				background: lightseagreen;
+				margin: 0 100px;
+			}
+			.con3left{
+				float: left;
+				height: 150px;
+				background: lightblue;
+				margin-left: -100%;
+			}
+			.con3right{
+				float: right;
+				height: 150px;
+				background: lightcoral;
+				margin-left: -200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="con">
+			<div class="con1left">左边</div>
+			<div class="con1right">右边</div>
+			<div class="con1center">中间</div>
+		</div>
+		<div class="con" style="position: relative;">
+			<div class="con2left">左边</div>
+			<div class="con2right">右边</div>
+			<div class="con2center">中间</div>
+		</div>
+		<div class="con">
+			<div class="wrap">
+				<div class="con3center">中间</div>
+			</div>
+			<div class="con3left">左边</div>
+			<div class="con3right">右边</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.bt{
+				display: inline-block;
+				border: 1px solid deepskyblue;
+				background: lightskyblue;
+				text-align: center;
+				line-height: 42px;
+				padding: 0 20px;
+				cursor: pointer;
+				position: relative;
+				
+				border-radius: 4px;
+				-webkit-border-radius: 4px;
+				-moz-border-radius: 4px;
+
+			}
+			.bt span{
+				font: 16px "微软雅黑";
+				color:#fff;
+			}
+			.action{
+				position: absolute;
+				right: -340px;
+				top: 0;
+				
+				display: inline-block;
+				border: 1px solid mediumspringgreen;
+				background: lightgreen;
+				text-align: center;
+				line-height: 42px;
+				padding: 10px 20px;
+				
+				font: 16px "微软雅黑";
+				color:#fff;
+				
+				display: none;
+				
+				border-radius: 4px;
+				-webkit-border-radius: 4px;
+				-moz-border-radius: 4px;
+			}
+			.bt:hover .action{
+				display: block;	
+			}
+	    </style>
+	</head>
+	<body>
+		<div class="bt">
+			<span>Hover我有惊喜哦</span>
+			<div class="action">用hover还能触发其他对象的改变！</div>
+		</div>
+	</body>
+</html>

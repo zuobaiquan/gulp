@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			html,body{
+				margin: 0;
+				background: #fafafa;
+				/*height: 100%;
+				overflow: hidden;*/
+			}
+			.news{
+				/*width: 440px;
+				height: 100%;*/
+				background: #f5f5f5;
+				/*border-right: 2px solid #eee;*/
+			}
+			ul,li{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				border: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				padding: 10px;
+				list-style: none;
+			}
+			li{
+				background: #fefefe;
+				width: 100%;
+				overflow: hidden;
+				box-shadow: 0 1px 2px #ccc;
+				border-radius: 2px;
+				margin: 10px 0;
+			}
+			.left_img,.right{
+				float: left;
+				padding: 5px;
+			}
+			.title,.date{
+			}
+			.left_img{
+				width:80px;
+				height: 60px;
+			}
+			.left_img img{
+				width: 80px;
+				height: 60px;
+			}
+			.right{
+				height: 60px;
+			}
+			.title{
+				width: 240px;
+				font: 16px/24px "微软雅黑",sans-serif,helvetica;
+				color: #333333;
+				
+				
+			}
+			.date{
+				font-size: 12px;
+				color: #999;
+				margin-top: 22px;
+			}
+			input{
+				width: 100%;
+				height: 44px;
+				font-size: 16px;
+				color: #333333;
+				background: #fafafa;
+				border: none;
+				outline: none;
+				border: 1px solid #d6d6d6;
+			}
+		</style>
+		<script type="text/javascript">
+		
+			function loadXMLDoc(url){
+				if(window.XMLHttpRequest){//ie和其他浏览器调用XMLHTTP的不同方式
+					var xmlhttp = new XMLHttpRequest();
+				}else{
+					var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.readyState==4 && xmlhttp.status==200){
+						writeDate(xmlhttp.responseText);
+					}
+				}
+				xmlhttp.open("GET",url,true);
+				xmlhttp.setRequestHeader("apikey","220b7b3a24a14a3e8836535a127603cc")//查看API文档可以看出，key是通过http的header传过去的，其他参数是通过url传输的
+				xmlhttp.send();
+			}
+			function writeDate(date){
+				
+				var json_date = JSON.parse(date);
+				var $ul = document.getElementById("ul");
+				var return_li = function(a,b,c,d){
+					var $li = '<li onclick="window.location.href=\''+d+'\'"><div class="left_img"><img src="'+a+'"/></div><div class="right"><div class="title">'+b+'</div><div class="date">'+c+'</div></div></li>'
+					return $li;
+				}
+				for (i=0;i<json_date.newslist.length;i++) {
+					var now_des = json_date.newslist[i].description;
+					var now_img = json_date.newslist[i].picUrl;
+					var now_title = json_date.newslist[i].title;
+					var now_time = json_date.newslist[i].ctime;
+					var now_url = json_date.newslist[i].url;
+					
+					$ul.innerHTML = $ul.innerHTML+return_li(now_img,now_title,now_time,now_url);
+//					console.log(now_img);
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div class="news">
+			<ul id="ul">
+				<!--<li>
+					<div class="left_img"></div>
+					<div class="right">
+						<div class="title"></div>
+						<div class="date"></div>
+					</div>
+				</li>-->
+			</ul>
+			<input type="button" name="" id="" value="点击加载更多..." onclick="loadXMLDoc('http://apis.baidu.com/txapi/mvtp/meinv?num=10')" />
+		</div>
+	</body>
+</html>

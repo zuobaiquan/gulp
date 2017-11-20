@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				margin: 0;
+				overflow: hidden;
+			}
+			.bg{
+				width: 100%;
+				
+				position: relative;
+			}
+			.bgimg{
+				min-width: 100%;
+				max-width: 100%;
+				display: block;
+			}
+			.main{
+				position: absolute;
+				width: 68%;
+				top: 0;
+			}
+			.title,.titleE{
+				text-align: center;
+			}
+			.name,.content span{
+				display: inline-block;
+				border-bottom: 1px solid #4f697a;
+			}
+			.line{
+				height: 2px;
+				background: #7d96aa;
+			}
+			.time{
+				float: right;
+				position: relative;
+			}
+			.time img{
+				position: absolute;
+				right: 0;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			$(function(){
+				var leftD = $(document).width()-$(".main").width();
+				var topD = $(document).width()*0.2974;
+				var fontSize = $(document).width()*0.06;
+				$(".main").css("left",leftD/2);
+				$(".main").css("top",topD);
+				$("body").css({'font':'宋体','color':'#65869d','font-size':fontSize*0.72});
+				$(".title").css({'font':'宋体','color':'#4f697a','font-size':fontSize,'font-weight':'bold'});
+				$(".titleE").css({'font':'宋体','color':'#65869d','font-size':fontSize*0.6});
+				$(".name,.content span").css({'font':'宋体','color':'#4f697a','font-size':fontSize*0.72,'font-weight':'bold'});
+				$(".name span").css({'font':'宋体','color':'#4f697a','font-size':fontSize*0.56});
+				
+				$(".line").css({'margin-top':fontSize*1.16,'margin-bottom':fontSize*1.16});
+				$(".name").css({'margin-bottom':fontSize*0.67});
+				$(".time img").css({'width':fontSize*5,'top':fontSize*-0.8});
+			})
+		</script>
+	</head>
+	<body>
+		<div class="bg">
+			<img src="img/bg.png" class="bgimg"/>
+			<div class="main">
+				<div class="title">e电工巡检电工培训<br/>认证证书</div>
+				<div class="titleE">证书编号：E0000000001</div>
+				<div class="line"></div>
+				<div class="name">王大力<span>（33012719700824）</span></div>
+				<br />
+				<div class="content">经我司严格培训、考核顺利完成技能学习，全面掌握上述技能<br/><br/>特发此证，以兹证明</div>
+				<div class="time">2015/08/27
+					<img src="img/zhang.png"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

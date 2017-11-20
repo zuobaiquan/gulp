@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 1200px;
+				height: 600px;
+				margin: 20px auto;
+				background: #FFFFFF;
+				overflow: hidden;
+			}
+			.list{
+				display: block;
+				width: 86px;
+				height: 100px;
+				margin-bottom: 20px;
+				background: lightblue;
+			}
+			table{
+				width: 1216px;
+				overflow: hidden;
+				/*background: #f5f5f5;*/
+				background: #0091C0;
+				margin-left: -8px;
+			}
+			table td{
+				border-collapse: collapse;
+			}
+		</style>
+		
+	</head>
+	<body bgcolor="#eaeaea">
+		<div style="width: 1200px;margin: 0 auto;">
+			这种方式实现的思路就是在每个list放在一个table的每个td里，思路其实和浮动的方式是一样的，都是通过父级的溢出
+			制作一种两头对齐且到头的假象，不过table的方式好处在于中间的list的间隙会自动调整，不会像浮动一样是定死的，
+			只要慢慢调整溢出多少，以及向左偏移多少就行。缺点也很明显，每行的个数是限死的，且都会包一个tr标签，对于动态
+			数据的写入是不方便的，需要判断写入了几个数据并自动加tr标签
+		</div>
+		<div class="box">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+				</tr>
+				<tr>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+				</tr>
+				<tr>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+				</tr>
+				<tr>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+					<td align="center"><span class="list"></span></td>
+				</tr>
+					
+			</table>
+		</div>
+	</body>
+</html>

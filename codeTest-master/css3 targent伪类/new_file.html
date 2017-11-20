@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+			}
+			.box1{
+				height: 40px;
+				background: #f7f7f7;
+				border-bottom:1px solid  #ccc;
+				border-left: 10px solid pink;
+				font: 18px "微软雅黑";
+				color: #666;
+				line-height: 40px;
+				text-align: left;
+				padding-left: 20px;
+				overflow: hidden;
+				
+				
+			}
+			.box1:target{
+				height: 100px;
+				width: 100%;
+				background: #eaeaea;
+				border-top:1px solid  lightgreen;
+				
+				-webkit-transition: height 0.6s;/*css3中的对象载入执行动画*/
+  				 transition: height 0.6s;
+			}
+			.content{
+				background: lightgreen;
+				line-height: 40px;
+				margin: 0;
+				padding: 0;
+				margin-left: -20px;
+				text-align: center;
+				
+				font: 18px "微软雅黑";
+				line-height: 60px;
+				color: #fff;
+			}
+			p{
+				text-align: center;
+				font: 18px "微软雅黑";
+				color: indianred;
+			}
+			.btbox{
+				width: 760px;
+				margin: 0 auto;
+				position: fixed;
+				bottom: 40px;
+				left: 300px;
+			}
+			a{
+				text-decoration: none;
+				font-size: 24px;
+				font-weight: bold;
+				color: #fff;
+				line-height: 40px;
+				text-align: center;
+				display:inline-block; 
+				width: 100px;
+				height: 40px;
+				background: lightblue;
+				
+				-moz-border-radius: 6px ;      /* Gecko browsers */
+				-webkit-border-radius: 6px ;   /* Webkit browsers */
+				border-radius:6px;
+			}
+			a:hover{
+				text-decoration: none;
+				font-size: 24px;
+				font-weight: bold;
+				color: #fff;
+				line-height: 40px;
+				text-align: center;
+				display:inline-block; 
+				width: 100px;
+				height: 40px;
+				background: cornflowerblue;
+				
+				-moz-border-radius: 6px ;      /* Gecko browsers */
+				-webkit-border-radius: 6px ;   /* Webkit browsers */
+				border-radius:6px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="b1" class="box1">1 <div class="content">这是相应的内容</div></div>
+		<div id="b2" class="box1">2 <div class="content">这是相应的内容</div></div>
+		<div id="b3" class="box1">3 <div class="content">这是相应的内容</div></div>
+		<div id="b4" class="box1">4 <div class="content">这是相应的内容</div></div>
+		<div id="b5" class="box1">5 <div class="content">这是相应的内容</div></div>
+		<div id="b6" class="box1">6 <div class="content">这是相应的内容</div></div>
+		<div id="b7" class="box1">7 <div class="content">这是相应的内容</div></div>
+		
+		<div class="btbox">
+			<p>点击按钮显示相应条目</p>
+			<a href="#b1">1</a>
+			<a href="#b2">2</a>
+			<a href="#b3">3</a>
+			<a href="#b4">4</a>
+			<a href="#b5">5</a>
+			<a href="#b6">6</a>
+			<a href="#b7">7</a>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//https://www.zhihu.com/question/35832285?sort=created
+			//http://lipeng1667.github.io/2016/12/20/IIFE-in-js/
+			(function(){
+				var a = 1;
+				alert(a);
+			})()
+			alert(a);//error:a is not defined
+			//立即执行函数能够隔离作用域（ES6之前JS原生不提供块级作用域，所以只能用函数作用域模拟了）
+			//比方说载入多个js文件时难保会存在js文件中有重名的全局变量，现在很多库，如jquery都会在最外面用立即执行函数包裹
+			//，这样载入的时候就可以避免重名出错的问题
+			//利用立即执行函数实现惰性载入http://blog.csdn.net/qiqingjin/article/details/50705785，
+			//简言之就是页面载入就执行立即执行函数返回业务需要的函数或对象，这样就可以避免每次都要if...else...判断浪费性能
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

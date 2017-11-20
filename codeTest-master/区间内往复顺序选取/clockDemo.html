@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+</body>
+<script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext('2d');
+
+    function Bg(x,y,w,h,c) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.c = c;
+        this.draw = function(){
+            context.fillStyle = this.c;
+            context.fillRect(this.x,this.y,this.w,this.h);
+        }
+    }
+
+    function Rec(x,y,w,h,c) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        this.c = c;
+        this.draw = function(){
+            context.fillStyle = this.c;
+            context.fillRect(this.x,this.y,this.w,this.h);
+        }
+    }
+    function Line(x0,y0,x1,y1){
+        this.x0 = x0;
+        this.y0 = y0;
+        this.x1 = x1;
+        this.y1 = y1;
+        this.draw = function(){
+            //context.fillStyle = "rgba(255,255,255,0)";
+            context.strokeStyle = '#fff';
+            context.lineWidth = 2;//设置线宽
+            context.lineJoin="round";//设置折角类型
+            context.lineCap="round";//设置末端类型
+            //context.beginPath();
+            context.moveTo(this.x0,this.y0);
+            context.lineTo(this.x1,this.y1);
+            context.stroke();
+            //context.fill();
+            //context.closePath();
+        }
+    }
+
+    var newBg = new Rec(0,0,400,400,'#330033');
+    var newRect = new Rec(0,0,40,40,'#aaaa00');
+    var newLine = new Line(0,0,0,0);
+
+    function clockNum(x,n){//输入x，n;n表示期望钟摆的最大值
+        x = Math.abs(x);//取绝对值
+        var minNum = Math.floor(x/n);//取下限
+        if(minNum%2===1){//如果是奇数
+            return x*-1+n*(minNum+1);
+        }else if (minNum%2===0) {//如果是偶数
+            return x-n*minNum;
+        }
+    }
+
+    ;(function ani(n){
+        newRect.x = clockNum(n,80);
+
+        newLine.x0 = n;
+        newLine.y0 = clockNum(n,80)+320;
+        newLine.x1 = n+1;
+        newLine.y1 = clockNum(n+1,80)+320;
+        newBg.draw();
+        newRect.draw();
+        newLine.draw();
+        requestAnimationFrame(ani.bind(this,n+1));
+    })(0)
+</script>
+</html>

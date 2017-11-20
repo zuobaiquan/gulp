@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			
+			//参见：
+			//【XMLHttpRequest Level 2 使用指南】——http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html
+			//【ajax 请求二进制流 图片 文件 XMLHttpRequest 请求并处理二进制流数据 之最佳实践】——http://www.cnblogs.com/cdemo/p/5225848.html
+			//【使用JavaScript类型数组接受二进制数据】https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data
+			//【XMLHttpRequest】https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest
+			//可以结合【js异步编程】下的实例学习
+			
+			//上例中使用传统的xhr level1的方式请求（里面请求跨域资源走的也是xhr level2只是浏览器和服务器支持即可，页面写法一致），
+			//请求的数据只有六种：xml,html,script,json,jsonp,text
+			//无法传输二进制数据，如文件，图片等。xhr level2却是可以：
+			
+			//请求一张图片并显示在页面上
+			let xhr = new XMLHttpRequest();
+			xhr.open(
+				'GET',//请求方式
+				'../000Picture_MaterialS/baozou1.jpg',//请求地址
+				true//是否异步
+			);
+			xhr.responseType = 'arraybuffer';//必须写在open之后。也可以直接用blob类型就不用下述的new Blob()生成blob对象
+			//responseType有五种：arraybuffer，blob，document,json,text
+			xhr.onload = function(){//onload事件，如果请求成功
+				console.log(xhr.getAllResponseHeaders())//获取请求的响应头
+				let dataGet = xhr.response;//注意不是xhr.responseText。响应的类型由上诉responseType来制定
+				let byteArray = new Uint8Array(dataGet);
+				let imgUrl = URL.createObjectURL(new Blob([dataGet]));//createObjectURL能够为载入的blob文件(或file对象)创建一个可访问的url地址，并不是指文件原来的地址，形式是blob:192.168.1.1/dsifjsdf12%132等等，是一种对象的指针
+				let $img = document.createElement('img');
+				$img.src = imgUrl;
+				document.body.appendChild($img)
+				for(let i=0;i<byteArray.byteLength;i++){//byteLength表示类型化数组的长度，也就是typedarray（Uint8Array属于其中一种）https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/byteLength
+					//console.log(byteArray[i])
+				}
+			}
+			xhr.send(null)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//ajax或者说xhr是异步的，异步操作会放置在任务队列中等待主程序完成再执行，我们不知道我们的某个异步任务什么时候
+			//结束，因为我们可能需要他们返回的数据做进一步操作，比方说ajax返回的数据写入dom，如果按照老套路，我们可以有两种
+			//方式，一种是不严格的方法，就是延时去获取数据或循环请求，但这种方式要么就不确定延时多久，要么就白耗性能；还有种方
+			//式就是采用回掉函数的方式，简言之就是把函数引用传入ajax中，写在sucess方法里，也就是获取成功去执行。如果只是
+			//一次ajax请求这样还是可以的，但如果success成功后还要ajax请求或者更多，那就要层层嵌套，容易堕入传说的回调
+			//地狱。所以我们可以采用下述方式
+			//ajax的请求方式结合promise可以实现异步请求同步化，如【PromiseTest】中的方式可以解脱层层嵌套的困扰，
+			//此外摒弃ajax或xhr，有种新的请求方式，就是fetch()的方式，他是基于promise的设计，只是书写更加简便。
+			//参见：传统 Ajax 已死，Fetch 永生——https://segmentfault.com/a/1190000003810652
+			//Fetch API： https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API
+			//fetch()的用法——http://www.cnblogs.com/taiyanghua0522/p/6119368.html
+			//标准还在不断制定中，但是未来趋势，可以也必须了解
+			
+			//fetch(input, init).then(function(response) {...})
+			//每次执行fetch()会返回一个promise对象，自动resolve(response),接下来就是promise得操作了
+			
+			window.onload = function(){
+				//参见【js中的二进制】下的【blob.html】
+				//请求一张图片并显示再页面上，在【ajax和xhr的学习】的【xhr level2】有采用xhr level2实现的例子。fetch是xhr level2和promise的结合
+				var myImage = document.createElement("img");
+				var myHeaders = new Headers();//请求头信息
+				myHeaders.append("Content-Type","image/jpeg");
+				 
+				var myInit = {
+				  	method: "GET",
+				  	headers: myHeaders,
+				  	mode: 'cors',
+				  	cache: "default"   
+				}
+				var myRequest = new Request("../000Picture_MaterialS/baozou1.jpg");//请求的资源，可以这样的Request也可以是字符串，或接口地址
+				 
+				console.log(1)
+				fetch(myRequest, myInit).then(function(response){
+					console.log(2)
+					return response.blob();
+				}).then(function(response){
+					console.log(3)
+					console.log(response)
+					var objectURL = URL.createObjectURL(response);
+					myImage.src = objectURL;
+					document.body.appendChild(myImage)
+				})
+				console.log(4)
+				//console输出：1，4，2，3，fetch或者说promise是异步的，但里面的操作是同步的，这也正是我们想要的
+				//因为我们并不想让请求资源比方说ajax一样的是同步的（可设置）来阻塞主线程的执行，我们只是想让请求资源和操作
+				//资源是同步先后执行的
+			}
+		</script>
+	</head>
+	<body></body>
+</html>

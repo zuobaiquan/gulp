@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var i = 0;
+		var xl = setTimeout(function fn(){
+			console.log(i)
+			xl = setTimeout(fn,i)
+			if(i>=1000){
+				clearTimeout(xl)
+			}
+			i++;
+		},i)
+		
+	</script>
+</html>

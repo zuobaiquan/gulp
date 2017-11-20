@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+html,body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+body{
+	overflow: hidden;
+	background: url(img/bg.png) left top no-repeat;
+	background-size: 100% 100%;
+}
+img{
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+.border{
+	height: 100%;
+	background: url(img/border.png) left top no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+}
+.paiBox{
+	display: flex;
+	display: -webkit-flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: center;
+	
+	border: 1px solid red;
+	width: 86%;
+	height: 50%;
+	margin:3% 7%;
+}
+.paiBox .img{
+	flex: 1,1,auto;
+	background: url(img/pai.png) no-repeat center center;
+	background-size: 100% 100%;
+	width: 106px;
+	height: 72px;
+	margin: 6px 6px 0 6px;
+}

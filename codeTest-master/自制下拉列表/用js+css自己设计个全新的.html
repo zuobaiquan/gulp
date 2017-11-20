@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=11; IE=10;IE=9; IE=8; IE=7; IE=EDGE">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/jiameng_style.css" />
+		<script src="js/jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				if($(".jiameng_search_box").width()*2+60 > $(window).width()){
+					$(".jsb_right").css("width",$(window).width()-$(".jsb_right").width()-40+'px')
+					$(".jsb_choose").css("width",$(".jsb_right").width()+30+'px')
+				}
+				
+				
+				
+				$(".jsb_right").toggle(
+					function(){
+						$(".jsb_choose",this).css("display","block")
+//						if($(window).height()< 200+$(this).offset().top ){
+//							$(".jsb_choose",this).css("top","-248px")
+//						}
+					},
+					function(){
+						$(".jsb_choose",this).css("display","none")
+					}
+				)
+				
+				$(".jsb_subchoose","#guojia").click(function(){
+						$("span","#guojia").text($(this).text())
+					})
+				$(".jsb_subchoose","#shengfen").click(function(){
+						$("span","#shengfen").text($(this).text())
+					})
+				
+				
+				$(".jsb_subchoose","#shengfen").bind('click', function() {
+						var this_shengfen = $(this).text()
+						if(this_shengfen == '浙江'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='zhejiang_result'><div class='jsr_content'>杭州市、桐庐县、富阳县、建德市、余杭</div><div class='jsr_content'>湖州市</div><div class='jsr_content'>嘉兴市、桐乡县、嘉善县</div></div><div class='zhejiang_result'><div class='jsr_content'>温州市</div><div class='jsr_content'>衢州市</div><div class='jsr_content'>金华市、东阳市</div></div><div class='zhejiang_result'><div class='jsr_content'>丽水市</div><div class='jsr_content'>宁波市</div><div class='jsr_content'>绍兴市、诸暨市</div></div>")
+						}
+						if(this_shengfen == '上海'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>上海松江区</div>")
+						}
+						if(this_shengfen == '江苏'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>江苏省宿迁市、南京市</div>")
+						}
+						if(this_shengfen == '贵州'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>贵州省贵阳市、遵义、都匀</div>")
+						}
+						if(this_shengfen == '陕西'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>陕西省西安市 </div>")
+						}
+						if(this_shengfen == '山东'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>山东省青岛市、泰安市</div>")
+						}
+						if(this_shengfen == '安徽'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>安徽省巢湖市、合肥市、淮南市、六安市、芜湖市</div>")
+						}
+						if(this_shengfen == '广东'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>广东省深圳市、湛江市</div>")
+						}
+						if(this_shengfen == '宁夏'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>宁夏银川市</div>")
+						}
+						if(this_shengfen == '江西'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>江西省南昌市</div>")
+						}
+						if(this_shengfen == '湖北'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>湖北省襄樊市、鄂州市</div>")
+						}
+						if(this_shengfen == '辽宁'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>辽宁省沈阳市</div>")
+						}
+						if(this_shengfen == '新疆'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>新疆</div>")
+						}
+						if(this_shengfen == '四川'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>四川</div>")
+						}
+						
+						if(this_shengfen == '吉林'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>吉林</div>")
+						}
+						if(this_shengfen == '黑龙江'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>黑龙江</div>")
+						}
+						if(this_shengfen == '青海'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>青海</div>")
+						}
+						if(this_shengfen == '甘肃'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>甘肃</div>")
+						}
+						if(this_shengfen == '内蒙古'){
+							$(".jiameng_search_result").html("<div class='jsr_title'>查询结果:</div><div class='jsr_content'>内蒙古</div>")
+						}
+						
+					});
+
+				
+			})
+		</script>
+	</head>
+
+	<body>
+
+		<div class="jiameng_search_title changeicon">加盟地区查询</div>
+		<div class="jiameng_search_box">
+			<div class="jsb_left">国家</div>
+			<div class="jsb_right" id="guojia"><span>中国</span>
+				<div class="jsb_choose">
+					<div class="jsb_subchoose">中国</div>
+				</div>
+			</div>
+		</div>
+		<div class="jiameng_search_box">
+			<div class="jsb_left">省份</div>
+			<div class="jsb_right" id="shengfen"><span>浙江</span>
+				<div class="jsb_choose">
+					<div class="jsb_subchoose">浙江</div>
+					<div class="jsb_subchoose">上海</div>
+					<div class="jsb_subchoose">江苏</div>
+					<div class="jsb_subchoose">贵州</div>
+					<div class="jsb_subchoose">陕西</div>
+					<div class="jsb_subchoose">山东</div>
+					<div class="jsb_subchoose">安徽</div>
+					<div class="jsb_subchoose">广东</div>
+					<div class="jsb_subchoose">宁夏</div>
+					<div class="jsb_subchoose">江西</div>
+					<div class="jsb_subchoose">湖北</div>
+					<div class="jsb_subchoose">辽宁</div>
+					<div class="jsb_subchoose">新疆</div>
+					<div class="jsb_subchoose">四川</div>
+					<div class="jsb_subchoose">吉林</div>
+					<div class="jsb_subchoose">黑龙江</div>
+					<div class="jsb_subchoose">青海</div>
+					<div class="jsb_subchoose">甘肃</div>
+					<div class="jsb_subchoose">内蒙古</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="jiameng_search_result">
+			<div class="jsr_title">查询结果:</div>
+			<div class="zhejiang_result">
+				<div class="jsr_content">杭州市、桐庐县、富阳县、建德市、余杭</div>
+				<div class="jsr_content">湖州市</div>
+				<div class="jsr_content">嘉兴市、桐乡县、嘉善县</div>
+			</div>
+			<div class="zhejiang_result">
+				<div class="jsr_content">温州市</div>
+				<div class="jsr_content">衢州市</div>
+				<div class="jsr_content">金华市、东阳市</div>
+			</div>
+			<div class="zhejiang_result">
+				<div class="jsr_content">丽水市</div>
+				<div class="jsr_content">宁波市</div>
+				<div class="jsr_content">绍兴市、诸暨市</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

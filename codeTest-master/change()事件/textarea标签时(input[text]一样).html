@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			div{
+				width: 600px;
+				height: 100px;
+				margin: 40px auto;
+			}
+			textarea{
+				width: 100%;
+				height: 100%;
+				background: #f5f5f5;
+				border: 1px solid #ccc;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$("textarea").change(function(){
+					alert("change()事件对于textarea的用法")
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div id="">
+			<textarea name="" rows="" cols="" onfocus="if(this.innerHTML=='这里书写文字') this.innerHTML='';this.style.color='#ff0000'" onblur="if(this.innerHTML=='') this.innerHTML='这里书写文字';this.style.color='#999'">这里书写文字</textarea>
+		</div>
+	</body>
+</html>

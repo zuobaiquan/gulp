@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+		</script>
+		<style type="text/css">
+			.fatherBox{
+				width: 100px;
+				height: 200px;
+			}
+			.zhuTable{
+				width: 100%;
+				height: 100%;
+				border: none;
+				border-collapse: collapse;
+			}
+			.zhuTable .td1{
+				width: 40px;
+			}
+			.keduBox{
+				width: 100%;
+				height: 100%;
+			}
+			.zhuBox{			
+				border: 1px solid #3765cf;
+				background:#182c5a url(skin.png);
+				height: 100%;
+				width: 100%;
+			}
+			.forcenter{
+				width: 64%;
+				height: 100%;
+				margin: 0 auto;
+				overflow: hidden;
+				position: relative;
+			}
+			.zhu1{
+				background: #28b0ce;
+				width: 33%;
+				height: 30%;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				
+				transition: all 0.5s;
+				-moz-transition: all 0.5s; /* Firefox 4 */
+				-webkit-transition: all 0.5s; /* Safari 和 Chrome */
+				-o-transition: all 0.5s; /* Opera */
+			}
+			.zhu2{
+				background: #dfb906;
+				width: 33%;
+				height: 60%;
+				position: absolute;
+				bottom: 0;
+				left: 33%;
+				
+				transition: all 0.5s;
+				-moz-transition: all 0.5s; /* Firefox 4 */
+				-webkit-transition: all 0.5s; /* Safari 和 Chrome */
+				-o-transition: all 0.5s; /* Opera */
+			}
+			.zhu3{
+				background: #d24e20;
+				width: 33%;
+				height: 20%;
+				position: absolute;
+				bottom: 0;
+				left: 66%;
+				
+				transition: all 0.5s;
+				-moz-transition: all 0.5s; /* Firefox 4 */
+				-webkit-transition: all 0.5s; /* Safari 和 Chrome */
+				-o-transition: all 0.5s; /* Opera */ 
+			}
+			.keduTable{
+				width: 100%;
+				height: 100%;
+				border: none;
+				border-collapse: collapse;
+			}
+			.tableName{
+				height: 10px;
+				font: 12px "微软雅黑";
+				color: #3d6cda;
+				vertical-align: top;
+				text-align: center;
+			}
+			.keduNum{
+				width: 70%;
+				font: 12px "微软雅黑";
+				color: #3d6cda;
+				vertical-align: bottom;
+				text-align: right;
+			}
+			.keduLine{
+				width: 30%;
+				border-bottom: 1px solid #3d6cda;
+			}
+		</style>
+	</head>
+	<body style="background: darkblue;">
+		<div class="fatherBox">
+			<table class="zhuTable" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="td1">
+						<div class="keduBox">
+							<table class="keduTable" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="tableName" colspan="2">a(份)</td>
+								</tr>
+								<tr>
+									<td class="keduNum">20</td>
+									<td class="keduLine"></td>
+								</tr>
+								<tr>
+									<td class="keduNum">16</td>
+									<td class="keduLine"></td>
+								</tr>
+								<tr>
+									<td class="keduNum">12</td>
+									<td class="keduLine"></td>
+								</tr>
+								<tr>
+									<td class="keduNum">08</td>
+									<td class="keduLine"></td>
+								</tr>
+								<tr>
+									<td class="keduNum">04</td>
+									<td class="keduLine"></td>
+								</tr>
+								<tr>
+									<td class="keduNum">00</td>
+									<td class="keduLine"></td>
+								</tr>
+								</tr>
+							</table>
+						</div>
+					</td>
+					<td class="td2">
+						<div class="zhuBox">
+							<div class="forcenter">
+								<div class="zhu1"></div>
+								<div class="zhu2"></div>
+								<div class="zhu3"></div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

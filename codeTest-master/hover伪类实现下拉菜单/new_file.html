@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.nav{
+				height: 42px;
+				width: 1000px;
+				margin: 80px auto 0 auto;
+				background: #eee ;
+			}
+			ul{
+				display: inline-block;
+				*display: inline;
+				*zoom: 1;
+				list-style: none;
+				font:bold 16px/42px "微软雅黑";
+				text-align: center;
+				background: #eee;
+				border: 1px solid #bbb;
+				margin: 0;
+				padding: 0;
+				height: 42px;
+				vertical-align: text-top;/*没有这句会使得菜单下拉时ul下方对齐而不是上方对齐*/
+				overflow: hidden;
+				cursor: pointer;
+				
+				position: relative;/*没有这两句会使得菜单下拉时被下方content里的内容覆盖*/
+				z-index: 2;
+				
+
+			}
+			ul:hover{
+				height: auto;
+				overflow:  auto;
+			}
+			ul li a,ul li a:link,ul li a:visited{
+				display: inline-block;
+				*display: inline;
+				*zoom: 1;
+				font: normal 15px/38px "微软雅黑";
+				color: #333;
+				text-decoration: none;
+				border-bottom: 1px solid #bbb !important;
+				padding: 0 20px;
+				margin: 0;
+				cursor: pointer;
+			}
+			ul li a:hover{
+				font: bold 15px/38px "微软雅黑";
+				background: #cfcfcf !important;
+			}
+			.content{
+				font-family: sans-serif;
+				color: #fff;
+				width: 1000px;
+				height: 160px;
+				background: lightblue;
+				margin: 0 auto;
+				padding: 20px 0;
+				text-align: center;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul>公司页面
+				<li><a href="javascipt:void(0)">公司介绍</a></li>
+				<li><a href="javascipt:void(0)">产品详情</a></li>
+				<li><a href="javascipt:void(0)">在线商城</a></li>
+				<li><a href="javascipt:void(0)">人才招聘</a></li>
+				<li><a href="javascipt:void(0)">联系我们</a></li>
+			</ul>
+			<ul>公司页面
+				<li><a href="javascipt:void(0)">公司介绍</a></li>
+				<li><a href="javascipt:void(0)">产品详情</a></li>
+				<li><a href="javascipt:void(0)">在线商城</a></li>
+				<li><a href="javascipt:void(0)">人才招聘</a></li>
+				<li><a href="javascipt:void(0)">联系我们</a></li>
+			</ul>
+			<ul>公司页面
+				<li><a href="javascipt:void(0)">公司介绍</a></li>
+				<li><a href="javascipt:void(0)">产品详情</a></li>
+				<li><a href="javascipt:void(0)">在线商城</a></li>
+				<li><a href="javascipt:void(0)">人才招聘</a></li>
+				<li><a href="javascipt:void(0)">联系我们</a></li>
+			</ul>
+		</div>
+		<div class="content">
+			<h1>oh!使用hover伪类就可以实现下拉菜单的所有功能</h1>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//参考阅读：Javascript 中的神器——Promise  http://www.jianshu.com/p/063f7e490e9a
+			//Promise是ES6新增的对象，用来传递异步操作的消息。类似于jquery中的deferred对象，详见【deferred的方式】
+			//ES6的promise对象研究  http://www.cnblogs.com/tugenhua0707/p/4771528.html（建议阅读这篇）
+			//（推荐）解决怎么拿到JavaScript异步函数的返回值？https://zhuanlan.zhihu.com/p/24404144
+			
+			var promise1 = new Promise(function(resolve,reject){//实例化Promise，实例化的时候执行这个函数
+				console.log(1);		//每个Promise实例对象都有两个属性，promiseValue和promiseStatus（只在浏览器控制台可见，无法直接访问）,后者记录对象的状态是resolve还是reject或者是Pending
+				resolve(2);			//前者的值是状态函数，如这里的resolve()的参数值，或者是then后函数return的值，如下方‘return 5;’
+				//resolve()的作用：
+				//1、作为标记状态为"执行成功"，触发then中的相应函数执行（订阅发布模式中的发布者）；
+			    //2、将resolve()里的参数值（这里的2）传递给实例化后的对象（promise1）的属性promiseValue的值,这个值将传递给then中成功状态下执行函数的参数
+			})
+			console.log(promise1);
+			var promise2 = promise1.then(function(value){//将函数作为任务加入任务队列，这个相当于订阅发布模式中的订阅者。类似于事件中的addEventLisenter,事件监听。
+				console.log(value)						//什么时候执行看promise1的状态，类似于事件中的事件触发。异步执行（主线程执行完成后执行异步队列任务）。吧需要异步执行的任务放在这里
+				return 5;	//return的值作为Promise实例，也就是promise2的属性promiseValue的值，
+			})				//如果没有renturn,那么promise2的属性promiseValue的值为undefined，链式调用（如下方的输出5的调用方式）也就没有上级管道的输出作为输入来做实质性操作
+			console.log(promise2);
+			console.log(3);
+			//需要注意的是每次调用then()（还有catch()函数）都会返回一个Promise实例，因此使用then()可以进行链式调用，且还是可以管道模式一样的链式调用，即可前者输出可作为后者输入，见上诉return和下述小案例
+			//如promise.then(fun1(){}).then(fun2(){}).then(fun3(){})。释义：执行完fun1()，然后（then）再执行fun2()，然后（then）再执行fun3()...,实现异步调用完成再执行操作，避免操作空数据
+			//以往如果不采用链式调用的方式，想要使用一方的输出只能嵌套或者什么全局变量，要么结构复杂不易懂要么产生很多的全局变量，这都是低效的表现
+			promise2
+			.then(function(value2){return value2*2})//输出值作为下级管道的输入
+			.then(function(value3){console.log(value3*2)});//管道输入的就是上诉return的value2*2。这里使用了value2，value3只是为了便于理解，其实可以都使用最初的value，因为命名空间不一样不会冲突
+			//最后输出1,3,2,promise对象,promise对象,20 （5*2*2）
+			
+			//注意then()执行，里面其实有两个参数，一个是标记成功后调用，一个是标记失败后调用。标记失败的可以不写，也就是如果失败则不操作什么，成功则执行里面的函数
+			//catch()用法和功能阐述和上诉then()的用法以及return的功用是一样的，只是里面传入的只有一个标记失败后执行的函数，相当于then(undefined,function(){})
+			//所以then(function(){})和catch(function(){})是相反的两个状态下的执行函数
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

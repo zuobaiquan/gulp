@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				background: #eaeaea;
+				font: 20px/30px "微软雅黑";
+				color: #333;
+			}
+			.web{
+				width: 300px;
+				float: left;
+				margin: 30px;
+				background: #fff;
+			}
+			.imgBox img{
+				width: 300px;
+				height: 200px;
+				background: darkslategray;
+			}
+			.title{
+				padding: 10px;
+				height: 80px;
+			}
+			.date,.tip{
+				font-size: 12px;
+				color: #999;
+			}
+			.date{
+				float: left;
+				margin-left: 10px;
+			}
+			.tip{
+				float: right;
+				margin-right: 10px;
+			}
+		</style>
+	</head>
+	<body ng-app="linkApp" ng-controller='linkCtrl' >
+		<div class="web" ng-repeat="i in data">
+			<div class="imgBox"><img src="{{i.picUrl}}"/></div>
+			<div class="title">{{i.title}}</div>
+			<div style="overflow: hidden;">
+				<div class="date">{{i.ctime}}</div>
+				<div class="tip">{{i.description}}</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var linkApp = angular.module('linkApp',[]);
+		linkApp.controller('linkCtrl',function($scope,$http){
+			$http({
+				url:'http://apis.baidu.com/txapi/mvtp/meinv?num=20',
+				method:'GET',
+				headers:{apikey:"220b7b3a24a14a3e8836535a127603cc"}
+			}).success(function(response){
+				$scope.data = response.newslist;
+			})
+		})
+	</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			
+			function getData(url,rqType,para,callback){
+				//alert("执行了")
+				$.ajax({
+					type:rqType,
+					url:url,
+					async:true,
+					//dataType:'text',
+					//contentType: "application/x-www-form-urlencoded;chart=utf8",
+					data:para,
+					success:function(data){
+						callback(data);
+					},
+					error:function(xhr,status,error){//success和error,都有这三个参数
+						//callback("数据请求失败！请稍后重试！");
+						console.log("*********请求失败！************错误原因如下：\n")
+						console.log("xhr: ");//返回主体
+						console.log(xhr);
+						console.log(xhr.status+";"+xhr.statusText)
+						console.log("status: "+status)
+						console.log("error: "+error);
+						console.log("**************************************\n")
+					}
+				});
+			}
+			function write(data){
+				document.getElementById('con').innerHTML = data
+			}
+		</script>
+	</head>
+	<body>
+		
+		<input type="text" name="" id="input" value="" placeholder="请输入..."/>
+		<input type="button" name="" id="btn" value="提交"/>
+		
+		<div id="con">
+			这里显示回调内容
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		var $btn = document.getElementById('btn');
+		var $input = document.getElementById('input');
+		
+		$btn.onclick = function(){
+			getData('http://bak.smkhmh.com/jkcx/rc4_id.php','post',{'val':$input.value},function(data){
+				console.log(data)
+				var data = data;
+				write(data);
+			})
+		}
+		
+	</script>
+</html>

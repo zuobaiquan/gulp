@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.btnBox{
+				display: inline-block;
+				vertical-align: top;
+			}
+			.addBall{
+				padding: 0 20px;
+				font: bold 16px/42px "微软雅黑";
+				color: #FFFFFF;
+				letter-spacing: 4px;
+				background: #01579B;
+				border-radius: 4px;
+				border-top: 1px solid #0190D6;
+				box-shadow: 0 4px 0 #00468C;
+				vertical-align: top;
+				margin-bottom: 10px;
+				
+				cursor: pointer;
+			}
+			.clearBall{
+				background: #D66263;
+				border-top: 1px solid #CC5522;
+				box-shadow: 0 4px 0 #AA312A;
+			}
+			.dropBall{
+				background: #59D56E;
+				border-top: 1px solid #59D56E;
+				box-shadow: 0 4px 0 #009C0C;
+			}
+			.addBall:hover,.clearBall:hover,.dropBall:hover{
+				opacity: 0.8;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var can = document.getElementById('myc');
+				var context = can.getContext('2d');
+				
+				function draw_c(x,y,r,angle,strokeStyle){//构造了一个构造函数，好处在于生成了一个创建圆形的通用模板，每次只要传入参数就可以生成一个圆而不用每次写一大堆重复的程序
+					this.x = x;							//而且好处还有就是，如果是用普通函数，那么如果想调用即生成的圆的半径，只能在普通函数里return出来
+					this.y = y;							//而，构造函数只要draw_c1.angle就是就行 (·_·)
+					this.r = r;
+					this.angle = angle;
+					this.strokeStyle = strokeStyle;
+					this.draw = function(){
+						context.beginPath();
+//						context.lineWidth = 3;
+						context.strokeStyle = strokeStyle;
+						context.arc(x,y,r,0,angle,true);
+						context.stroke();
+						context.closePath();
+					}
+				}
+				
+				function clear_screen(){
+					var canvas_width = document.getElementById("myc").clientWidth;
+					var canvas_height = document.getElementById("myc").clientHeight;
+					context.clearRect(0,0,canvas_width,canvas_height);
+				}
+				
+				function drop(obj){
+					for(var key in draw_list){
+						setInterval(function(){
+							
+						},20)
+					}
+				}
+				
+				function panduan(self,other){
+					var self_x = self.x;
+					var self_y = self.y;
+					var self_r = self.r;
+					var other_x = other.x;
+					var other_y = other.y;
+					var other_r = other.r;
+					
+					var center_long = Math.sqrt((Math.pow((other_y-self_y),2))+Math.pow((other_x-self_x),2));
+					
+//					if(center_long < (other_r+self_r)){
+//						alert("他们重合了！")
+//					}
+//					if(center_long == (other_r+self_r)){
+//						alert("他们相切了！")
+//					}
+//					if(center_long > (other_r+self_r)){s
+//						alert("他们分离了！")
+//					}
+					
+				}
+				
+//				var draw_c1 = new draw_c(200,200,60,Math.PI*2,"#007AFF");
+//				draw_c1.draw();
+//				
+//				var draw_c2 = new draw_c(240,240,50,Math.PI*2,"#B20000");
+//				draw_c2.draw();
+				
+				var draw_list = {};//动态生成变量名的一种思路，默认将变量付给一个字符串，这个字符串是常量不能为变量，因为他已经是变量了
+				var i = 1;		  //但是可以通过给他找个老大来管理这个变量，这个老大就是对象，可以动态为对象添加进新的函数和属性，因此故得。
+				function add_ball(){
+					//var i;
+					var draw_c_x = 50+Math.floor(Math.random()*700);
+					var draw_c_y = 50+Math.floor(Math.random()*500);
+					var draw_c_r = 10+Math.floor(Math.random()*40);
+					draw_list['draw_c'+i] = new draw_c(draw_c_x,draw_c_y,draw_c_r,Math.PI*2,"#007AFF");
+					eval("draw_list.draw_c"+i+'.draw()');//上面的方式解决了如何动态生成变量名的问题，但是如何动态调用这个变量呢
+					i++;								//要知道draw_list.draw_c2这样是可以识别的,但 draw_list.变量这样是
+				}									   //无法被识别的，eval()函数可以将作为字符串置入的函数解析成可执行的函数并可将
+													  //作为变量置入的变量依旧解析为变量，并最终拼接执行。
+				//panduan(draw_c1,draw_c2);
+				
+				//*******************按钮操作************************
+				document.getElementById('add_btn').onclick = function(){
+					add_ball();
+				}
+				document.getElementById('clear_btn').onclick = function(){
+					clear_screen();
+					for (var key in draw_list) {//这个方法是通用的
+						//if(key){
+							delete draw_list[key];//清空对象
+						//}
+					}
+					i=1;//初始化i
+					//alert(draw_list.draw_c1)
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="myc" width="800" height="600" style="border: 1px solid #CF7070;background: #FFEfef;"></canvas>
+		<div class="btnBox">
+			<div class="addBall" id="add_btn">添加球啊</div>
+			<div class="addBall clearBall" id="clear_btn">清空画布</div>
+			<div class="addBall dropBall" id="drop_btn">小球落下</div>
+		</div>
+	</body>
+</html>

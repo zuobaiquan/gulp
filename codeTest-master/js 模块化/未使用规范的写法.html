@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//最早接触模块化的说法是从java上，所谓模块化就是将需要用到的方法封装成为一个模块，
+			//哪里需要直接调用即可，比如你需要计算1+1和2+2，那么你只需要调用a+b的方法即可，
+			//无需反复重写，但是由于js并不支持类的继承，因此如何封装和调用方法就成为js模块化的重要思路。
+			//Javascript模块化编程（一）：模块的写法：
+			//http://www.ruanyifeng.com/blog/2012/10/javascript_module.html
+			//http://www.cnblogs.com/weblv/p/5188850.html
+			//***1、一个简单的函数其实就是一个实现特定功能的模块***
+			function fun(){
+				//...
+			}
+				//使用的时候直接调用fun()就行
+				//这种方式也是本人平常用的最多的方式，但是缺点很明显：一旦项目大，需要的函数多，难免变量重名，命名冲突
+				//如果把这些功能函数放在一个js文件中，的确可以供给别的开发者调用，但别人并不知道你的js中的函数命名，
+				//非常容易导致和自己定义的函数命名冲突
+				//参见seajs创建者玉伯的【前端模块化开发的价值 】：https://github.com/seajs/seajs/issues/547
+				//于是我们可以将函数封装在对象中，利用对象的命名空间解决命名冲突，如调用是这样的：obj.fun(),即便调用者
+				//也定义了一个fun()，但是因为命名空间而不会发生冲突，如下：
+			//***2、将函数封装成对象的方法***
+			var obj = {
+				_count:1,
+				fun:function(){
+					alert(this._count++);
+				}
+			}
+				//这种写法的确解决了上诉直接定义函数作为一个功能模块的弊端，但也出现了新的问题：1、这样的写法暴露了所有对象成员，很容易被外部改写
+				//如可以通过obj._count = 2,改写封装好的方法,这样功能方法fun调用执行的结果就不是我们想要的结果；2、如果项目功能复杂，采用上诉方式很可能出现对象中再定义出不同的对象
+				//用作功能模块的区分，于是有时候我们调用一个功能可能是这样的：obj.subObj.subObj2.fun(),谁能记住这么深的层级及属性名
+				//我们想要的是方法专注功能操作，而私有成员不能被篡改
+			//***3、使用"立即执行函数"（IIFE），可以达到不暴露私有成员的目的。***
+			var module = (function(){
+				_count:1,
+				fun:function(){
+					alert(this._count++);
+				}
+				return {
+					fun:fun
+				}
+			})()
+				//这样我们想调用fun方法只要module.fun()而不会也不能改变私有成员，方法专注执行
+				//很多时候这样就已经够我们使用的了，但有时候我们可能需要扩充我们的模块，比方一个数学模块中添加加法的方法，我们可以这样做：
+			//***4-1、使用放大模式扩充上诉模块***			
+			var module2 = (function(mod){
+				mod.fun2 = function(){
+					//...
+				}
+				return mod;
+			})(module)
+				//这样我们在原先的module基础上扩充了新的方法
+				//事实上往往我们会将模块放在一个js文件中而不是直接放在页面上，因为网速的限制，浏览器端很可能要加载很长时间，这样上诉写法就会报错
+				//这样我们可以在参数上传入一个判断，有则module，无则{}，即如下：
+			//***4-2、使用宽放大模式扩充上诉模块***			
+			var module2 = (function(mod){
+				mod.fun2 = function(){
+					//...
+				}
+				return mod;
+			})(module||{})
+			//***其他扩充方式参见【深入理解JavaScript 模块模式】
+			//http://www.cnblogs.com/TomXu/archive/2011/12/30/2288372.html
+			//http://www.oschina.net/translate/javascript-module-pattern-in-depth
+			
+			//上诉的方式即是我们常规自定义模块的方式，往往都能解决很多问题，但是怎么解决依赖关系呢
+			//比方说上诉我们采用宽放大的方式解决模块加载延迟的问题，但如果我们就是需要用到module中的方法呢
+			//再比如说我们的功能开发需要依赖多个模块，这些模块之间可能又有依赖关系，那我们就要认真安排引入的顺序，比方说自定义的js用到jquery的方法
+			//那我们就需要把jquery写在自定义的之前引入。功能复杂，页面中将引入很多很多的js文件还要排布引入顺序
+			//https://segmentfault.com/q/1010000000467082提到模块需要解决的问题：
+				//·依赖管理 这个才是核心
+				//·命名空间 用以支持依赖管理
+				//·模块封装规范 这个是最终的表现形式
+			//【Javascript文件加载：LABjs和RequireJS】http://www.ruanyifeng.com/blog/2011/10/javascript_loading.html
+				//阐述了<script>标签的方式引入的问题
+			//鉴于上诉两个问题，于是出现了一些包含模块书写（封装）规范和解决依赖的工具，commonjs,AMD,CMD
+		</script>
+		
+	</head>
+	<body>
+	</body>
+</html>

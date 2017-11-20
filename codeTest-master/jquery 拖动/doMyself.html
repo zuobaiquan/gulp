@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				margin: 0px;
+				background: #FAFAFA;
+				position: relative;
+			}
+			.info{
+				height: 40px;
+				margin-top: 4px;
+				padding: 0 20px;
+				background: #fff;
+				border-bottom: 2px solid #fff;
+				border-top: 2px solid #ccc;
+				
+				font: 16px "微软雅黑";
+				line-height: 40px;
+				color: lightseagreen;
+
+				-moz-box-shadow:inset 0px 0.5px 5px #ccc;/*firefox*/ 
+				-webkit-box-shadow:inset 0px 0.5px 5px #ccc;/*safari或chrome*/ 
+				box-shadow:inset 0px 0.5px 5px #ccc;/*opera或ie9*/ 
+				filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);/*ie*/ 
+
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background:lightgreen;
+				border-radius: 10px;
+				position: absolute;
+				left: 20px;
+				cursor: pointer;
+				
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background:lightcoral;
+				border-radius: 10px;
+				position: absolute;
+				left: 125px;
+				cursor: pointer;
+				
+			}
+			.box3{
+				width: 100px;
+				height: 100px;
+				background:lightblue;
+				border-radius: 10px;
+				position: absolute;
+				left: 230px;
+				cursor: pointer;
+				
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+//				var zuobiao = $(".box").offset().left;
+				$(document).mousemove(function(e){
+					$(".info").html('X:'+e.pageX+' , '+'Y:'+e.pageY);
+	//				$(".box").css("left",e.pageX)
+	//				$(".box").css("top",e.pageY)
+					if(move = true){
+						$(".box").css("left",e.pageX)
+						$(".box").css("top",e.pageY)
+					}
+				})
+				$(".box,.box2,.box3").mousedown(function(){
+						var move = true;
+					})
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div class="info">这里显示鼠标坐标值...</div>
+		<div class="box"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+	</body>
+</html>

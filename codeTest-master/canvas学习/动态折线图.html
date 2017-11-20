@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				
+				function set_point(){
+					var value = 200 + Math.ceil(Math.random()*150);//随机数的范围在[200,350]之间，注意这种设置范围区间的方式
+					return value;
+				}
+				var can = document.getElementById('mc');
+				var context = can.getContext('2d');
+				
+				var lg = context.createLinearGradient(0,200,0,600)
+				lg.addColorStop(0,'#fff');
+				lg.addColorStop(1,'#cff0ff');
+				
+				context.fillStyle = lg;
+				context.strokeStyle = '#38a0d0';
+				context.lineWidth = 6;//设置线宽
+				context.lineJoin="round";//设置折角类型
+				context.lineCap="round";//设置末端类型
+				//context.save();
+				
+				
+				setInterval(function(){
+					context.beginPath();//要把开始路径和结束路径放在循环里面，否则下方的clearRect()将不起作用，因为会接着上次的路径接着画
+//					context.restore();
+					//context.globalCompositeOperation = 'copy';//这样也行
+					context.clearRect(0,0,800,600);//如果每次循环不清除上次的结果，会出现线条叠加的结果，上面这样也可以
+					context.moveTo(0,600);
+					context.lineTo(0,set_point());
+					context.lineTo(100,set_point());
+					context.lineTo(150,set_point());
+					context.lineTo(200,set_point());
+					context.lineTo(250,set_point());
+					context.lineTo(300,set_point());
+					context.lineTo(350,set_point());
+					context.lineTo(400,set_point());
+					context.lineTo(450,set_point());
+					context.lineTo(500,set_point());
+					context.lineTo(550,set_point());
+					context.lineTo(600,set_point());
+					context.lineTo(650,set_point());
+					context.lineTo(700,set_point());
+					context.lineTo(750,set_point());
+					context.lineTo(800,set_point());
+					context.lineTo(800,600);
+					
+					context.stroke();
+					context.fill();
+					context.closePath();
+				},800)
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="mc" width="800px" height="600px"></canvas>
+	</body>
+</html>

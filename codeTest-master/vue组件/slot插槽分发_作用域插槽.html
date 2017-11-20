@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-component>
+				<span slot="con1">这是插入的内容1</span>
+				<template slot="con2" scope="props"><!--template和scope是必须的，表明此内容是作用域插槽的内容-->
+					<span>这是插入的内容2，{{props.val}}</span>
+				</template>
+			</my-component>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//前例插入的内容可以使用父级的数据，但是
+		//有时候我们插入的内容需要用到组件本身的数据，那么就要用到作用域插槽
+		Vue.component('my-component',{//tagName,options
+			template: '<div>\
+							<slot name="con1">这是默认内容1，没有分发内容才会显示</slot>\
+							<slot name="con2" :val="val">这是默认内容2，没有分发内容才会显示</slot>\
+					   </div>',
+			data: function(){
+				return {
+					val: '这是组件的val变量的值'
+				}
+			}
+		})
+
+		//实例化Vue实例
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				
+			}
+		})
+		
+	</script>
+</html>

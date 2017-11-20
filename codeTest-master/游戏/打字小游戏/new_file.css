@@ -1,0 +1,54 @@
+@charset "utf-8";
+html,body{
+	margin: 0;
+	background: #dfe8ec;
+	height: 100%;
+	overflow: hidden;
+}
+.luoxia_box{
+	height: 80%;
+	overflow: hidden;
+	position: relative;
+}
+.words_box{
+	height: 20%;
+	background: #29666a;
+	padding:0 20px;
+	overflow: hidden;
+}
+#input_word{
+	width: 100%;
+	background: #3d7275;
+	height: 80%;
+	position: relative;
+	top: 10%;
+	margin-top: 0;
+	border: none;
+	outline: none;
+	border-radius: 20px;
+	
+	font-size: 65px;
+	color: #FFFFFF;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+.word{
+	display: inline-block;
+	position: absolute;
+	top: -60px;
+	padding: 10px 20px;
+	background: #41baff;
+	border-radius: 10px;
+	font:bold 24px/24px "微软雅黑";
+	color: #FFFFFF;
+	text-align: center;
+}
+.word_hong{
+	display: inline-block;
+	position: absolute;
+	width: 200px;
+	height: 184px;
+	padding: 0;
+	background: transparent url(hong.png) no-repeat center center;
+	border-radius: 0;
+}

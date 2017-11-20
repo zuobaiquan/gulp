@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			a{
+				font: 36px "微软雅黑";
+				color: blue;
+				margin: 200px;
+			}
+			p{
+				font: 24px "微软雅黑";
+				color: #333;
+			}
+		</style>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("p").hide();
+				$("a").click(function(){
+					$("body").add("p");
+					$("p").show();
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<a href="javascript:void(0)">点我添加文字</a>
+		<p>这是添加的内容</p>
+	</body>
+</html>

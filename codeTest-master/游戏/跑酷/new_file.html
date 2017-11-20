@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="new_file.css"/>
+		<script type="text/javascript">
+			$(function(){
+					var $zhangai = $(".zhangai")
+					setInterval(
+						function(){
+							var value =  Math.floor(Math.random(1)*50);
+							var zhangai_style = "style='height: "+value+"px;width: "+value*2+"px;'"
+							$("body").append($("<div class='zhangai' "+zhangai_style+"></div>"))
+							$(".zhangai").animate({"left":-200},5000,function(){
+								$(this).remove();
+							})
+							//return value
+						},2000)
+					
+//					setInterval(function(){
+						$zhangai.live("click",function(){
+							var jianju = $zhangai.position().left - $(".men").position().left
+							alert(jianju)
+						})
+						$zhangai.trigger("click")
+						
+//					},10)
+//					var findzhangai = $(document).find(".zhangai")
+					
+//					if(findzhangai = Object){
+//						$(".zhangai").live("ceju",function(){
+//						alert("kk")
+//						})
+//						$(".zhangai").trigger("ceju")
+//					}
+				
+			})
+		</script>
+	</head>
+	<body>
+		<!--<div class="zhangai"></div>-->
+		<div class="men">
+		<!--	<img src="weiqi.png"/>-->
+		</div>
+		<div class="foot"></div>
+	</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="echarts.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    	<div id="main" style="width: 600px;height:400px;"></div>
+	</body>
+	<script type="text/javascript">
+		
+		// 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '分段颜色折线图'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [
+	            {
+	                name: '销量',
+	                type: 'line',
+	                data: [5, 20, '-','-','-','-'],
+	               	lineStyle: {
+               		 	normal: {
+	                		color: "#aa0000",
+               		 		width: 4
+	                	}
+	               	}
+	            },
+	            {
+	                name: '销量',
+	                type: 'line',
+	                data: ['-', 20, 36,'-','-','-'],
+	               	lineStyle: {
+               		 	normal: {
+	                		color: "#00aa00",
+               		 		width: 4
+	                	}
+	               	}
+	            },
+	            {
+	                name: '销量',
+	                type: 'line',
+	                data: ['-', '-', 36,10,'-','-'],
+	               	lineStyle: {
+               		 	normal: {
+	                		color: "#0000aa",
+               		 		width: 4
+	                	}
+	               	}
+	            },
+	            {
+	                name: '销量',
+	                type: 'line',
+	                data: ['-', '-', '-',10,10,'-'],
+	               	lineStyle: {
+               		 	normal: {
+	                		color: "#aaaa00",
+               		 		width: 4
+	                	}
+	               	}
+	            },
+	            {
+	                name: '销量',
+	                type: 'line',
+	                data: [ '-','-','-','-', 10, 20],
+	                lineStyle: {
+	               		normal: {
+	                		color: "#00aaaa",
+               		 		width: 4
+	                	}
+	               	}
+	            }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+		
+	</script>
+</html>

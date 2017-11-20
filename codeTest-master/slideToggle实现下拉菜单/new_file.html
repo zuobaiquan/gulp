@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				margin: 0;
+			}
+			.top{
+				height: 100px;
+				background: #f7f7f7;
+			}
+			.menubox{
+				height: 44px;
+				background: #034940;
+				
+			}
+			.menu{
+				margin: 0 auto;
+				
+			}
+			.hang{
+				margin: 0;
+				padding: 0;
+				width: 240px;
+				background: #034940;
+				font: 16px "微软雅黑";
+				color: #fff;
+				line-height: 44px;
+				text-align: center;
+				float: left;
+				cursor: pointer;
+				
+			}
+			.hang:hover{
+				margin: 0;
+				padding: 0;
+				width: 240px;
+				background: #2d7e74;
+				font: 16px "微软雅黑";
+				color: #fff;
+				line-height: 44px;
+				text-align: center;
+				float: left;
+				cursor: pointer;
+				
+				-moz-box-shadow: 1px 1px 10px #444;/*firefox*/ 
+				-webkit-box-shadow:1px 1px 10px #444;/*safari或chrome*/ 
+				box-shadow:1px 1px 10px #444;/*opera或ie9*/ 
+				filter:progid:DXImageTransform.Microsoft.Shadow(color=#444,direction=90,strength=8);/*ie*/ 
+
+				
+			}
+			.hang li{
+				list-style: none;
+				padding: 0 10px;
+				background: #f7f7f7;
+				color: #666;
+				border-top: 1px solid #eaeaea;
+				display: none;
+			}
+			.hang li:hover{
+				list-style: none;
+				padding: 0 10px;
+				background: #eaeaea;
+				color: #000;
+				
+			}
+		</style>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			
+			jQuery.fn.Cekuan=function(){
+				var kuan = $(".hang").width()*4;
+				$(".menu").css("width",kuan)
+				alert(kuan)
+			}
+			
+			$(".menu").Cekuan();
+//			上面这一块用以获取并设置菜单总长，以此使菜单居中，纯粹为了熟悉代码。其实给css菜单设置一个宽度就可以了
+
+			$(".hang").mouseenter(function(){
+				$("li",this).slideToggle("fast");
+			})
+			$(".hang").mouseleave(function(){
+				$("li",this).slideToggle("fast");
+			})
+		})	
+		</script>
+	</head>
+	<body>
+		<div class="top"></div>
+		<div class="menubox">
+			<div class="menu">
+				<ul class="hang">
+					首页
+					<li>选项1</li>
+					<li>选项2</li>
+					<li>选项3</li>
+					<li>选项4</li>
+				</ul>
+				<ul class="hang">
+					公司简介
+					<li>选项1</li>
+					<li>选项2</li>
+					<li>选项3</li>
+					<li>选项4</li>
+					<li>选项5</li>
+					<li>选项6</li>
+				</ul>
+				<ul class="hang">
+					产品服务
+					<li>选项1</li>
+					<li>选项2</li>
+					<li>选项3</li>
+				</ul>
+				<ul class="hang">
+					加入我们
+					<li>选项1</li>
+					<li>选项2</li>
+					<li>选项3</li>
+					<li>选项4</li>
+				</ul>
+			</div>
+		</div>
+		<div style="height: 40px;background: #ff5252;"></div>
+	</body>
+</html>

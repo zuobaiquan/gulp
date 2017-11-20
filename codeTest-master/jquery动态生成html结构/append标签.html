@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="jquery-1.8.3.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 50px;
+			}
+			p{
+				font: 18px "微软雅黑";
+				color: #333;
+				line-height: 36px;
+			}
+			.qiu{
+				display: inline-block;
+				width: 40px;
+				height: 40px;
+				background:#007300;
+				margin-right: 20px;
+				
+				-moz-border-radius: 100%;  
+			    -webkit-border-radius: 100%;  
+			    border-radius:100%;
+			}
+			.zhiwu{
+				display: inline-block;
+				widows: 100%;
+				height: 106px;
+			}
+			
+			table{
+				width: 100%;
+				border: none;
+				border-collapse: collapse;
+			}
+			table td,th{
+				font: 18px "微软雅黑";
+				color: #333;
+				line-height: 36px;
+				border: 1px solid #eaeaea;
+				text-align: center;
+			}
+			table th{
+				background: #f7f7f7;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<p>鼠标点击发射器上会发射子弹>></p>
+		<div class="zhiwu"><img src="zhiwu.jpg"/></div>
+		
+		<hr/>
+		
+		<p>点击添加表格会在最后增加一行</p>
+		<input type="button" name="" id="tianjia" value="添加" />
+		<table>
+			<tr>
+				<th>姓名</th>
+				<th>年龄 </th>
+				<th>学历</th>
+				<th>删除操作</th>
+				
+			</tr>
+			<tr>
+				<td>张三</td>
+				<td>24</td>
+				<td>本科</td>
+				<td class="shanchuBt"><input type="button" name="" id="" value="删除" /></td>
+			</tr>
+			<tr>
+				<td>李四</td>
+				<td>27</td>
+				<td>大专</td>
+				<td><input type="button" name="" id="" value="删除" /></td>
+			</tr>
+		</table>
+		
+		
+		
+		<script type="text/javascript">
+		
+//		*********************这里是发射子弹相关*****************
+			$(document).ready(function(){
+				
+				$(".zhiwu").click(
+					function(){
+						$(".zhiwu").append("<div class='qiu'></div>");
+						$(".qiu").animate({marginLeft:"200px"},600,
+							function(){
+								$(".qiu").animate({opacity:"0"});
+								$(".qiu").css("display","none");
+							}
+						);
+					}
+				)
+//		*********************这里是添加表格相关*****************
+				$("table").append("通过“XX”的方式添加的")
+				$("table").append("<div>通过加div标签的方式添加的</div>")
+				$("table").append($("<div>通过jquery生成的方式添加的</div>"))
+				
+				
+					
+			})
+		</script>
+		
+	</body>
+</html>

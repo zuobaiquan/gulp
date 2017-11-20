@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.button {
+			    position: relative;
+			    border: none;
+			    outline: none;
+			    border-radius: 8px;
+			    font-size: 28px;
+			    color: #FFFFFF;
+			    height: 70px;
+			    width: 200px;
+			    text-align: center;
+			    -webkit-transition-duration: 0.4s; /* Safari */
+			    transition-duration: 0.4s;
+			    text-decoration: none;
+			    overflow: hidden;
+			    cursor: pointer;
+			}
+			/****************button1**********/
+			.button1{
+				background-color: lightseagreen;
+			}
+			.button1:after {
+			    content: "";
+			    background: #fff;
+			    display: block;
+			    position: absolute;
+			    padding-top: 200%;
+			    padding-left: 300%;
+			    margin-left: -20px!important;
+			    margin-top: -120%;
+			    opacity: 0;
+			    transition: all 0.8s
+			}
+			
+			.button1:active:after {
+			    padding: 0;
+			    margin: 0;
+			    opacity: 1;
+			    transition: 0s
+			}
+			/****************button2**********/
+			.button2{
+				background-color: lightcoral;
+			}
+			.button2:after {
+			    content: "";
+			    background: #fff;
+			    display: block;
+			    position: absolute;
+			    left: -50px;
+			    top: -65px;
+			    width: 300px;
+			    height: 200px;
+			    border-radius: 100%;
+			    opacity: 0;
+			    transition: all 0.8s
+			}
+			
+			.button2:active:after {
+			    transform: scale(0,0);
+			    opacity: 0.6;
+			    transition: 0s
+			}
+			
+			.button2:before {
+			    content: "";
+			    background: #fff;
+			    display: block;
+			    position: absolute;
+			    left: -50px;
+			    top: -65px;
+			    width: 300px;
+			    height: 200px;
+			    border-radius: 100%;
+			    opacity: 0;
+			    transition: all 1.5s
+			}
+			
+			.button2:active:before {
+			    transform: scale(0,0);
+			    opacity: 0.7;
+			    transition: 0s
+			}
+		</style>
+	</head>
+
+	<body>
+		<button class="button button1">Click1</button>  <!--可以使用div等其他标签-->
+		<button class="button button2">Click2</button>
+	</body>
+
+</html>

@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+/*global*/
+* {
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	background: #111;
+}
+/*用于slide设定屏幕高度后的样式设定*/
+html,body,.swiper-container,.swiper-slide {
+	height: 100%;
+} 
+
+.blue-slide {
+	background: #4390EE;
+}
+
+.red-slide {
+	background: #CA4040;
+}
+
+.orange-slide {
+	background: #FF8604;
+}
+
+.green-slide {
+	background: #00ff00;
+}
+
+.swiper-slide {
+	position: relative;
+	font-size: 36px;
+	text-align: center;
+}
+
+.s2_el1 {
+	position: absolute;
+	width: 40px;
+	height: 100px;
+	left: 60%;
+	bottom: 0;
+	z-index: 1000;
+	margin-left: -20px;
+}
+.s2_el1_con{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #FFF;
+	left: 0;
+	bottom: 0;	
+}
+.s2_el2 {
+	position: absolute;
+	width: 40px;
+	height: 200px;
+	left: 30%;
+	bottom: 0;
+	z-index: 1000;
+	margin-left: -20px;
+}
+.s2_el2_con{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #ffff00;
+	left: 0;
+	bottom: 0;	
+}

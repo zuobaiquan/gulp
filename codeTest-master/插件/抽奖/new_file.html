@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table{
+				width: 100%;
+				border-collapse: collapse;
+				table-layout: fixed;
+			}
+			td{
+				text-align: center;
+				line-height: 100px;
+				background: #aa0088;
+				border: 4px solid #fff;
+				color: #fff;
+				letter-spacing: 2px;
+			}
+			#btn{
+				background: #FF0000;
+				font-weight: bold;
+				font-size: 24px;
+				cursor: pointer;
+			}
+			.select{
+				background: #FFA500;
+			}
+		</style>
+		<script src="lottery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td id="jp1" class="class1 class2">奖品1</td>
+				<td id="jp2">奖品2</td>
+				<td id="jp3">奖品3</td>
+			</tr>
+			<tr>
+				<td id="jp4">奖品8</td>
+				<td id="btn">点我抽奖</td>
+				<td id="jp5">奖品4</td>
+			</tr>
+			<tr>
+				<td id="jp6">奖品5</td>
+				<td id="jp7">奖品6</td>
+				<td id="jp8">奖品7</td>
+			</tr>
+		</table>
+	</body>
+	<script type="text/javascript">
+		
+		var btn = document.getElementById('btn');
+		
+		var options = {
+			selectClass: 'select',//选中dom添加的类
+			algorithm: 'sine',//算法,默认为空则为匀速，为‘sine’表示采用正弦曲线，先慢再快最后变慢
+			during: 4000,//总时长(毫秒)
+			loop: 6,//几圈，0表示不循环
+			target: 2,//最终定位元素index，0开始
+		};
+		var domArr = [//高亮得顺序按照这个数组中dom得顺序来进行
+			document.getElementById('jp1'),
+			document.getElementById('jp2'),
+			document.getElementById('jp3'),
+			document.getElementById('jp5'),
+			document.getElementById('jp8'),
+			document.getElementById('jp7'),
+			document.getElementById('jp6'),
+			document.getElementById('jp4')
+		]
+		
+		var lottery = new Lottery(domArr,options);
+		btn.onclick = function(){
+			lottery.start(function(){//callback可选，表示选完之后得回调
+				console.log("抽奖结束！");
+			});
+		}
+		
+	</script>
+</html>

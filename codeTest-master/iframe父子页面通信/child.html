@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 20px;
+				background: #fff;
+				font-size: 16px;
+			}
+			body *{
+				display: block;
+				margin: 10px 0;
+			}
+		</style>
+		<script type="text/javascript">
+		
+			function childDialog(){
+				alert('我是child页面');
+				//document.body.style.background = 'red';
+			}
+			window.onload = function(){
+				document.getElementById('btn1').onclick = function(){//获取父级parent.html页面中p标签的内容
+					var $btn1_con = document.getElementById('btn1_con');
+					$btn1_con.innerHTML += window.parent.document.getElementById('parentP').innerHTML;
+				}
+				document.getElementById('btn2').onclick = function(){//在父级执行partentDialog()函数
+					window.parent.partentDialog();
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p id="childP" style="font-weight: bold;">这个是子级页面的内容</p>
+		<input type="button" name="" id="btn1" value="点击我获取parent.html中p标签的内容" />
+		<span id="btn1_con" style="margin: -5px 0 0 10px;font-size: 14px;text-decoration: underline;">在这里显示上诉获取内容：</span>
+		<input type="button" name="" id="btn2" value="点击我在parent.html中运行函数" />
+	</body>
+</html>

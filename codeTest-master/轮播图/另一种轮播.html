@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="http://www.dianlan.cn/shop/favicon.ico" rel="SHORTCUT ICON" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<meta name="description" />
+
+	</head>
+
+	<body>
+
+		<div id="marquee_demo" style="overflow:hidden;width:968px; height:45px; text-align:center;border:1px solid #ccc">
+			<table cellspacing="0" cellpadding="0" align="center" border="0">
+				<tr>
+					<td id="logoTD" valign="top">
+						<table width="968" height="45" border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td width="180" align="center" style="background: #FF5053;color: #fff;">1</td>
+								<td width="180" align="center" style="background: #FF8000;color: #fff;">2</td>
+								<td width="180" align="center" style="background: #FFAE6B;color: #fff;">3</td>
+								<td width="180" align="center" style="background: #aaffaa;color: #fff;">4</td>
+								<td width="180" align="center" style="background: #aaffcc;color: #fff;">5</td>
+								<td width="180" align="center" style="background: #00CAF2;color: #fff;">6</td>
+								<td width="180" align="center" style="background: #00AEEF;color: #fff;">7</td>
+								<td width="180" align="center" style="background: #009CE1;color: #fff;">8</td>
+								<td width="180" align="center" style="background: #00609E;color: #fff;">9</td>
+							</tr>
+						</table>
+					</td>
+					<td id="logoTD2" valign="top"></td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript">
+			//原理见：http://www.cnblogs.com/mguo/archive/2013/03/19/2969657.html
+			var speed = 30;
+			logoTD2.innerHTML = logoTD.innerHTML;
+
+			function Marquee() {
+				if(marquee_demo.scrollLeft >= logoTD.scrollWidth) {
+					marquee_demo.scrollLeft = 0;
+				} else {
+					marquee_demo.scrollLeft++; //相当于marquee_demo.scrollLeft = marquee_demo.scrollLeft + 1；
+				}
+			}
+			var MyMar = setInterval(Marquee, speed);
+			marquee_demo.onmouseover = function() {
+				clearInterval(MyMar);
+			}
+			marquee_demo.onmouseout = function() {
+				MyMar = setInterval(Marquee, speed);
+			}
+		</script>
+
+	</body>
+
+</html>

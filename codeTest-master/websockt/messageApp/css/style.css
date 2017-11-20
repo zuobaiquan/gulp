@@ -1,0 +1,133 @@
+@charset "utf-8";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+}
+body,html{
+	height: 100%;
+	/*overflow: hidden;*/
+}
+body{
+	font: 14px/1.5 "microsoft yahei",sans-serif,serif;
+	color: #333;
+	background: #ffeecc;
+}
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+/***********go**********/
+.message{
+	position: absolute;
+	width: 30%;
+	height: 90%;
+	top: 5%;
+	left: 35%;
+	padding: 10px;
+	border: 1px solid #333;
+	border-radius: 4px;
+}
+.info{
+	height: 80%;
+	background: #fafafa;
+	border: 1px solid #333;
+	padding: 10px;
+	overflow: auto;
+}
+.infoBox{
+	/*height: 100%;*/
+	display: flex;
+	flex-flow: column-reverse nowrap;/*这里是flex-direction和flex-wrap两个属性的缩写，分别表示主轴方向和主轴上的项目是否可以换行*/
+	justify-content: flex-start;/*规定项目在"主轴"上的对齐方式,因为下述对项目的属性设置，删掉这句不会影响当前布局*/
+	align-items:  flex-end;/*定义项目在"交叉轴"上如何对齐。stretch值意为伸展开撑满*/
+}
+.opera{
+	height: 18%;
+	background: #fff;
+	border: 1px solid #333;
+	margin-top: 2%;
+	padding: 10px;
+}
+.operaIn{
+	width: 100%;
+	height: 100%;
+	
+}
+.selInfo{
+	position: relative;
+	padding: 5px 10px;
+	margin:20px 40px 10px 0;
+	background: #119900;
+	color: #fff;
+	border-radius: 6px 0 6px 6px;
+	flex: 0 1 auto;
+	word-wrap:break-word ;
+	word-break: break-all;
+}
+.selInfo::after{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 10px solid  #119900;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	right: -5px;
+	top: 0;
+}
+.selInfo::before{
+	content: 'U';
+	position: absolute;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: #ccc;
+	text-align: center;
+	line-height: 30px;
+	font-weight: bold;
+	right: -40px;
+	top: 0;
+}
+.othInfo{
+	position: relative;
+	padding: 5px 10px;
+	margin:20px 0  10px 40px;
+	background: #0055ee;
+	color: #fff;
+	border-radius: 6px 0 6px 6px;
+	flex: 0 1 auto;
+	align-self: flex-start;
+	word-wrap:break-word ;
+	word-break: break-all;
+}
+.othInfo::after{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 10px solid  #0055ee;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	left: -5px;
+	top: 0;
+}
+.othInfo::before{
+	content: 'O';
+	position: absolute;
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: #ccc;
+	text-align: center;
+	line-height: 30px;
+	font-weight: bold;
+	left: -40px;
+	top: 0;
+}

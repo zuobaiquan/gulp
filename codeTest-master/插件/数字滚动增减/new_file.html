@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="border: 1px dotted #333;padding: 10px;">这是一个数字滚动插件demo</div><br />
+		<!--下述需要是内敛或内联块元素，因为要计算内容宽度给每个数字块设置宽度-->
+		<div class="counter" id="counter" style="font-size: 64px;font-weight: bold;display: inline-block;">19</div><br />
+		<p style="background: #ffee99;padding:4px 8px;">在下述输入框提交数值，上诉数值就会自动动画变动，位数自动增减</p>
+		<input type="text" name="" id="text" value="" placeholder="请输入变更的数值"/>
+		<input type="button" name="" id="btn" value="确认" /><br />
+		<p style="background: #ffee99;padding:4px 8px;">反复点击下述按钮，上诉数值会以初始值为基础自动递增或停止</p>
+		<input type="button" name="" id="addBtn" value="递增" />
+	</body>
+	<script src="counter.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		//初始化Counter实例
+		var $dom = document.getElementById('counter');
+		var options = {
+			//fromN:0,//初始值,默认读取dom中的数值
+			lazy:10,//延时,需要设置非0，不然发现新增数值变动会不现动效
+			during:'1s',//历时
+		};
+		var count = new Counter($dom,options);
+		//下诉手动改动数值
+		var $btn = document.getElementById('btn');
+		var $val = document.getElementById('text');
+		$btn.onclick = function(){
+			count.options.setToN = $val.value*1;//设置最终值，可以在此count实例基础上不断变动，数值变动以上次为基础
+		}
+		//下诉自动递增数值
+		var $addBtn = document.getElementById('addBtn'),
+		clickStatus = false,
+		fromN = count.options.fromN,
+		changeValAni;
+		var changeVal = function(){
+			return changeValAni = setInterval(function(){
+				fromN = fromN+3.25;
+				count.options.setToN = fromN;
+			},1000)
+		}
+		$addBtn.onclick = function(){
+			if(!clickStatus){
+				$addBtn.value = "停止";
+				clickStatus = true;
+				changeVal();
+			}else{
+				$addBtn.value = "递增";
+				clickStatus = false;
+				clearInterval(changeValAni);
+			}
+		}
+		
+	</script>
+</html>

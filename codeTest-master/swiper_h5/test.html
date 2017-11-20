@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>test</title>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.self.css"/><!--自定义的动画-->
+		<!--Swiper3.0.4-->
+	</head>
+
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide blue-slide" data-hash='slide1'>
+					<img src="img/baozou1.jpg" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s" />
+					<div class="ani"  swiper-animate-effect="rotateKeep" swiper-animate-duration="1.5s" swiper-animate-delay="1s" >这是ANIMATE</div>
+				</div>
+				<div class="swiper-slide red-slide" data-hash='slide2'>
+					<div class="s2_el1"></div>
+				</div>
+				<div class="swiper-slide orange-slide" data-hash='slide3'>slider3</div>
+				<div class="swiper-slide green-slide" data-hash='slide4'>slider4</div>
+			</div>
+		</div>
+	</body>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/swiper.animate1.0.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+			var mySwiper = new Swiper('.swiper-container', {
+				height:window.innerHeight,
+				loop: false,
+				speed: 800,
+				direction: 'vertical',
+				autoplayStopOnLast: true,
+				hashnav: true,
+				roundLengths: true,
+				passiveListeners : false,//提升swiper在移动设备的中的scroll表现
+	
+				onInit: function(swiper) { //初始化
+					swiperAnimateCache(swiper); //隐藏动画元素
+					swiperAnimate(swiper); //初始化完成开始动画
+				},
+				onSlideChangeEnd: function(swiper) { //页面切换完成触发
+					swiperAnimateCache(swiper);
+					swiperAnimate(swiper); //执行动画（不加将没有效果）
+				
+				}
+			})
+	</script>
+
+</html>

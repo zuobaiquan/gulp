@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>你好啊！我的名字叫张三，是一个实打实的农民。我为自己的职业感到骄傲！</div>
+	</body>
+	<script type="text/javascript">
+		//现在确确实实做一些有意义的事情吧
+		Node.prototype.changeCss = function(styleStr){//改变样式(原先不支持链式调用)
+			this.style.cssText = styleStr;
+			return this;
+		}
+		Node.prototype.getHtml = function(callback){//获取html
+			callback.call(this,this.innerHTML);
+			return this;
+		}
+		//*****这样任意dom都可以调用了*******
+		document.getElementsByTagName('div')[0]
+		.changeCss("color:red;font-weight:bold;")
+		.getHtml(console.log)
+	</script>
+	
+</html>

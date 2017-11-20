@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="ipt" />
+		<div id="con"></div>
+		<div id="con2"></div>
+		<div id="con3"></div>
+	</body>
+	<script type="text/javascript">
+		//参考阅读：js设计模式系列之(二)订阅发布模式    http://www.tuicool.com/articles/mqQZ7nJ
+		//【事件的方式】中已经说到事件监听的方式是一种异步编程的方式，只要指定了回调函数，如监听click的回调，就会
+		//在任务队列中添加该任务，主线程完成后就会去读取任务队列的最后一个任务（但只有触发click才会把该任务添加到主线程执行）
+		//这例我们说点题外的，就是自定义事件和触发（也就是订阅发布者模式，或称为观察者模式）
+		
+		//订阅发布者模式指的是订阅者订阅任务通知，什么时候执行任务看发布者给指令。也就是说原先要不断轮询，现在只要坐等通知。
+		//这种方式其实是一种一对多的映射或关联的关系，比方说点击按钮可触发多个操作。js是事件驱动的语言，这是对于它的出生决定的，因为js是浏览器的脚本
+		//语言，任何操作都是为了响应用户的操作，比方说页面的加载，点击，窗口，滚动等等，所以观察者模式在js中涉及广泛
+		//具体参考：
+		//JS事件驱动机制：http://www.cnblogs.com/yerenyuan/p/5393795.html
+		//MDN Event: https://developer.mozilla.org/zh-CN/docs/Web/API/Event
+		//创建和触发 events:https://developer.mozilla.org/zh-CN/docs/Web/Guide/Events/Creating_and_triggering_events
+		
+		//完成小案例：span中同步input输入框的内容
+		//原生js的方式
+			var $ipt = document.getElementById('ipt');
+			var $con = document.getElementById('con');
+			var $con2 = document.getElementById('con2');
+			var $con3 = document.getElementById('con3');
+			//1、采用轮询的方式，也就是高频的不断去读取input的内容
+//			setInterval(function(){
+//				$con.innerHTML = $ipt.value;
+//			},10)
+				//这种方式的确可以实现上诉小案例，但是问题在于:1、高频的timer耗费性能；  2、如果有其他异步任务将没法不卡顿的同步信息
+			//2、其实大多数时候这种轮询都是做无用功的，因为我可能啥也没做，但却保持着高负荷的异步任务，实际上只有当我们输入的时候才有必要去读取信息
+//			$ipt.addEventListener('change',function(){
+//				$con.innerHTML = $ipt.value;
+//			})
+				//js自带的onchangge事件可以实现功能，但只能在表单失去焦点才能将结果变动给$con,我们其实可以自己实现
+			//3、自定义事件，观察者模式
+			var change2Event = new Event('change2');//定义一个事件对象change2Event，它的类型（type,如click）是change2
+			function EventFun(obj){//具体触发后要做的事情写在这里
+				this.obj = obj;
+				this.callback = function(){
+					obj.innerHTML = $ipt.value;
+					obj.style.color = '#ffaa00';
+				}
+			}
+				//订阅者,为事件目标target（这里的document）添加这个事件change2，以及触发后执行的操作
+			document.addEventListener('change2',new EventFun($con).callback)//添加多个事件监听（什么时候触发看具体需求），回调采用函数引用传入，减弱耦合
+			document.addEventListener('change2',new EventFun($con2).callback)
+			document.addEventListener('change2',new EventFun($con3).callback)
+				
+			$ipt.addEventListener('keypress',function(){
+				document.dispatchEvent(change2Event);//发布者，触发事件
+			})
+			
+			//需要注意的是：上诉中有个“document”，其实你换成$ipt，或$con或任何dom对象都是可以的，因为执行的函数中并未应用该事件目标，只是语法要求而已，关键还在于执行函数本身。
+			//其实单从程序本身来讲，而不是从玄而又玄的抽象思想上考量的话，其实所谓的订阅发布者模式，就是在一个对象（订阅中心）中添加一个方法，然后需要的时候执行它而已
+	</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="cas" width="500" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+		
+		var canvas = document.getElementById('cas');
+		var context = canvas.getContext('2d');//2d画笔
+		
+		function Bg(x,y,w,h,c) {
+	        this.x = x;
+	        this.y = y;
+	        this.w = w;
+	        this.h = h;
+	        this.c = c;
+	        this.draw = function(){
+	            context.fillStyle = this.c;
+	            context.fillRect(this.x,this.y,this.w,this.h);
+	        }
+	    }
+	
+	    function Rec(x,y,w,h,c) {
+	        this.x = x;
+	        this.y = y;
+	        this.w = w;
+	        this.h = h;
+	        this.c = c;
+	        this.draw = function(deg){
+	            context.fillStyle = this.c;
+	           	context.translate(x+w/2,y+h/2);//偏移，相对原位置（0，0），移动画笔到某处
+	            context.rotate(deg*Math.PI/180);//旋转中心默认是画笔起始点，默认是左上角（0，0）
+	            context.translate(-x-w/2,-y-h/2)//移回原处
+	            context.fillRect(this.x,this.y,this.w,this.h);
+	        }
+	    }
+	    
+	    var newBg = new Bg(0,0,500,500,'#002222');
+	    var newRec = new Rec(250-30,250-50,60,100,'#fff');
+	    
+	    ;(function fresh(deg){
+	    	
+	    	newBg.draw();//绘制背景
+	    	newRec.draw(deg);//绘制矩形
+	    	requestAnimationFrame(fresh.bind(this,deg+1))
+	    	
+	    })(20)
+		
+	</script>
+</html>

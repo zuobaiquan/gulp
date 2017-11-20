@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//封装
+			function Cat(name,color){
+				this.name = name;
+				this.color = color;
+				this.fun = function(){
+					alert('this is a '+this.color+' cat named '+this.name)
+				}
+			}
+			Cat.prototype = {
+				fun2:function(){
+					alert('this is a '+this.color+' cat named '+this.name)
+				}
+			}
+			//var cat1 = new Cat('jane','black');
+			//现在新建一个新的构造函数用来继承扩展功能
+			function Cat2(name,color,age){
+				this.age = age;
+				Cat.apply(this,[name,color]);
+			}
+			Cat2.prototype = Object.create(new Cat());//继承Cat()的原型(ES6)
+			//Cat2.prototype = new Cat();//实例Cat()作为Cat的原型,因为属性遮蔽，所以会优先使用构造函数里的属性name,colorl,而不会使用原型中的name和color
+			Cat2.prototype.fun3 = function(){//新增自己的原型的方法
+				alert('its age is '+this.age);
+			}
+			new Cat2('green','yellow','8').fun3();
+			new Cat2('green','yellow','8').fun2();
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
