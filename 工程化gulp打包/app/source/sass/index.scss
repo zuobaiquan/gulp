@@ -1,0 +1,15 @@
+@import 'common';
+@import 'normalize';
+body{
+  background: #ddd;
+  .myname{
+    font-size: 40px;
+    color:#fff;
+    height: 50px;
+    line-height:54px;
+    background: blue;
+    border-radius: 10px;
+    user-select: none;
+    transform: rotateX(-10px);
+  }
+}
