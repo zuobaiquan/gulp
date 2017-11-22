@@ -1,8 +1,0 @@
-{
-  "index.html": {
-    "resources": [
-      "css/style.css",
-      "js/jquery-1.8.3.js"
-    ]
-  }
-}
