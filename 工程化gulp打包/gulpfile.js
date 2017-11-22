@@ -34,7 +34,7 @@ gulp.task('styles', function() {
 gulp.task('autofixer', function () {
     gulp.src('app/resource/css/**/*')
         .pipe(autoprefixer({
-            browsers: ['last 2 versions', 'Android >= 4.0'],
+            browsers: ['last 2 versions'],
             cascade: true,
             remove:true
         }))
