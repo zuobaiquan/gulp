@@ -4,15 +4,17 @@
   "description": "testpage",
   "main": "index.js",
   "scripts": {
-    "dev": "gulp defalut",
-    "build": "cross-env NODE_ENV='production' gulp build"
+    "dev": "gulp --colors",
+    "build": "gulp build --colors"
   },
   "author": "zuobaiquan",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
+    "gulp-cache": "^1.0.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.1",

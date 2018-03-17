@@ -1,0 +1,22 @@
+.f-l {
+  float: left !important;
+  display: inline-block;
+}
+.f-r {
+  float: right !important;
+  display: inline-block;
+}
+.f-n {
+  float: none !important;
+}
+.cf:before,
+.cf:after {
+  content: "";
+  display: table
+}
+.cf:after {
+  clear: both
+}
+.cf {
+  zoom: 1
+}

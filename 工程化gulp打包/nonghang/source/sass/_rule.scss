@@ -1,0 +1,82 @@
+.wrap{
+  header{
+    width: 100%;
+    height: 7.2rem;
+    line-height: 7.2rem;
+    font-size: 2.2rem;
+    color:#F2802D;
+    text-align: center;
+    font-weight: bold;
+  }
+  .wrap-content{
+      li{
+        margin-bottom: 2.1rem;
+        .list-title{
+          padding-left: 1.2rem;
+          height: 5rem;
+          line-height:5rem;
+          border-top: 0.1rem solid #E9E8E9;
+          border-bottom: 0.1rem solid #E9E8E9;
+          background: #D81E1E;
+          color:#f6ff06;
+          font-size: 1.7rem;
+          font-style: normal;
+          .list-num{
+            margin-right: 1rem;
+            display: inline-block;
+            width: 2.1rem;
+            height: 2.1rem;
+            line-height: 2.1rem;
+            border-radius: 100%;
+            background: #f6ff06;
+            color:#d81e1e;
+            font-size: 1.7rem;
+            text-align: center;
+          }
+          .list-arrow{
+            margin:{
+              top:2rem;
+              right:2rem;
+            }
+             float: right;
+             display: inline-block;
+             width:1.5rem;
+             height:1.5rem;
+             border: solid #f6ff06;
+             border-width: 0.2rem 0.2rem 0 0;
+             -webkit-transform:rotate(-45deg);
+             transform:rotate(-45deg);
+          }
+          .arrow-rotate{
+            margin-top: 1rem;
+            -webkit-transform:rotate(135deg);
+            transform:rotate(135deg);
+          }
+        }
+        .list-content{
+          padding: 2rem 4.2rem;
+          font-size: 1.4rem;
+          background: #ffffff;
+          border-bottom: 0.1rem solid #E9E8E9;
+          color:#666666;
+          line-height: 2rem;
+          font-style: normal;
+          text-align: justify;
+        }
+      }
+  }
+  .footer{
+    width: 57.8%;
+    height: 4.8rem;
+    margin: 2.7rem auto 3.8rem;
+    line-height: 4rem;
+    display: block;
+    color:#d81e1e;
+    font-size: 1.9rem;
+    font-weight: bold;
+    text-align: center;
+    background: url(../img/openaccount.png) no-repeat;
+    background-size: 100%;
+  }
+
+}
